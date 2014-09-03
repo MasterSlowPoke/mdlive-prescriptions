@@ -25,7 +25,7 @@ class RemindersController < ApplicationController
   # POST /reminders.json
   def create
     @reminder = Reminder.new(reminder_params)
-    @reminder.start = @reminder.set_first_dose(params[:date], params[:time])
+    @reminder.set_first_dose(params[:date], params[:time])
 
     respond_to do |format|
       if @reminder.save
