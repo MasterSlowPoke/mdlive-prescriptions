@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903174414) do
+ActiveRecord::Schema.define(version: 20140903181953) do
 
   create_table "reminder_items", force: true do |t|
     t.boolean  "taken"
     t.boolean  "missed"
-    t.integer  "reminder_id_id"
+    t.integer  "reminder_id"
     t.datetime "scheduled_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "reminder_items", ["reminder_id_id"], name: "index_reminder_items_on_reminder_id_id"
+  add_index "reminder_items", ["reminder_id"], name: "index_reminder_items_on_reminder_id"
 
   create_table "reminders", force: true do |t|
     t.string   "title"

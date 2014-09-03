@@ -55,6 +55,9 @@ class RemindersController < ApplicationController
   # DELETE /reminders/1
   # DELETE /reminders/1.json
   def destroy
+    @reminder.reminder_items.each do |ri|
+      ri.destroy
+    end
     @reminder.destroy
     respond_to do |format|
       format.html { redirect_to reminders_url, notice: 'Reminder was successfully destroyed.' }
