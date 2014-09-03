@@ -17,10 +17,10 @@
         <td><%= reminder_item.taken %></td>
         <td><%= reminder_item.missed %></td>
         <td><%= reminder_item.reminder_id %></td>
-        <td><%= reminder_item.scheduled_time %></td>
+        <td><%= reminder_item.scheduled_time.strftime('%A, %b ') + reminder_item.scheduled_time.day.ordinalize + reminder_item.scheduled_time.strftime(' @ %I:%M %p') %></td>
         <td><%= link_to 'Show', reminder_item %></td>
         <td><%= link_to 'Edit', edit_reminder_item_path(reminder_item) %></td>
-        <td><%= link_to 'Destroy', reminder_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', reminder_item, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
