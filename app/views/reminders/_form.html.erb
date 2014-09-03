@@ -28,8 +28,9 @@
     <%= f.text_area :notes %>
   </div>
   <div class="field">
-    <%= f.label :start %><br>
-    <%= f.text_field :start %>
+    <%= f.label :date, "First Dose" %><br>
+    <%= f.date_field :date, value: Date.today %>
+    <%= f.time_field :time, value: "9:00 AM" %>
   </div>
   <div class="field">
     <%= f.label :doses %><br>
