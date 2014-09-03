@@ -28,6 +28,7 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.save
+        @reminder.create_reminder_items
         format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
         format.json { render :show, status: :created, location: @reminder }
       else
