@@ -5,6 +5,7 @@ class Reminder < ActiveRecord::Base
 		doses.times do |n|
 			ri = ReminderItem.new
 			ri.scheduled_time = n.days.from_now
+			ri.reminder = self
 			ri.save
 		end
 	end
