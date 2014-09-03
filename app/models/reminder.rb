@@ -1,6 +1,10 @@
 class Reminder < ActiveRecord::Base
 	has_many :reminder_items
 
+	def set_first_dose(date, time)
+		DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
+	end
+
 	def create_reminder_items
 		doses.times do |n|
 			ri = ReminderItem.new

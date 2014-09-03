@@ -29,8 +29,8 @@
   </div>
   <div class="field">
     <%= f.label :date, "First Dose" %><br>
-    <%= f.date_field :date, value: Date.today %>
-    <%= f.time_field :time, value: "9:00 AM" %>
+    <%= date_field nil, :date, value: Date.today %>
+    <%= time_field nil, :time, value: Time.now.strftime("%R") %>
   </div>
   <div class="field">
     <%= f.label :doses %><br>
