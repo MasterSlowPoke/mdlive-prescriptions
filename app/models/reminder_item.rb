@@ -1,3 +1,3 @@
 class ReminderItem < ActiveRecord::Base
-  belongs_to :reminder_id
+  belongs_to :reminder
 end
