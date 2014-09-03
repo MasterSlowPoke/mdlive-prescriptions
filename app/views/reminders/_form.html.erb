@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :time_period %><br>
-    <%= f.text_field :time_period %>
+    <%= f.select(:time_period, ["Day", "Week", "Year"]) %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
