@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Taken:</strong>
+  <%= @reminder_item.taken %>
+</p>
+
+<p>
+  <strong>Missed:</strong>
+  <%= @reminder_item.missed %>
+</p>
+
+<p>
+  <strong>Reminder:</strong>
+  <%= @reminder_item.reminder_id %>
+</p>
+
+<p>
+  <strong>Scheduled time:</strong>
+  <%= @reminder_item.scheduled_time %>
+</p>
+
+<%= link_to 'Edit', edit_reminder_item_path(@reminder_item) %> |
+<%= link_to 'Back', reminder_items_path %>

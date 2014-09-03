@@ -1,0 +1,33 @@
+<%= form_for(@reminder_item) do |f| %>
+  <% if @reminder_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reminder_item.errors.count, "error") %> prohibited this reminder_item from being saved:</h2>
+
+      <ul>
+      <% @reminder_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :taken %><br>
+    <%= f.text_field :taken %>
+  </div>
+  <div class="field">
+    <%= f.label :missed %><br>
+    <%= f.text_field :missed %>
+  </div>
+  <div class="field">
+    <%= f.label :reminder_id_id %><br>
+    <%= f.text_field :reminder_id_id %>
+  </div>
+  <div class="field">
+    <%= f.label :scheduled_time %><br>
+    <%= f.datetime_select :scheduled_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

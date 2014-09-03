@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  taken: 
+  missed: 
+  reminder_id_id: 
+  scheduled_time: 2014-09-03 13:44:14
+
+two:
+  taken: 
+  missed: 
+  reminder_id_id: 
+  scheduled_time: 2014-09-03 13:44:14

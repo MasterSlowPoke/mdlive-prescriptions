@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  num_per: 1
+  time_period: MyString
+  notes: MyText
+  start: 
+  doses: 1
+
+two:
+  title: MyString
+  num_per: 1
+  time_period: MyString
+  notes: MyText
+  start: 
+  doses: 1
