@@ -2,22 +2,17 @@
 
 <p>
   <strong>Taken:</strong>
-  <%= @reminder_item.taken %>
+  <%= @reminder_item.day_of_week %>
 </p>
 
 <p>
   <strong>Missed:</strong>
-  <%= @reminder_item.missed %>
+  <%= @reminder_item.time_of_day %>
 </p>
 
 <p>
   <strong>Reminder:</strong>
   <%= @reminder_item.reminder.title %>
-</p>
-
-<p>
-  <strong>Scheduled time:</strong>
-  <%= @reminder_item.scheduled_time %>
 </p>
 
 <%= link_to 'Edit', edit_reminder_item_path(@reminder_item) %> |

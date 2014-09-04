@@ -12,20 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :taken %><br>
-    <%= f.text_field :taken %>
+    <%= f.label :time_of_day %><br>
+    <%= f.time_field :time_of_day %>
   </div>
   <div class="field">
-    <%= f.label :missed %><br>
-    <%= f.text_field :missed %>
-  </div>
-  <div class="field">
-    <%= f.label :reminder_id %><br>
-    <%= f.text_field :reminder_id %>
-  </div>
-  <div class="field">
-    <%= f.label :scheduled_time %><br>
-    <%= f.datetime_select :scheduled_time %>
+    <%= f.label :day_of_week %><br>
+    <%= f.select(:day_of_week, ["Everyday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]) %>
   </div>
   <div class="actions">
     <%= f.submit %>
