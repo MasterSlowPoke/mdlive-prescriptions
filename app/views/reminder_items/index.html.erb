@@ -14,7 +14,7 @@
   <tbody>
     <% @reminder_items.each do |reminder_item| %>
       <tr>
-        <td><%= reminder_item.reminder.title %></td>
+        <td><%= reminder_item.reminder_id %></td>
         <td><%= reminder_item.taken %></td>
         <td><%= reminder_item.missed %></td>
         <td><%= reminder_item.scheduled_time.strftime('%A, %b ') + reminder_item.scheduled_time.day.ordinalize + reminder_item.scheduled_time.strftime(' @ %I:%M %p') %></td>
