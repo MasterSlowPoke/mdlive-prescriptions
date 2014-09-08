@@ -12,7 +12,7 @@
 
 <p>
   <strong>Reminder:</strong>
-  <%= @reminder_item.reminder.title %>
+  <%= @reminder_item.reminder.title if @reminder_item.reminder %>
 </p>
 
 <%= link_to 'Edit', edit_reminder_item_path(@reminder_item) %> |
