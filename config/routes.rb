@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   get 'home/index'
 
   devise_for :users
-  root to: "home#index"
+  root to: "dashboard#index"
   
   get 'reminders/:id/view' => 'reminders#view'
 
   resources :reminder_items
-
+  resources :users
   resources :reminders
 
 
