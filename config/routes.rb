@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
   
+  get 'reminders/:id/view' => 'reminders#view'
+
   resources :reminder_items
 
   resources :reminders
