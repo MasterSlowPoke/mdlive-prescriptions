@@ -1,3 +1,9 @@
+<h1>Reminder</h1>
+
+<% unless @reminder.reminder_items_setup? %>
+  <h3>Reminder items still need to be set up!</h3>
+<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @reminder.title %>
@@ -27,6 +33,22 @@
   <strong>Doses:</strong>
   <%= @reminder.doses %>
 </p>
+
+<hr>
+
+<h2>Reminder Items</h2>
+
+<% if @reminder.reminder_items.count == 0 %>
+  <p>No Reminder Items found!</p>
+<% else %>
+  <%= render @reminder.reminder_items %>
+<% end %>
+
+<% unless @reminder.reminder_items_setup? %>
+  <h3>Add a new Reminder</h3>
+  <% @reminder_item = ReminderItem.new %>
+  <%= render 'reminder_items/form' %>
+<% end %>
 
 <%= link_to 'Edit', edit_reminder_path(@reminder) %> |
 <%= link_to 'Back', reminders_path %>

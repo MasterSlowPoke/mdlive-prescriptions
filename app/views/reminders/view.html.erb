@@ -1,0 +1,3 @@
+<h1>Listing reminders</h1>
+
+First Dose: <%= @reminder.get_days_doses(Date.current - 1.day).to_s %>

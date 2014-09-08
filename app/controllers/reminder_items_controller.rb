@@ -69,6 +69,6 @@ class ReminderItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_item_params
-      params.require(:reminder_item).permit(:taken, :missed, :reminder_id_id, :scheduled_time)
+      params.require(:reminder_item).permit(:day_of_week, :time_of_day, :reminder_id)
     end
 end

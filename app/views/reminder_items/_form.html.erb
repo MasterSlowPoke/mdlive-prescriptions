@@ -19,6 +19,11 @@
     <%= f.label :day_of_week %><br>
     <%= f.select(:day_of_week, ["Everyday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]) %>
   </div>
+
+  <% if @reminder %>
+    <%= f.hidden_field :reminder_id, value: @reminder.id %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

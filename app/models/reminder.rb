@@ -5,6 +5,66 @@ class Reminder < ActiveRecord::Base
 		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
 	end
 
+	def reminder_items_setup?
+		reminder_items.count >= num_per
+	end
+
+	def get_days_doses(day)
+		if start_date > day
+			return []
+		end
+
+		doses = []
+		reminder_items.each do |ri|
+			if start_date == day
+				if ri.time_of_day.hour < start.hour
+					next
+				elsif ri.time_of_day.hour == start.hour
+					if ri.time_of_day.min < start.min
+						next
+					end
+				end
+			end
+					 	 
+			doses << ri
+		end
+
+		doses
+	end
+
+
+	def start_date
+		Date.new(start.year, start.month, start.day)
+	end
+
+	def end_date
+	end
+
+	def first_dose
+		first_dose = nil
+		n = 0
+
+		until first_dose
+			first_dose = get_days_doses(start_date + n.days).first
+			n +=1
+		end
+
+		first_dose
+	end
+
+	def last_dose
+	end
+
+	def enumerate_doses
+		doses_array = [first_dose]
+
+		(doses - 1).times do
+		end
+
+		doses_array
+	end
+
+
 	# def create_reminder_items
 	# 	doses.times do |n|
 	# 		ri = ReminderItem.new
