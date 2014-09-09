@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908022624) do
+ActiveRecord::Schema.define(version: 20140909004049) do
 
   create_table "homes", force: true do |t|
     t.datetime "created_at"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140908022624) do
     t.datetime "updated_at"
     t.string   "day_of_week"
     t.time     "time_of_day"
-    t.text     "ical_schedule"
+    t.text     "yaml"
   end
 
   add_index "reminder_items", ["reminder_id"], name: "index_reminder_items_on_reminder_id"
