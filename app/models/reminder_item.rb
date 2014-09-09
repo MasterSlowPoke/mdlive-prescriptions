@@ -1,9 +1,20 @@
 class ReminderItem < ActiveRecord::Base
 	include IceCube
 
-	serialize :schedule
+	serialize :schedule, IceCube::Schedule
 
   belongs_to :reminder
+
+  def initialize(review_item_params = {})
+  	super(review_item_params)
+  	set_schedule unless review_item_params.empty?
+  end
+
+  def update(review_item_params)
+  	super(review_item_params)
+  	set_schedule
+  	self.save
+  end
 
   def set_schedule
   	self.schedule = Schedule.new(Time.now)

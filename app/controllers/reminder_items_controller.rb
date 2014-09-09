@@ -25,7 +25,6 @@ class ReminderItemsController < ApplicationController
   # POST /reminder_items.json
   def create
     @reminder_item = ReminderItem.new(reminder_item_params)
-    @reminder_item.set_schedule
 
     respond_to do |format|
       if @reminder_item.save
