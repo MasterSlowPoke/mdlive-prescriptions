@@ -1,7 +1,7 @@
 class ReminderItem < ActiveRecord::Base
 	include IceCube
 
-	serialize :schedule, IceCube::Schedule
+	serialize :schedule, Schedule
 
   belongs_to :reminder
 
