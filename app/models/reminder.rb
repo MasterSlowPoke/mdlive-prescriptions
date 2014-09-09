@@ -56,12 +56,19 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def enumerate_doses
-		doses_array = [first_dose]
-
-		(doses - 1).times do
+		if reminder_items.count != num_per
+			return false
 		end
 
-		doses_array
+		all_doses = []
+
+		reminder_items.each do |ri|
+			ri.schedule.all_occurrences.each do |o|
+				all_doses.push o
+			end
+		end
+
+		all_doses.sort
 	end
 
 
