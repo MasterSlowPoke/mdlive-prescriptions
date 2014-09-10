@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140909225014) do
     t.datetime "updated_at"
     t.string   "day_of_week"
     t.time     "time_of_day"
-    t.text     "yaml"
+    t.text     "schedule"
   end
 
   add_index "reminder_items", ["reminder_id"], name: "index_reminder_items_on_reminder_id"
