@@ -56,9 +56,7 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def enumerate_doses
-		if reminder_items.count != num_per
-			return false
-		end
+		return nil if reminder_items.count != num_per
 
 		all_doses = []
 
