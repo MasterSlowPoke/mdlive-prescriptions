@@ -9,6 +9,10 @@ class UserMailer < ActionMailer::Base
 	end
 
 
+	def reminder_email(user)
+		@user = user
+		mail(to: user.email, subject: 'You have a real Reminder!')
+	end
 
 # attachments['filename.jpg'] = File.read('/path/to/filename.jpg')
 
