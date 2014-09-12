@@ -55,14 +55,14 @@ class Reminder < ActiveRecord::Base
 	def last_dose
 	end
 
-	def enumerate_doses
+	def enumerate_doses(start_date = start, end_date = nil)
 		return nil unless reminder_items_setup?
 
 		all_doses = []
 
 		reminder_items.each do |ri|
 			ri.schedule.all_occurrences.each do |o|
-				all_doses.push o
+				all_doses.push o if (o > start_date) && (end_date ? (o < end_date) : true)
 			end
 		end
 

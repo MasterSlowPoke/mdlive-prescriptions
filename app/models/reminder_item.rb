@@ -22,5 +22,9 @@ class ReminderItem < ActiveRecord::Base
   		Rule.daily.count(reminder.doses/reminder.num_per).hour_of_day(time_of_day.hour).minute_of_hour(time_of_day.min).second_of_minute(0))
   end
 
+  def occurs_between?(start_date, end_date)
+  	return true if end_date.nil? || start_date.nil?
 
+  	return schedule.occurs_between?(start_date, end_date)
+  end
 end
