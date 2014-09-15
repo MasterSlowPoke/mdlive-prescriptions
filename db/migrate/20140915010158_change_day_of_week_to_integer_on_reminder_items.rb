@@ -1,7 +1,7 @@
 class ChangeDayOfWeekToIntegerOnReminderItems < ActiveRecord::Migration
   def up
   	ReminderItem.all.each do |ri|
-  		unless ri.day_of_week.is_a?(Integer)
+  		if ri.day_of_week and !ri.day_of_week.is_a?(Integer)
 	  		ri.day_of_week = case ri.day_of_week.downcase.slice(0,2)
 	  											when "su"
 	  												0
