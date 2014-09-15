@@ -10,6 +10,8 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def assign_counts
+		return if reminder_rules.empty?
+
 		num_reminders = reminder_rules.count
 		counts_hash = {}
 		occurrences_hash = {}
