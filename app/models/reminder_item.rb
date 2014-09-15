@@ -7,7 +7,7 @@ class ReminderItem < ActiveRecord::Base
 
   def initialize(review_item_params = {})
     super(review_item_params)
-     unless review_item_params.empty?
+    unless review_item_params.empty?
       set_schedule
       self.save
 
