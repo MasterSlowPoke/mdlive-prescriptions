@@ -9,9 +9,39 @@ class Reminder < ActiveRecord::Base
 		reminder_items.count >= num_per
 	end
 
-	def enumerate_doses(start_date = start, end_date = nil)
-		return nil unless reminder_items_setup?
+	def assign_counts
+		num_reminders = reminder_items.count
+		counts_hash = {}
+		occurrences_hash = {}
+		ri_hash = {}
+		
+		reminder_items.each do |ri|
+			counts_hash[ri.id] = 0
+			occurrences_hash[ri.id] = ri.schedule.next_occurrence
+			ri_hash[ri.id] = ri
+		end
 
+		doses.times do
+			next_occurrence = [occurrences_hash.keys.first, occurrences_hash[occurrences_hash.keys.first]]
+			
+			occurrences_hash.each do |id, time|
+				next_occurrence = [id, time] if time && time < next_occurrence[1]
+			end
+			
+			counts_hash[next_occurrence[0]] += 1
+			occurrences_hash[next_occurrence[0]] = ri_hash[next_occurrence[0]].schedule.next_occurrence(next_occurrence[1])
+		end
+
+		puts counts_hash
+		puts occurrences_hash
+
+		reminder_items.each do |ri|
+			ri.set_schedule(counts_hash[ri.id])
+			ri.save
+		end
+	end
+
+	def enumerate_doses(start_date = start, end_date = nil)
 		all_doses = []
 
 		reminder_items.each do |ri|

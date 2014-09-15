@@ -6,8 +6,11 @@ class ReminderItem < ActiveRecord::Base
   belongs_to :reminder
 
   def initialize(review_item_params = {})
-  	super(review_item_params)
-  	set_schedule unless review_item_params.empty?
+    super(review_item_params)
+     unless review_item_params.empty?
+      set_schedule
+      reminder.assign_counts
+    end
   end
 
   def update(review_item_params)
@@ -16,10 +19,10 @@ class ReminderItem < ActiveRecord::Base
   	self.save
   end
 
-  def set_schedule
+  def set_schedule(count = nil)
   	self.schedule = Schedule.new(Time.now)
-  	new_rule = Rule.daily.count(reminder.doses/reminder.num_per)
-  	new_rule = new_rule.hour_of_day(time_of_day.hour).minute_of_hour(time_of_day.min).second_of_minute(0)
+  	new_rule = Rule.daily.hour_of_day(time_of_day.hour).minute_of_hour(time_of_day.min).second_of_minute(0)
+  	new_rule = new_rule.count(count) if count
 
   	if (0..6).include? day_of_week
   		new_rule.day(day_of_week)
