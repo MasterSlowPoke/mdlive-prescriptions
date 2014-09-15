@@ -6,11 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<div id="App_Name">
-<h1>MD LIVE <br><br> Reminder App</h1>
+
+
 
 <body>
-
+<h1>MD LIVE <br><br> Reminder App</h1>
 <div class="hmenu">
  <div> <%= render 'devise/menu/registration_items' %></div>
   <div><%= render 'devise/menu/login_items' %></div>
@@ -22,5 +22,4 @@
 <%= yield %>
 
 </body>
-</div>
 </html>
