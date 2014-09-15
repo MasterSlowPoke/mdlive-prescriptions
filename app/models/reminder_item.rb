@@ -19,6 +19,8 @@ class ReminderItem < ActiveRecord::Base
   	super(review_item_params)
   	set_schedule
   	self.save
+
+    reminder.assign_counts
   end
 
   def set_schedule(count = nil)
