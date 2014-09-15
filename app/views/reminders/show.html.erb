@@ -1,17 +1,8 @@
 <h1>Reminder</h1>
 
-<% unless @reminder.reminder_items_setup? %>
-  <h3>Reminder items still need to be set up!</h3>
-<% end %>
-
 <p>
   <strong>Title:</strong>
   <%= @reminder.title %>
-</p>
-
-<p>
-  <strong>Num per:</strong>
-  <%= @reminder.num_per %>
 </p>
 
 <p>
