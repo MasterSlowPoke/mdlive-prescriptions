@@ -1,21 +1,21 @@
 class Reminder < ActiveRecord::Base
-	has_many :reminder_items
+	has_many :reminder_rules
 
 	def set_first_dose(date, time)
 		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
 	end
 
-	def reminder_items_setup?
-		reminder_items.count >= num_per
+	def reminder_rules_setup?
+		reminder_rules.count >= num_per
 	end
 
 	def assign_counts
-		num_reminders = reminder_items.count
+		num_reminders = reminder_rules.count
 		counts_hash = {}
 		occurrences_hash = {}
 		ri_hash = {}
 		
-		reminder_items.each do |ri|
+		reminder_rules.each do |ri|
 			counts_hash[ri.id] = 0
 			occurrences_hash[ri.id] = ri.schedule.next_occurrence
 			ri_hash[ri.id] = ri
@@ -33,10 +33,7 @@ class Reminder < ActiveRecord::Base
 			occurrences_hash[next_occurrence[0]] = ri_hash[next_occurrence[0]].schedule.next_occurrence(next_occurrence[1])
 		end
 
-		puts counts_hash
-		puts occurrences_hash
-
-		reminder_items.each do |ri|
+		reminder_rules.each do |ri|
 			ri.set_schedule(counts_hash[ri.id])
 			ri.save
 		end
@@ -45,7 +42,7 @@ class Reminder < ActiveRecord::Base
 	def enumerate_doses(start_date = start, end_date = nil)
 		all_doses = []
 
-		reminder_items.each do |ri|
+		reminder_rules.each do |ri|
 			ri.schedule.all_occurrences.each do |o|
 				all_doses.push o if (o > start_date) && (end_date ? (o < end_date) : true)
 			end
@@ -55,9 +52,9 @@ class Reminder < ActiveRecord::Base
 	end
 
 
-	# def create_reminder_items
+	# def create_reminder_rules
 	# 	doses.times do |n|
-	# 		ri = ReminderItem.new
+	# 		ri = ReminderRule.new
 			
 	# 		case time_period.downcase
 	# 		when "day"

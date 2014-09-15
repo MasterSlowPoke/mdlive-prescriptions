@@ -1,0 +1,26 @@
+<h1>Listing reminder_rules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reminder</th>
+      <th>Day of Week</th>
+      <th>Time of Day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reminder_rules.each do |reminder_rule| %>
+
+      <tr>
+        <td><%= reminder_rule.reminder.title if reminder_rule.reminder %></td>
+        <td><%= reminder_rule.day_of_week %></td>
+        <td><%= reminder_rule.time_of_day %></td>
+        <td><%= link_to 'Show', reminder_rule %></td>
+        <td><%= link_to 'Edit', edit_reminder_rule_path(reminder_rule) %></td>
+        <td><%= link_to 'Destroy', reminder_rule, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

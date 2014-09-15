@@ -1,10 +1,10 @@
-<%= form_for(@reminder_item) do |f| %>
-  <% if @reminder_item.errors.any? %>
+<%= form_for(@reminder_rule) do |f| %>
+  <% if @reminder_rule.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@reminder_item.errors.count, "error") %> prohibited this reminder_item from being saved:</h2>
+      <h2><%= pluralize(@reminder_rule.errors.count, "error") %> prohibited this reminder_rule from being saved:</h2>
 
       <ul>
-      <% @reminder_item.errors.full_messages.each do |message| %>
+      <% @reminder_rule.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

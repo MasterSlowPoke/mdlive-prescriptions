@@ -1,5 +1,0 @@
-<li>
-  <%= int_to_day_of_week(reminder_item.day_of_week) %>, at <%= reminder_item.time_of_day.strftime("%l:%M %p") %> |
-	<%= link_to 'Edit', edit_reminder_item_path(reminder_item) %> |
- 	<%= link_to 'Destroy', reminder_item, method: :delete %>
-</li>

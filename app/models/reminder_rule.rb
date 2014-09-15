@@ -1,13 +1,13 @@
-class ReminderItem < ActiveRecord::Base
+class ReminderRule < ActiveRecord::Base
 	include IceCube
 
 	serialize :schedule, Schedule
 
   belongs_to :reminder
 
-  def initialize(review_item_params = {})
-    super(review_item_params)
-    unless review_item_params.empty?
+  def initialize(reminder_rule_params = {})
+    super(reminder_rule_params)
+    unless reminder_rule_params.empty?
       set_schedule
       self.save
 
@@ -15,8 +15,8 @@ class ReminderItem < ActiveRecord::Base
     end
   end
 
-  def update(review_item_params)
-  	super(review_item_params)
+  def update(reminder_rule_params)
+  	super(reminder_rule_params)
   	set_schedule
   	self.save
 

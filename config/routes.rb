@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   get 'reminders/:id/view' => 'reminders#view'
 
-  resources :reminder_items
+  resources :reminder_rules
   resources :users
   resources :reminders
 

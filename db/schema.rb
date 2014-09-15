@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915150802) do
+ActiveRecord::Schema.define(version: 20140915152315) do
 
   create_table "homes", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "reminder_items", force: true do |t|
+  create_table "reminder_rules", force: true do |t|
     t.integer  "reminder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140915150802) do
     t.text     "schedule"
   end
 
-  add_index "reminder_items", ["reminder_id"], name: "index_reminder_items_on_reminder_id"
+  add_index "reminder_rules", ["reminder_id"], name: "index_reminder_rules_on_reminder_id"
 
   create_table "reminders", force: true do |t|
     t.string   "title"
