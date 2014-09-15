@@ -18,8 +18,14 @@ class ReminderItem < ActiveRecord::Base
 
   def set_schedule
   	self.schedule = Schedule.new(Time.now)
-  	self.schedule.add_recurrence_rule( 
-  		Rule.daily.count(reminder.doses/reminder.num_per).hour_of_day(time_of_day.hour).minute_of_hour(time_of_day.min).second_of_minute(0))
+  	new_rule = Rule.daily.count(reminder.doses/reminder.num_per)
+  	new_rule = new_rule.hour_of_day(time_of_day.hour).minute_of_hour(time_of_day.min).second_of_minute(0)
+
+  	if (1..7).include? day_of_week
+  		new_rule.day(day_of_week)
+  	end
+
+  	self.schedule.add_recurrence_rule(new_rule)
   end
 
   def occurs_between?(start_date, end_date)
