@@ -1,5 +1,5 @@
 class Reminder < ActiveRecord::Base
-	has_many :reminder_items
+	has_many :reminder_rules
 
 	after_create :send_new_reminder_email
 
@@ -7,72 +7,80 @@ class Reminder < ActiveRecord::Base
 		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
 	end
 
-	def reminder_items_setup?
-		reminder_items.count >= num_per
+	def reminder_rules_setup?
+		reminder_rules.count >= num_per
 	end
 
-	def get_days_doses(day)
-		if start_date > day
-			return []
+	def assign_counts
+		return if reminder_rules.empty?
+
+		num_reminders = reminder_rules.count
+		counts_hash = {}
+		occurrences_hash = {}
+		ri_hash = {}
+		
+		reminder_rules.each do |ri|
+			counts_hash[ri.id] = 0
+			occurrences_hash[ri.id] = ri.schedule.next_occurrence
+			ri_hash[ri.id] = ri
+			ri.set_schedule
 		end
 
-		doses = []
-		reminder_items.each do |ri|
-			if start_date == day
-				if ri.time_of_day.hour < start.hour
-					next
-				elsif ri.time_of_day.hour == start.hour
-					if ri.time_of_day.min < start.min
-						next
-					end
-				end
+		doses.times do
+			next_occurrence = [occurrences_hash.keys.first, occurrences_hash[occurrences_hash.keys.first]]
+			
+			occurrences_hash.each do |id, time|
+				next_occurrence = [id, time] if time && time < next_occurrence[1]
 			end
-					 	 
-			doses << ri
+
+			counts_hash[next_occurrence[0]] += 1
+			occurrences_hash[next_occurrence[0]] = ri_hash[next_occurrence[0]].schedule.next_occurrence(next_occurrence[1])
 		end
 
-		doses
-	end
-
-
-	def start_date
-		Date.new(start.year, start.month, start.day)
-	end
-
-	def end_date
-	end
-
-	def first_dose
-		first_dose = nil
-		n = 0
-
-		until first_dose
-			first_dose = get_days_doses(start_date + n.days).first
-			n +=1
+		reminder_rules.each do |ri|
+			ri.set_schedule(counts_hash[ri.id])
+			ri.save
 		end
-
-		first_dose
 	end
 
-	def last_dose
-	end
-
-	def enumerate_doses
-		return nil unless reminder_items_setup?
-
+	def enumerate_doses(start_date = start, end_date = nil)
 		all_doses = []
 
-		reminder_items.each do |ri|
+		reminder_rules.each do |ri|
 			ri.schedule.all_occurrences.each do |o|
-				all_doses.push o
+				all_doses.push o if (o > start_date) && (end_date ? (o < end_date) : true)
 			end
 		end
 
 		all_doses.sort
 	end
 
+
 protected
 def send_new_reminder_email
 	UserMailer.reminder_email(user, self).deliver
+
 end
+
+
+	# def create_reminder_rules
+	# 	doses.times do |n|
+	# 		ri = ReminderRule.new
+			
+	# 		case time_period.downcase
+	# 		when "day"
+	# 			ri.scheduled_time = (n.to_f/num_per).days.from_now
+	# 		when "week"
+	# 			ri.scheduled_time = (n.to_f/num_per).weeks.from_now
+	# 		when "year"
+	# 			ri.scheduled_time = (n.to_f/num_per*365).days.from_now
+	# 		else
+	# 			return false
+	# 		end
+
+	# 		ri.reminder = self
+	# 		ri.save
+	# 	end
+	# end
+
 end 

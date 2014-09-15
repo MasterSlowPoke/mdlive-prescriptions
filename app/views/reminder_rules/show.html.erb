@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Taken:</strong>
+  <%= @reminder_rule.day_of_week %>
+</p>
+
+<p>
+  <strong>Missed:</strong>
+  <%= @reminder_rule.time_of_day %>
+</p>
+
+<p>
+  <strong>Reminder:</strong>
+  <%= @reminder_rule.reminder.title if @reminder_rule.reminder %>
+</p>
+
+<%= link_to 'Edit', edit_reminder_rule_path(@reminder_rule) %> |
+<%= link_to 'Back', reminder_rules_path %>

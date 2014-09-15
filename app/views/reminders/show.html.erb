@@ -1,17 +1,8 @@
 <h1>Reminder</h1>
 
-<% unless @reminder.reminder_items_setup? %>
-  <h3>Reminder items still need to be set up!</h3>
-<% end %>
-
 <p>
   <strong>Title:</strong>
   <%= @reminder.title %>
-</p>
-
-<p>
-  <strong>Num per:</strong>
-  <%= @reminder.num_per %>
 </p>
 
 <p>
@@ -37,12 +28,21 @@
 <hr>
 
 <h2>Dosage Times</h2>
-<% dosage_times = @reminder.enumerate_doses %>
-<% if dosage_times.nil? %>
-  <p>Not all Reminder Items are set!</p>
+<% if @reminder.reminder_rules.empty? %>
+  <p>No Reminder Rules found!</p>
 <% else %>
+  <% dosage_times = @reminder.enumerate_doses %>
   <ol>
     <% dosage_times.each do |dose| %>
+      <li><%= dose.strftime('%A, %B ') + dose.day.ordinalize + dose.strftime(' @ %l:%M %p %Z') %></li>
+    <% end %>
+  </ol>
+  <% curr_time = Time.now.beginning_of_day %>
+  <% end_time = (curr_time + 6.days).end_of_day %>
+  <h3>And specifically for the week <%= "#{curr_time.strftime('%A')} the #{curr_time.day.ordinalize} to #{end_time.strftime('%A')} the #{end_time.day.ordinalize}" %></h3>
+    <% next_week_times = @reminder.enumerate_doses(curr_time, end_time) %>
+    <ol>
+    <% next_week_times.each do |dose| %>
       <li><%= dose.strftime('%A, %B ') + dose.day.ordinalize + dose.strftime(' @ %l:%M %p %Z') %></li>
     <% end %>
   </ol>
@@ -50,19 +50,20 @@
 
 <hr>
 
-<h2>Reminder Items</h2>
+<h2>Reminder Rules</h2>
 
-<% if @reminder.reminder_items.count == 0 %>
-  <p>No Reminder Items found!</p>
+<% if @reminder.reminder_rules.empty? %>
+  <p>No Reminder Rules found!</p>
 <% else %>
-  <%= render @reminder.reminder_items %>
+  <ul>
+    <%= render @reminder.reminder_rules %>
+  </ul>
 <% end %>
 
-<% unless @reminder.reminder_items_setup? %>
-  <h3>Add a new Reminder</h3>
-  <% @reminder_item = ReminderItem.new %>
-  <%= render 'reminder_items/form' %>
-<% end %>
+<hr>
+<h3>Add a new Reminder Rule</h3>
+<% @reminder_rule = ReminderRule.new %>
+<%= render 'reminder_rules/form' %>
 
 <%= link_to 'Edit', edit_reminder_path(@reminder) %> |
 <%= link_to 'Back', reminders_path %>

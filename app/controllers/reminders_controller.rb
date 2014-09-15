@@ -57,8 +57,8 @@ class RemindersController < ApplicationController
   # DELETE /reminders/1
   # DELETE /reminders/1.json
   def destroy
-    @reminder.reminder_items.each do |ri|
-      ri.destroy
+    @reminder.reminder_rules.each do |rr|
+      rr.destroy
     end
     @reminder.destroy
     respond_to do |format|
