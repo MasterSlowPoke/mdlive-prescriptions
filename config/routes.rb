@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
   root to: "dashboard#index"
   
-  get 'reminders/:id/view' => 'reminders#view'
-
   resources :reminder_rules
   resources :users
   resources :reminders
