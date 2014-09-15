@@ -9,16 +9,12 @@ class ReminderItem < ActiveRecord::Base
     super(review_item_params)
     unless review_item_params.empty?
       set_schedule
-      self.save
-
-      reminder.assign_counts
     end
   end
 
   def update(review_item_params)
   	super(review_item_params)
   	set_schedule
-  	self.save
   end
 
   def set_schedule(count = nil)
@@ -31,6 +27,8 @@ class ReminderItem < ActiveRecord::Base
   	end
 
   	self.schedule.add_recurrence_rule(new_rule)
+  	self.save
+  	reminder.assign_counts
   end
 
   def occurs_between?(start_date, end_date)
