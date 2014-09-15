@@ -28,7 +28,7 @@ class ReminderItemsController < ApplicationController
       if @reminder_item = ReminderItem.new(reminder_item_params)
         # This should be able to be ran from anywhere in the application
         UserMailer.reminder_email(current_user).deliver
-        format.html { redirect_to @reminder_item, notice: 'Reminder item was successfully created.' }
+        format.html { redirect_to @reminder_item.reminder, notice: 'Reminder item was successfully created.' }
         format.json { render :show, status: :created, location: @reminder_item }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ReminderItemsController < ApplicationController
   def update
     respond_to do |format|
       if @reminder_item.update(reminder_item_params)
-        format.html { redirect_to @reminder_item, notice: 'Reminder item was successfully updated.' }
+        format.html { redirect_to @reminder_item.reminder, notice: 'Reminder item was successfully updated.' }
         format.json { render :show, status: :ok, location: @reminder_item }
       else
         format.html { render :edit }
