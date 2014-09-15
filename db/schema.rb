@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909225014) do
+ActiveRecord::Schema.define(version: 20140915010158) do
 
   create_table "homes", force: true do |t|
     t.datetime "created_at"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140909225014) do
     t.integer  "reminder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "day_of_week"
+    t.integer  "day_of_week", limit: 255
     t.time     "time_of_day"
     t.text     "schedule"
   end

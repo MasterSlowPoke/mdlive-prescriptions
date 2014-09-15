@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :day_of_week %><br>
-    <%= f.select(:day_of_week, ["Everyday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]) %>
+    <%= f.select(:day_of_week, [["Everyday",7], ["Sunday",0], ["Monday",1], ["Tuesday",2], ["Wednesday",3], ["Thursday",4], ["Friday",5], ["Saturday",6]]) %>
   </div>
 
   <% if @reminder %>
