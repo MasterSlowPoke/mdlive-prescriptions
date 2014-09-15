@@ -60,14 +60,15 @@
 <% if @reminder.reminder_items.count == 0 %>
   <p>No Reminder Items found!</p>
 <% else %>
-  <%= render @reminder.reminder_items %>
+  <ul>
+    <%= render @reminder.reminder_items %>
+  </ul>
 <% end %>
 
-<% unless @reminder.reminder_items_setup? %>
-  <h3>Add a new Reminder</h3>
-  <% @reminder_item = ReminderItem.new %>
-  <%= render 'reminder_items/form' %>
-<% end %>
+<hr>
+<h3>Add a new Reminder</h3>
+<% @reminder_item = ReminderItem.new %>
+<%= render 'reminder_items/form' %>
 
 <%= link_to 'Edit', edit_reminder_path(@reminder) %> |
 <%= link_to 'Back', reminders_path %>
