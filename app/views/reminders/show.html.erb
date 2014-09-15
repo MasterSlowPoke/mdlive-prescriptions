@@ -28,27 +28,31 @@
 <hr>
 
 <h2>Dosage Times</h2>
-<% dosage_times = @reminder.enumerate_doses %>
-<ol>
-  <% dosage_times.each do |dose| %>
-    <li><%= dose.strftime('%A, %B ') + dose.day.ordinalize + dose.strftime(' @ %l:%M %p %Z') %></li>
-  <% end %>
-</ol>
-<% curr_time = Time.now.beginning_of_day %>
-<% end_time = (curr_time + 6.days).end_of_day %>
-<h3>And specifically for the week <%= "#{curr_time.strftime('%A')} the #{curr_time.day.ordinalize} to #{end_time.strftime('%A')} the #{end_time.day.ordinalize}" %></h3>
-  <% next_week_times = @reminder.enumerate_doses(curr_time, end_time) %>
+<% if @reminder.reminder_rules.empty? %>
+  <p>No Reminder Rules found!</p>
+<% else %>
+  <% dosage_times = @reminder.enumerate_doses %>
   <ol>
-  <% next_week_times.each do |dose| %>
-    <li><%= dose.strftime('%A, %B ') + dose.day.ordinalize + dose.strftime(' @ %l:%M %p %Z') %></li>
-  <% end %>
-</ol>
+    <% dosage_times.each do |dose| %>
+      <li><%= dose.strftime('%A, %B ') + dose.day.ordinalize + dose.strftime(' @ %l:%M %p %Z') %></li>
+    <% end %>
+  </ol>
+  <% curr_time = Time.now.beginning_of_day %>
+  <% end_time = (curr_time + 6.days).end_of_day %>
+  <h3>And specifically for the week <%= "#{curr_time.strftime('%A')} the #{curr_time.day.ordinalize} to #{end_time.strftime('%A')} the #{end_time.day.ordinalize}" %></h3>
+    <% next_week_times = @reminder.enumerate_doses(curr_time, end_time) %>
+    <ol>
+    <% next_week_times.each do |dose| %>
+      <li><%= dose.strftime('%A, %B ') + dose.day.ordinalize + dose.strftime(' @ %l:%M %p %Z') %></li>
+    <% end %>
+  </ol>
+<% end %>
 
 <hr>
 
 <h2>Reminder Rules</h2>
 
-<% if @reminder.reminder_rules.count == 0 %>
+<% if @reminder.reminder_rules.empty? %>
   <p>No Reminder Rules found!</p>
 <% else %>
   <ul>
