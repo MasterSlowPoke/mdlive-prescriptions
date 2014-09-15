@@ -1,6 +1,8 @@
 class Reminder < ActiveRecord::Base
 	has_many :reminder_rules
 
+	belongs_to :user
+
 	after_create :send_new_reminder_email
 
 	def set_first_dose(date, time)
