@@ -19,6 +19,7 @@ class Reminder < ActiveRecord::Base
 			counts_hash[ri.id] = 0
 			occurrences_hash[ri.id] = ri.schedule.next_occurrence
 			ri_hash[ri.id] = ri
+			ri.set_schedule
 		end
 
 		doses.times do
@@ -27,7 +28,7 @@ class Reminder < ActiveRecord::Base
 			occurrences_hash.each do |id, time|
 				next_occurrence = [id, time] if time && time < next_occurrence[1]
 			end
-			
+
 			counts_hash[next_occurrence[0]] += 1
 			occurrences_hash[next_occurrence[0]] = ri_hash[next_occurrence[0]].schedule.next_occurrence(next_occurrence[1])
 		end

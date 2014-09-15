@@ -9,6 +9,8 @@ class ReminderItem < ActiveRecord::Base
     super(review_item_params)
      unless review_item_params.empty?
       set_schedule
+      self.save
+
       reminder.assign_counts
     end
   end
