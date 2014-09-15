@@ -24,10 +24,8 @@ class ReminderItemsController < ApplicationController
   # POST /reminder_items
   # POST /reminder_items.json
   def create
-    @reminder_item = ReminderItem.new(reminder_item_params)
-
     respond_to do |format|
-      if @reminder_item.save
+      if @reminder_item = ReminderItem.new(reminder_item_params)
         # This should be able to be ran from anywhere in the application
         UserMailer.reminder_email(current_user).deliver
         format.html { redirect_to @reminder_item, notice: 'Reminder item was successfully created.' }
