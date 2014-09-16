@@ -14,7 +14,7 @@
 	<% unless all_doses.empty? %>
 		<ul>
 			<% all_doses.keys.sort.each do |dose| %>
-				<li><%= all_doses[dose].title + "@ #{dose.strftime("%l:%M %p")}" %></li>
+				<li><%= "#{link_to all_doses[dose].title, all_doses[dose]} @ #{dose.strftime("%l:%M %p")}".html_safe %></li>
 			<% end %>
 		</ul>
 	<% end %>
