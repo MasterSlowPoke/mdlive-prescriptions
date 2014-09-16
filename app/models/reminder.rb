@@ -18,6 +18,16 @@ class Reminder < ActiveRecord::Base
 		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
 	end
 
+	def first_dose
+		doses = []
+		
+		reminder_rules.each do |rr|
+			doses << rr.schedule.first
+		end
+
+		doses.sort[0]
+	end
+
 	def assign_counts
 		return if reminder_rules.empty?
 
