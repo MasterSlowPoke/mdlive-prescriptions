@@ -21,3 +21,30 @@
 h1 {
 	text-align: center;	
 }
+
+.calendar {
+	width: 90%;
+	margin: auto;
+}
+
+.calendar td, .calendar th {
+	border: 2px solid black;
+	vertical-align: top;
+}
+
+.calendar th {
+	font-size: 20px;
+	background: #DDF;
+}
+
+.calendar td {
+	height: 150px;
+}
+
+td.notmonth {
+	background: #DDD;
+}
+
+td.today {
+	background: #FDD;
+}
