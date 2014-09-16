@@ -24,7 +24,7 @@ class ReminderRule < ActiveRecord::Base
   end
 
   def set_schedule(count = nil)
-  	self.schedule = Schedule.new(Time.now)
+  	self.schedule = Schedule.new(reminder.start)
   	new_rule = Rule.daily.hour_of_day(time_of_day.hour).minute_of_hour(time_of_day.min).second_of_minute(0)
   	new_rule = new_rule.count(count) if count
 
