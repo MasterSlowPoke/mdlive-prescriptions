@@ -7,6 +7,10 @@
 		You currently have <%= current_user.reminders.count %> reminders.
 	</p>
 
+	<ul>
+		<%= render current_user.reminders %>
+	</ul>
+
 	<p>
 		<%= link_to "View Calendar", "/calendar" %>
 	</p>
