@@ -18,10 +18,6 @@ class Reminder < ActiveRecord::Base
 		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
 	end
 
-	def reminder_rules_setup?
-		reminder_rules.count >= num_per
-	end
-
 	def assign_counts
 		return if reminder_rules.empty?
 
