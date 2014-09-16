@@ -14,7 +14,7 @@ class Reminder < ActiveRecord::Base
 		enumerate_doses(date.beginning_of_day, date.end_of_day)
 	end
 
-	def set_first_dose(date, time)
+	def set_start(date, time)
 		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
 	end
 

@@ -29,7 +29,7 @@ class RemindersController < ApplicationController
   def create
     if current_user
       @reminder = Reminder.new(reminder_params, current_user)
-      @reminder.set_first_dose(params[:date], params[:time])
+      @reminder.set_start(params[:date], params[:time])
       respond_to do |format|
         if @reminder.save
           format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
