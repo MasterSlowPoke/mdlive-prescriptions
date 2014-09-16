@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  root to: "dashboard#index"
   
-  get 'home/index'
+  get '/calendar', to: "dashboard#calendar"
 
   devise_for :users, controllers: { registrations: "users/registrations" }
-  root to: "dashboard#index"
   
   resources :reminder_rules
   resources :users
