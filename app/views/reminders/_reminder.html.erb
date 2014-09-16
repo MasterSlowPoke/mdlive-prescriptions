@@ -1,0 +1,18 @@
+<tr>
+  <td>
+  	<%= link_to reminder.title, reminder %>
+  </td>
+  <td>
+  	<%= reminder.doses %>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+		<%= link_to 'Edit', edit_reminder_path(reminder) %>
+	 	<%= link_to 'Destroy', reminder, method: :delete %>
+	</td>
+</tr>
