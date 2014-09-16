@@ -8,4 +8,8 @@ module ApplicationHelper
 			"Everyday"
 		end
 	end
+
+	def formatted_time(time)
+    time.strftime("%A, %b #{time.day.ordinalize} %Y, @ %l:%M %p") if time.respond_to? :strftime
+  end
 end
