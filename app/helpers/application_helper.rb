@@ -10,6 +10,10 @@ module ApplicationHelper
 	end
 
 	def formatted_time(time)
-    time.strftime("%A, %b #{time.day.ordinalize} %Y, @ %l:%M %p") if time.respond_to? :strftime
+		if time.respond_to? :strftime
+    	time.strftime("%A, %b #{time.day.ordinalize} %Y, @ %l:%M %p") 
+    else
+    	time
+    end
   end
 end

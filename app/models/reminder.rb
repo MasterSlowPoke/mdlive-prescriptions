@@ -19,6 +19,8 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def first_dose
+		return "No Rules are set yet!" if reminder_rules.empty?
+		
 		doses = []
 		
 		reminder_rules.each do |rr|
