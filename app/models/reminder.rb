@@ -22,6 +22,12 @@ class Reminder < ActiveRecord::Base
 		get_dose(:first)
 	end
 
+	
+
+	def last_dose
+		get_dose(:last)
+	end
+
 	def assign_counts
 		return if reminder_rules.empty?
 
