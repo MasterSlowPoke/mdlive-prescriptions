@@ -19,15 +19,7 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def first_dose
-		return "No Rules are set yet!" if reminder_rules.empty?
-		
-		doses = []
-		
-		reminder_rules.each do |rr|
-			doses << rr.schedule.first
-		end
-
-		doses.sort[0]
+		get_dose(:first)
 	end
 
 	def assign_counts
@@ -74,13 +66,23 @@ class Reminder < ActiveRecord::Base
 		all_doses.sort
 	end
 
+	protected
+		def send_new_reminder_email
+			UserMailer.reminder_email(user, self).deliver
+		end
 
-protected
-def send_new_reminder_email
-	UserMailer.reminder_email(user, self).deliver
+	private
+		def get_dose(function)
+			return "No Rules are set yet!" if reminder_rules.empty?
 
-end
+			doses = []
+			
+			reminder_rules.each do |rr|
+				doses << rr.schedule.send(function)
+			end
 
+			doses.sort[0]
+		end
 
 	# def create_reminder_rules
 	# 	doses.times do |n|
