@@ -5,3 +5,12 @@
 <p>
 	You currently have <%= current_user.reminders.count %> reminders.
 </p>
+
+<%= calendar do |date| %>
+	<%= date.day %>
+	<% all_doses = {} %>
+
+	<% current_user.reminders.each do |r| %>
+		<%= (r.title + "<br>").html_safe unless (days_doses = r.get_days_doses(date)).empty? %>
+	<% end %>
+<% end %>
