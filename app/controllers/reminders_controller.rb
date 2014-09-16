@@ -17,7 +17,7 @@ class RemindersController < ApplicationController
 
   # GET /reminders/new
   def new
-    @reminder = Reminder.new
+    @reminder = Reminder.new({}, current_user)
   end
 
   # GET /reminders/1/edit

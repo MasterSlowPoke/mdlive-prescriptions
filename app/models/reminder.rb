@@ -5,6 +5,11 @@ class Reminder < ActiveRecord::Base
 
 	after_create :send_new_reminder_email
 
+	def initialize(reminder_params, current_user)
+		super(reminder_params)
+		self.user = current_user
+	end
+
 	def get_days_doses(date)
 		enumerate_doses(date.beginning_of_day, date.end_of_day)
 	end
