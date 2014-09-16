@@ -1,11 +1,13 @@
-<p>
-	(+) Add New Reminder 
-</p>
+<% if current_user %>
+	<p>
+		(+) Add New Reminder 
+	</p>
 
-<p>
-	You currently have <%= current_user.reminders.count %> reminders.
-</p>
+	<p>
+		You currently have <%= current_user.reminders.count %> reminders.
+	</p>
 
-<p>
-	<%= link_to "View Calendar", "/calendar" %>
-</p>
+	<p>
+		<%= link_to "View Calendar", "/calendar" %>
+	</p>
+<% end %>

@@ -1,0 +1,21 @@
+<p>
+	<%= link_to "Back to Dashboard", :back %>
+</p>
+
+<%= calendar do |date| %>
+	<%= date.day %>
+	<% all_doses = {} %>
+
+	<% current_user.reminders.each do |r| %>
+		<% r.get_days_doses(date).each do |dose| %>
+			<% all_doses[dose] = r %>
+		<% end %>
+	<% end %>
+	<% unless all_doses.empty? %>
+		<ul>
+			<% all_doses.keys.sort.each do |dose| %>
+				<li><%= all_doses[dose].title + "@ #{dose.strftime("%l:%M %p")}" %></li>
+			<% end %>
+		</ul>
+	<% end %>
+<% end %>
