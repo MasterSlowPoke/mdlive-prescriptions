@@ -5,6 +5,10 @@ class Reminder < ActiveRecord::Base
 
 	after_create :send_new_reminder_email
 
+	def get_days_doses(date)
+		enumerate_doses(date.beginning_of_day, date.end_of_day)
+	end
+
 	def set_first_dose(date, time)
 		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
 	end
