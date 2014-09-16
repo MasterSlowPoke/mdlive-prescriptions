@@ -27,15 +27,23 @@ class RemindersController < ApplicationController
   # POST /reminders
   # POST /reminders.json
   def create
-    @reminder = Reminder.new(reminder_params)
-    @reminder.set_first_dose(params[:date], params[:time])
-    respond_to do |format|
-      if @reminder.save
-        format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
-        format.json { render :show, status: :created, location: @reminder }
-      else
-        format.html { render :new }
-        format.json { render json: @reminder.errors, status: :unprocessable_entity }
+    if current_user
+      @reminder = Reminder.new(reminder_params, current_user)
+      @reminder.set_first_dose(params[:date], params[:time])
+      respond_to do |format|
+        if @reminder.save
+          format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
+          format.json { render :show, status: :created, location: @reminder }
+        else
+          format.html { render :new }
+          format.json { render json: @reminder.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      error_msg = "You must be logged in to create a reminder."
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: error_msg }
+        format.json { render json: {not_authorized: error_msg}, status: :unprocessable_entity }
       end
     end
   end
