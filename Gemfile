@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'ice_cube'
+gem 'bootstrap-sass'
 
 gem 'mail'
 # Use ActiveModel has_secure_password

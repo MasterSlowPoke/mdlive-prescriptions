@@ -13,7 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap-sprockets";
+@import "bootstrap";
+
 #menu-glyph {
+
  	margin-left: 0.5%;
  	margin-top: 0.5%;
  	font-size: 26px
