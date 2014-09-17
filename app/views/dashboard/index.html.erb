@@ -25,4 +25,9 @@
 	<p>
 		<%= link_to "View Calendar", "/calendar" %>
 	</p>
+<% else %>
+
+<div> <%= render 'devise/menu/registration_items' %></div>
+<div><%= render 'devise/menu/login_items' %></div>
+ 
 <% end %>

@@ -13,8 +13,8 @@
 
 <span class="glyphicon glyphicon-align-justify" id='menu-glyph'></span>
 <div class="hmenu">
-<div> <%= render 'devise/menu/registration_items' %></div>
-<div><%= render 'devise/menu/login_items' %></div>
+
+
 </div>
 
 <nav class="navbar navbar-default" role="navigation">
@@ -44,10 +44,7 @@
           	<ul class="dropdown-menu" role="menu">
 	            <li><a href="#">Calendar</a></li>
 	            <li><a href="#">Settings</a></li>
-              <li><%= render 'devise/menu/login_items' %></li>
-              <li>
-                <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-              </li> 
+              <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li> 
 
 	            
 	            <li class="divider"></li>
