@@ -51,6 +51,8 @@ class RemindersController < ApplicationController
   # PATCH/PUT /reminders/1
   # PATCH/PUT /reminders/1.json
   def update
+    @reminder.set_start(params[:date], params[:time])
+
     respond_to do |format|
       if @reminder.update(reminder_params)
         format.html { redirect_to @reminder, notice: 'Reminder was successfully updated.' }
