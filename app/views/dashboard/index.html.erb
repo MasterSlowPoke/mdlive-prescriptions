@@ -3,9 +3,20 @@
 		You currently have <%= current_user.reminders.count %> reminders.
 	</p>
 
-	<ul>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Doses</th>
+	      <th>Days</th>
+	      <th>Start</th>
+	      <th>Next</th>
+	      <th>End</th>
+	      <th>Options</th>
+	    </tr>
+	  </thead>
 		<%= render current_user.reminders %>
-	</ul>
+	</table>
 
 	<p>
 		<%= link_to "(+) Add New Reminder", new_reminder_path %> 

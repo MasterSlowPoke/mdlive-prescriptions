@@ -8,4 +8,12 @@ module ApplicationHelper
 			"Everyday"
 		end
 	end
+
+	def formatted_time(time)
+		if time.respond_to? :strftime 
+    	time.in_time_zone.strftime("%A, %b #{time.day.ordinalize} %Y, @ %l:%M %p") 
+    else
+    	time
+    end
+  end
 end

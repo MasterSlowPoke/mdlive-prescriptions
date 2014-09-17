@@ -10,16 +10,40 @@ class Reminder < ActiveRecord::Base
 		self.user = current_user
 	end
 
+	def update(reminder_params)
+		super(reminder_params)
+		assign_counts()
+	end
+
 	def get_days_doses(date)
 		enumerate_doses(date.beginning_of_day, date.end_of_day)
 	end
 
-	def set_first_dose(date, time)
-		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
+	def set_start(date, time)
+		self.start = Time.zone.parse("#{date} #{time}")
 	end
 
-	def reminder_rules_setup?
-		reminder_rules.count >= num_per
+	def first_dose
+		get_dose(:first)
+	end
+
+	def next_dose
+		get_dose(:next_occurrence)
+	end
+
+	def last_dose
+		get_dose(:last)
+	end
+
+	def days
+		days = {}
+		reminder_rules.all.each do |rr|
+			return "Everyday" if rr.day_of_week == "7"
+
+			days[Date::ABBR_DAYNAMES[rr.day_of_week.to_i]] = true
+		end
+
+		days.length == 7 ? "Everyday" : days.keys.join(", ")
 	end
 
 	def assign_counts
@@ -66,13 +90,22 @@ class Reminder < ActiveRecord::Base
 		all_doses.sort
 	end
 
+	protected
+		def send_new_reminder_email
+			UserMailer.reminder_email(user, self).deliver
+		end
 
-protected
-def send_new_reminder_email
-	UserMailer.reminder_email(user, self).deliver
+	private
+		def get_dose(function)
+			return "No Rules are set yet!" if reminder_rules.empty?
 
-end
-
+			doses = []
+			
+			reminder_rules.each do |rr|
+				doses << rr.schedule.send(function)
+			end
+			doses.sort[0]
+		end
 
 	# def create_reminder_rules
 	# 	doses.times do |n|
