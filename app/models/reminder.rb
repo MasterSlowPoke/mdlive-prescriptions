@@ -10,12 +10,17 @@ class Reminder < ActiveRecord::Base
 		self.user = current_user
 	end
 
+	def update(reminder_params)
+		super(reminder_params)
+		assign_counts()
+	end
+
 	def get_days_doses(date)
 		enumerate_doses(date.beginning_of_day, date.end_of_day)
 	end
 
 	def set_start(date, time)
-		self.start = DateTime.strptime(date + " | " + time, "%Y-%m-%d | %H:%M")
+		self.start = Time.zone.parse("#{date} #{time}")
 	end
 
 	def first_dose
