@@ -35,6 +35,17 @@ class Reminder < ActiveRecord::Base
 		get_dose(:last)
 	end
 
+	def days
+		days = {}
+		reminder_rules.all.each do |rr|
+			return "Everyday" if rr.day_of_week == "7"
+
+			days[Date::ABBR_DAYNAMES[rr.day_of_week.to_i]] = true
+		end
+
+		days.length == 7 ? "Everyday" : days.keys.join(", ")
+	end
+
 	def assign_counts
 		return if reminder_rules.empty?
 
