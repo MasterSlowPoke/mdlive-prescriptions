@@ -88,8 +88,6 @@ class Reminder < ActiveRecord::Base
 			reminder_rules.each do |rr|
 				doses << rr.schedule.send(function)
 			end
-			p Time.now if function == :next_occurrence
-			p doses.sort if function == :next_occurrence
 			doses.sort[0]
 		end
 
