@@ -55,3 +55,15 @@ td.notmonth {
 td.today {
 	background: #FDD;
 }
+
+#new_reminder_btn {
+	text-align: left;
+}
+
+th {
+	text-align: center;
+}
+
+
+
+
