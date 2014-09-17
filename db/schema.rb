@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916004102) do
+ActiveRecord::Schema.define(version: 20140917013018) do
 
   create_table "reminder_rules", force: true do |t|
     t.integer  "reminder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "day_of_week", limit: 255
-    t.time     "time_of_day"
+    t.string   "day_of_week"
+    t.string   "time_of_day"
     t.text     "schedule"
   end
 
