@@ -14,7 +14,7 @@
  *= require_self
  */
 
-h1 a, h1 a:visited {
+h1 {
 	color: red;
 }
 

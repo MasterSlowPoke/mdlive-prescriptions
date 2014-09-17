@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140917013018) do
     t.integer  "reminder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "day_of_week"
+    t.integer  "day_of_week", limit: 255
     t.string   "time_of_day"
     t.text     "schedule"
   end

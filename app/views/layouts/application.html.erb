@@ -19,18 +19,18 @@
 
 <body>
 
-<% if current_page?(root_path) %>
-<h1 id='app-name'><%= link_to "MD LIVE Reminder App", root_path %></h1>
+
+<h1 id='app-name'>MD LIVE Reminder App</h1>
 
 	
 <div class="hmenu">
  <div> <%= render 'devise/menu/registration_items' %></div>
   <div><%= render 'devise/menu/login_items' %></div>
 </div>
-<% else %>
 
 
-<% end %>
+
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
