@@ -19,22 +19,20 @@
 
 <body>
 
-
-<h1 id='app-name'>MD LIVE Reminder App</h1>
-
-	
+<span class="glyphicon glyphicon-align-justify" id='menu-glyph'></span>
 <div class="hmenu">
- <div> <%= render 'devise/menu/registration_items' %></div>
-  <div><%= render 'devise/menu/login_items' %></div>
+<div> <%= render 'devise/menu/registration_items' %></div>
+<div><%= render 'devise/menu/login_items' %></div>
 </div>
 
+<div class="container">
 
-
+<h1>MD LIVE Reminder App</h1>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
 <%= yield %>
-
+</div>
 </body>
 </html>

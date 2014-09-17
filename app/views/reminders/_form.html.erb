@@ -15,23 +15,28 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+
+  <div class="field">
+    <%= f.label :doses %><br>
+    <%= f.number_field :doses %>
+  </div>
+ 
   <div class="field">
     <%= f.label :time_period %><br>
     <%= f.select(:time_period, ["Day", "Week", "Year"]) %>
   </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
+  
   <div class="field">
     <%= f.label :date, "First Dose" %><br>
     <%= date_field nil, :date, value: Date.today %>
     <%= time_field nil, :time, value: Time.zone.now.strftime("%R") %>
   </div>
+
   <div class="field">
-    <%= f.label :doses %><br>
-    <%= f.number_field :doses %>
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

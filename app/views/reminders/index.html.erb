@@ -4,10 +4,10 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Time period</th>
-      <th>Notes</th>
-      <th>Start</th>
       <th>Doses</th>
+      <th>Time period</th>
+      <th>Start</th>
+      <th>Notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
     <% @reminders.each do |reminder| %>
       <tr>
         <td><%= reminder.title %></td>
-        <td><%= reminder.time_period %></td>
-        <td><%= reminder.notes %></td>
-        <td><%= reminder.start %></td>
         <td><%= reminder.doses %></td>
+        <td><%= reminder.time_period %></td>
+        <td><%= reminder.start %></td>
+        <td><%= reminder.notes %></td>
         <td><%= link_to 'Show', reminder %></td>
         <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
         <td><%= link_to 'Destroy', reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>

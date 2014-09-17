@@ -13,30 +13,20 @@
  *= require_tree .
  *= require_self
  */
-
+#menu-glyph {
+ 	margin-left: 0.5%;
+ 	margin-top: 0.5%;
+ 	font-size: 26px
+ }
+.container {
+	text-align: center;
+}
 h1 {
 	color: red;
 }
 
-#app-name{
-	text-align: center;
-}
-
 .hmenu {
-	text-align: center;
-
-}
-
-h2 {
-	text-align: center;
-}
-
-.sign-up {
-	text-align: center;
-}
-
-.Log-in-pg {
-	text-align: center;
+	margin-right: 2px;
 }
 
 .calendar {
