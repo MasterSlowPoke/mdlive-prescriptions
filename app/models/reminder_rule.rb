@@ -23,9 +23,17 @@ class ReminderRule < ActiveRecord::Base
     reminder.assign_counts
   end
 
+  def hour
+    time_of_day.split(':')[0].to_i
+  end
+
+  def min
+    time_of_day.split(':')[1].to_i
+  end
+
   def set_schedule(count = nil)
   	self.schedule = Schedule.new(reminder.start)
-  	new_rule = Rule.daily.hour_of_day(time_of_day.hour).minute_of_hour(time_of_day.min).second_of_minute(0)
+  	new_rule = Rule.daily.hour_of_day(hour).minute_of_hour(min).second_of_minute(0)
   	new_rule = new_rule.count(count) if count
 
   	if (0..6).include? day_of_week
