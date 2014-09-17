@@ -1,15 +1,15 @@
 <% if current_user %>
 	<p>
-		<%= link_to "(+) Add New Reminder", new_reminder_path %> 
-	</p>
-
-	<p>
 		You currently have <%= current_user.reminders.count %> reminders.
 	</p>
 
 	<ul>
 		<%= render current_user.reminders %>
 	</ul>
+
+	<p>
+		<%= link_to "(+) Add New Reminder", new_reminder_path %> 
+	</p>
 
 	<p>
 		<%= link_to "View Calendar", "/calendar" %>

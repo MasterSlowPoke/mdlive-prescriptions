@@ -14,12 +14,29 @@
  *= require_self
  */
 
+h1 a, h1 a:visited {
+	color: red;
+}
+
+#app-name{
+	text-align: center;
+}
+
 .hmenu {
 	text-align: center;
 
 }
-h1 {
-	text-align: center;	
+
+h2 {
+	text-align: center;
+}
+
+.sign-up {
+	text-align: center;
+}
+
+.Log-in-pg {
+	text-align: center;
 }
 
 .calendar {
