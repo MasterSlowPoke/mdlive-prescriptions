@@ -36,14 +36,17 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def days
-		days = {}
+		days = { 0 => nil, 1 => nil, 2 => nil, 3 => nil, 4 => nil, 5 => nil, 6 => nil}
+
 		reminder_rules.all.each do |rr|
 			return "Everyday" if rr.day_of_week == "7"
 
-			days[Date::ABBR_DAYNAMES[rr.day_of_week.to_i]] = true
+			days[rr.day_of_week.to_i] = Date::ABBR_DAYNAMES[rr.day_of_week.to_i]
 		end
 
-		days.length == 7 ? "Everyday" : days.keys.join(", ")
+		days = days.select { |key,val| val != nil }
+
+		days.length == 7 ? "Everyday" : days.values.join(", ")
 	end
 
 	def assign_counts
