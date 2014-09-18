@@ -38,7 +38,7 @@ gem 'ice_cube'
 gem 'bootstrap-sass'
 gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
-
+gem 'postmark-rails'
 gem 'mail'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
