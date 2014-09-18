@@ -5,21 +5,23 @@ class UserMailer < ActionMailer::Base
 	def welcome_email(user)
 		@user = user
 
-		 mail(
+		mail(
       :subject => 'Welcome to the MDLive Prescription App!',
       :to      => user.email,
     )
 	end
 
 	def reminder_email(user, reminder)
-		 mail(
+		mail(
       :subject => 'You\'ve created a new Reminder!',
       :to      => user.email,
     )
 	end
 
-	def upcoming_reminder_email()
-		 mail(
+	def upcoming_reminder_email(last_sent)
+		@last_sent = last_sent
+		
+		mail(
       :subject => 'Heroku Scheduler works!',
       :to      => 'craigsniffen@craigsniffen.com',
     )
