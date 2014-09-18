@@ -9,7 +9,7 @@
       Heroku Scheduler Works! Last sent at <%= @last_sent %>.
       <ul>
       <% @reminder_list.each do |key, value| %>
-      	<li>Reminder: <%= value %>, @ <%= dose %>
+      	<li>Reminder: <%= value %>, @ <%= key %>
       <% end %>
     	</ul>
     </p>
