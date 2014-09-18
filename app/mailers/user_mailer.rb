@@ -1,17 +1,27 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@blooming-harbor-4156.herokuapp.com"
+  default from: 'craigsniffen@craigsniffen.com'
 
 
 	def welcome_email(user)
 		@user = user
 
-	  mail(to: user.email, subject: 'Welcome!')
+		 mail(
+      :subject => 'Welcome to the MDLive Prescription App!',
+      :to      => user.email,
+    )
 	end
 
-
 	def reminder_email(user, reminder)
-		@user = user
-		@reminder = reminder
-		mail(to: user.email, subject: 'You have a Reminder!')
+		 mail(
+      :subject => 'You\'ve created a new Reminder!',
+      :to      => user.email,
+    )
+	end
+
+	def upcoming_reminder_email()
+		 mail(
+      :subject => 'Heroku Scheduler works!',
+      :to      => 'craigsniffen@craigsniffen.com',
+    )
 	end
 end
