@@ -37,6 +37,7 @@ gem 'devise'
 gem 'ice_cube'
 gem 'bootstrap-sass'
 gem "twitter-bootstrap-rails"
+gem 'rails_12factor', group: :production
 
 gem 'mail'
 # Use ActiveModel has_secure_password
