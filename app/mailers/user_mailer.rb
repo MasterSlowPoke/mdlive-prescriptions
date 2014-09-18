@@ -18,12 +18,13 @@ class UserMailer < ActionMailer::Base
     )
 	end
 
-	def upcoming_reminder_email(start_time, end_time)
+	def upcoming_reminder_email(user, start_time, end_time, reminder_list)
 		@last_sent = start_time
+		@reminder_list = reminder_list
 
 		mail(
-      :subject => 'Heroku Scheduler works!',
-      :to      => 'craigsniffen@craigsniffen.com',
+      subject: 'You have an upcoming reminder!',
+      to: user.email,
     )
 	end
 end

@@ -7,6 +7,11 @@
     <h1>MDLIVE Reminder App</h1>
     <p>
       Heroku Scheduler Works! Last sent at <%= @last_sent %>.
+      <ul>
+      <% @reminder_list.each do |key, value| %>
+      	<li>Reminder: <%= value %>, @ <%= dose %>
+      <% end %>
+    	</ul>
     </p>
   </body>
 </html>

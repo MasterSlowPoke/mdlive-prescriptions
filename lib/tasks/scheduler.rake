@@ -5,7 +5,9 @@ task :send_reminders => :environment do
 	start_time = sl.last_ran
 	end_time = Time.now + 10.minutes
 
-  UserMailer.upcoming_reminder_email(start_time, end_time).deliver
+  User.all.each do |u|
+  	u.send_reminders(start_time, end_time)
+  end
 
   sl.last_ran = end_time
   sl.save
