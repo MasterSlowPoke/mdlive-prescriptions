@@ -17,4 +17,11 @@ class UserMailer < ActionMailer::Base
       :to      => user.email,
     )
 	end
+
+	def upcoming_reminder_email()
+		 mail(
+      :subject => 'Heroku Scheduler works!',
+      :to      => 'craigsniffen@craigsniffen.com',
+    )
+	end
 end
