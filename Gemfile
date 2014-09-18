@@ -35,6 +35,7 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'ice_cube'
 gem 'bootstrap-sass'
+gem "twitter-bootstrap-rails"
 
 gem 'mail'
 # Use ActiveModel has_secure_password
@@ -48,4 +49,6 @@ gem 'mail'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
 
