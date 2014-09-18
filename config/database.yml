@@ -7,11 +7,11 @@
 default: &default
   pool: 5
   timeout: 5000
+  adapter: postgresql
+  database: mdlive_prescriptions
 
 development:
   <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,6 +23,3 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  username: samuelezobel
-  database: mdlive_prescriptions
