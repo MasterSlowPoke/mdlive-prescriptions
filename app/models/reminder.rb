@@ -93,6 +93,11 @@ class Reminder < ActiveRecord::Base
 		all_doses.sort
 	end
 
+	def days_of_week
+		# self.enumerate_doses.map(&:wday).uniq
+		# Date::DAYNAMES
+	end
+
 	protected
 		def send_new_reminder_email
 			UserMailer.reminder_email(user, self).deliver
