@@ -1,12 +1,11 @@
 class UserMailer < ActionMailer::Base
-  default from: "ortiz_frank@hotmail.com"
+  default from: "no-reply@blooming-harbor-4156.herokuapp.com"
 
 
 	def welcome_email(user)
 		@user = user
 
-	    # @url  = 'https://www.mdlive.com/consumer/choose.html'
-	    mail(to: user.email, subject: 'Welcome!')
+	  mail(to: user.email, subject: 'Welcome!')
 	end
 
 
@@ -15,5 +14,4 @@ class UserMailer < ActionMailer::Base
 		@reminder = reminder
 		mail(to: user.email, subject: 'You have a Reminder!')
 	end
-
 end
