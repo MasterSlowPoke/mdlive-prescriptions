@@ -10,8 +10,11 @@ class UserMailer < ActionMailer::Base
 
 
 	def reminder_email(user, reminder)
-		@user = user
-		@reminder = reminder
-		mail(to: user.email, subject: 'You have a Reminder!')
+		 mail(
+      :subject => 'Did you know Postmark has a Heroku add-on?',
+      :to      => user.email,
+      :from    => 'craigsniffen@craigsniffen.com',
+      :tag     => 'my-tag'
+    )
 	end
 end
