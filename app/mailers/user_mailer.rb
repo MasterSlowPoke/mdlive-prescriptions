@@ -1,20 +1,20 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@blooming-harbor-4156.herokuapp.com"
+  default from: 'craigsniffen@craigsniffen.com'
 
 
 	def welcome_email(user)
 		@user = user
 
-	  mail(to: user.email, subject: 'Welcome!')
+		 mail(
+      :subject => 'Welcome to the MDLive Prescription App!',
+      :to      => user.email,
+    )
 	end
-
 
 	def reminder_email(user, reminder)
 		 mail(
-      :subject => 'Did you know Postmark has a Heroku add-on?',
+      :subject => 'You\'ve created a new Reminder!',
       :to      => user.email,
-      :from    => 'craigsniffen@craigsniffen.com',
-      :tag     => 'my-tag'
     )
 	end
 end
