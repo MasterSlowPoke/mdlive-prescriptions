@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   		end
   	end
 
-  	reminder_list['test'] = Reminder.first
-
   	unless reminder_list.empty?
   		UserMailer.upcoming_reminder_email(self, start_time, end_time, reminder_list).deliver
   	end
