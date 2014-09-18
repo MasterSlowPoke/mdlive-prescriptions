@@ -1,10 +1,11 @@
 desc "This task is called by the Heroku scheduler add-on"
 
 task :send_reminders => :environment do
-	curr_time = Time.now
-	ENV['LAST_SENT'] = curr_time.to_s if ENV['LAST_SENT'].nil?
+	start_time = ScheduleLog.find_by(name: "email")
+	end_time = Time.now + 10.minutes
 
-  UserMailer.upcoming_reminder_email(Time.parse(ENV['LAST_SENT'])).deliver
+  UserMailer.upcoming_reminder_email(start_time, end_time).deliver
 
-  ENV['LAST_SENT'] = (curr_time + 10.minutes).to_s
+  last_sent.time = end_time
+  last_sent.save
 end
