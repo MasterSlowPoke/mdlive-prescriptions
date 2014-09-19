@@ -14,24 +14,26 @@
  *= require_self
  */
 
- @import "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 #menu-glyph {
-
  	margin-left: 0.5%;
  	margin-top: 0.5%;
  	font-size: 26px
  }
+
 .container {
 	text-align: center;
+	padding-top: 50px;
 }
 h1 {
 	color: red;
 }
 
-.hmenu {
-	margin-right: 2px;
+.navbar {
+	position: fixed;
+	width: 100%;
 }
 
 .calendar {
