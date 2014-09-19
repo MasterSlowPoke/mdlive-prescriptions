@@ -24,9 +24,9 @@
         <td><%= "reminder.days" %></td>
         <td><%= reminder.start %></td>
         <td><%= reminder.notes %></td>
-        <td><%= link_to 'Show', reminder %></td>
+        <td><%= link_to 'View', reminder %></td>
         <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
-        <td><%= link_to 'Destroy', reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
