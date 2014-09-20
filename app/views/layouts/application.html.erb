@@ -36,7 +36,11 @@
 	         	MENU 
 	         <span class="glyphicon glyphicon-align-justify"></span>
           	<ul class="dropdown-menu" role="menu">
-              <%= render 'layouts/menu_logged_in' %>
+              <%= if current_user
+                render 'layouts/menu_logged_in' 
+              else
+                render 'layouts/menu_logged_out'
+              end %>
           	</ul>
         </li>
       </ul>
