@@ -1,5 +1,5 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
-  # def new
+	# def new
   #   super
   # end
 
