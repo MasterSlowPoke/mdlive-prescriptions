@@ -1,4 +1,4 @@
-<h1>Reminder</h1>
+<h1>Medication</h1>
 <p>
   <strong>Title:</strong>
   <%= @reminder.title %>
@@ -49,7 +49,7 @@
 
 <hr>
 
-<h2>Reminder Rules</h2>
+<h2>Reminder Notification</h2>
 
 <% if @reminder.reminder_rules.empty? %>
   <p>No Reminder Rules found!</p>
@@ -60,7 +60,7 @@
 <% end %>
 
 <hr>
-<h3>Add a new Reminder Rule</h3>
+<h3>Add A New Reminder Notification</h3>
 <% @reminder_rule = ReminderRule.new %>
 <%= render 'reminder_rules/form' %>
 

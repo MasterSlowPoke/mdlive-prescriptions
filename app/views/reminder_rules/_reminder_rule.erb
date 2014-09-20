@@ -1,5 +1,5 @@
 <li>
   <%= int_to_day_of_week(reminder_rule.day_of_week) %>, at <%= Time.zone.parse(reminder_rule.time_of_day).strftime("%l:%M %p") %> |
 	<%= link_to 'Edit', edit_reminder_rule_path(reminder_rule) %> |
- 	<%= link_to 'Destroy', reminder_rule, method: :delete %>
+ 	<%= link_to 'Delete', reminder_rule, method: :delete %>
 </li>
