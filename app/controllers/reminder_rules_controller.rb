@@ -1,5 +1,6 @@
 class ReminderRulesController < ApplicationController
   before_action :set_reminder_rule, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /reminder_rules
   # GET /reminder_rules.json
