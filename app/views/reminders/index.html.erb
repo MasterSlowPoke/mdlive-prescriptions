@@ -1,14 +1,13 @@
 <h1>Medications</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
-    <table class="table table-hover">
     <tr>
       <th>Name</th>
       <th>Doses / Time Period</th>
       <th>Days</th>
-      <th>Time</th>
-      <th>Start</th>
+      <th>First</th>
+      <th>Next</th>
       <th>End</th>
       <th>Notification Type</th>
       <th>Notes</th>
@@ -17,20 +16,8 @@
   </thead>
 
   <tbody>
-    <% @reminders.each do |reminder| %>
-      <tr>
-        <td><%= reminder.title %></td>
-        <td><%= reminder.doses %> per <%= reminder.time_period.downcase %></td>
-        <td><%= "reminder.days" %></td>
-        <td><%= reminder.start %></td>
-        <td><%= reminder.notes %></td>
-        <td><%= link_to 'View', reminder %></td>
-        <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
-        <td><%= link_to 'Delete', reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render current_user.reminders %>
   </tbody>
-</table>
 </table>
 
 <br>
