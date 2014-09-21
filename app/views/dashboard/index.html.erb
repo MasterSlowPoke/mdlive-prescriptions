@@ -3,24 +3,6 @@
 		You currently have <%= current_user.reminders.count %> reminders.
 	</p>
 
-	<table>
-	  <thead>
-	  <table class="table table-hover">
-	    <tr>
-	  <th>Name</th>
-      <th>Doses / Time Period</th>
-      <th>Days</th>
-      <th>Time</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Notification Type</th>
-      <th>Notes</th>
-	    </tr>
-	  </thead>
-		<%= render current_user.reminders %>
-	</table>
-</table>
-
 <div id="new_reminder_btn">
 	<p>
 		<%= link_to "(+) Add New Reminder", new_reminder_path %> 
