@@ -15,18 +15,18 @@
 	  <%= devise_error_messages! %>
 
 	<div class="form-group">
-	   <div class="col-sm-3">
+	   <div class="col-sm-4">
 	  <%= f.email_field :email, autofocus: true, class:'form-control', placeholder:"Email"%></div>
 	</div>
 
 	  <div class="form-group">
-	    <div class="col-sm-3">
+	    <div class="col-sm-4">
 	  <%= f.text_field :name, autofocus: true, class:'form-control', placeholder:"Name"%>
 	  </div>
 	</div> 
 
 	  <div class="form-group">
-	    <div class="col-sm-3">
+	    <div class="col-sm-4">
 	    <% if @validatable %>
 	    <i>(<%= @minimum_password_length %> characters minimum)</i>
 	    <% end %>
@@ -35,14 +35,20 @@
 	</div>
 
 	  <div class="form-group">
-	    <div class="col-sm-3">
+	    <div class="col-sm-4">
 	    <%= f.password_field :password_confirmation, autocomplete: "off", class:'form-control', placeholder:"Password Confirmation" %>
 	  </div>
 	</div>
 
 	  <div class="form-group">
-	  	<div class="col-sm-3">
+	  	<div class="col-sm-4">
 	    <%= f.submit "Sign up" %>
+	  </div>
+	</div>
+
+	<div class="form-group">
+	  	<div class="col-sm-4">
+	    <%= f.submit "Log In" %>
 	  </div>
 	</div>
 
