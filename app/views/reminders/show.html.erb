@@ -1,6 +1,6 @@
 <h1>Medication</h1>
 <p>
-  <strong>Title:</strong>
+  <strong>Name:</strong>
   <%= @reminder.title %>
 </p>
 
@@ -58,11 +58,11 @@
     <%= render @reminder.reminder_rules %>
   </ul>
 <% end %>
-
+<br>
 <hr>
 <h3>Add A New Reminder Notification</h3>
 <% @reminder_rule = ReminderRule.new %>
 <%= render 'reminder_rules/form' %>
-
+<br>
 <%= link_to 'Edit', edit_reminder_path(@reminder) %> |
 <%= link_to 'Back', reminders_path %>
