@@ -1,7 +1,23 @@
 <% @users.each do |user| %>
-	<%= user.id %>
+	<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>User ID #</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render current_user.reminders %>
+  </tbody>
+</table>
+
+	<%= user.name %>	
 	<%= user.email %>
-	
+	<%= user.id %>
+
 	<%= link_to 'View', user %>
 	<br>
 <% end %>
