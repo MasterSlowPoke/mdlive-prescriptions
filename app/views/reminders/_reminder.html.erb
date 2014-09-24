@@ -8,9 +8,9 @@
   <td>
   	<%= reminder.days %>
   </td>
-  <td>
+  <!-- <td> 
   	<%= formatted_time(reminder.first_dose) %>
-  </td>
+  </td> -->
   <td>
   	<%= formatted_time(reminder.next_dose) %>
   </td>
@@ -18,7 +18,15 @@
     <%= formatted_time(reminder.last_dose) %>
   </td>
   <td>
+    Text
+  </td>
+    <td>
+    <%= reminder.notes %>
+  </td>
+  <td>
 		<%= link_to 'Edit', edit_reminder_path(reminder) %>
+  </td>
+  <td>
 	 	<%= link_to 'Delete', reminder, method: :delete %>
 	</td>
 </tr>
