@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920224947) do
+ActiveRecord::Schema.define(version: 20140924230843) do
 
   create_table "reminder_rules", force: true do |t|
     t.integer  "reminder_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140920224947) do
     t.datetime "updated_at"
     t.string   "name"
     t.boolean  "admin",                  default: false
+    t.string   "phone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

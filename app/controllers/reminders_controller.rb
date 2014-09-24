@@ -1,5 +1,5 @@
 class RemindersController < ApplicationController
-  before_action :set_reminder, only: [:show, :view, :edit, :update, :destroy]
+  before_action :set_reminder, only: [:show, :view, :edit, :update, :destroy, :test_mailer_reminder, :test_text_reminder]
   before_action :authenticate_user!
 
   # GET /reminders
@@ -48,6 +48,16 @@ class RemindersController < ApplicationController
       end
     end
   end
+
+  def test_mailer_reminder
+      @reminder.send_test_email
+       redirect_to @reminder, notice: 'test email send'
+  end 
+
+def test_text_reminder
+      @reminder.send_text
+       redirect_to @reminder, notice: 'test text send'
+  end 
 
   # PATCH/PUT /reminders/1
   # PATCH/PUT /reminders/1.json

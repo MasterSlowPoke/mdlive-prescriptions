@@ -98,6 +98,18 @@ class Reminder < ActiveRecord::Base
 		# Date::DAYNAMES
 	end
 
+def send_test_email
+UserMailer.upcoming_reminder_email(self.user, 1.minute.ago, Time.now, {Time.now=>self}).deliver
+end 
+
+
+def send_text
+	TwilioClient.account.messages.create({
+	:from => '+13176536934', 
+	:to => self.user.phone, 
+	:body => "Take your #{self.title}",  
+})
+end 
 	protected
 		def send_new_reminder_email
 			UserMailer.reminder_email(user, self).deliver

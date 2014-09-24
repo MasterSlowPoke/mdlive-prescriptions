@@ -40,6 +40,7 @@ gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
 gem 'postmark-rails'
 gem 'mail'
+gem 'twilio-ruby'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

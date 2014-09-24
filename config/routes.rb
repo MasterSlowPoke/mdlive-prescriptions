@@ -6,8 +6,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
   
   resources :users
-  resources :reminders
+  resources :reminders do 
+    member do
+      post "test_mailer_reminder"
+      post "test_text_reminder"
+    end
+  end 
+
+
   resources :reminder_rules, except: [:index, :show]
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

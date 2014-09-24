@@ -66,3 +66,7 @@
 <br>
 <%= link_to 'Edit', edit_reminder_path(@reminder) %> |
 <%= link_to 'Back', reminders_path %>
+
+ <%= link_to 'test reminder email', test_mailer_reminder_reminder_path, method: :post %> 
+
+ <%= link_to 'test reminder text', test_text_reminder_reminder_path, method: :post %> 
