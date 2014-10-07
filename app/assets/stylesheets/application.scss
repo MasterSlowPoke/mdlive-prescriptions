@@ -17,6 +17,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+	background: #eee;
+	/*background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#fff));*/
+
+}
+
 #menu-glyph {
  	margin-left: 0.5%;
  	margin-top: 0.5%;
@@ -24,9 +30,20 @@
  }
 
 .container {
-	text-align: center;
 	padding-top: 50px;
 }
+
+.content {
+	background: #ccc;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	background: -moz-linear-gradient(top, #fff, #ccc);
+	padding: 10px;
+	border-radius: 20px;
+	border-top-left-radius: 0;
+	border: 2px solid #999;
+	box-shadow: 2px 2px 12px #888, -2px -2px 12px #aaa;
+}
+
 h1 {
 	color: red;
 }
