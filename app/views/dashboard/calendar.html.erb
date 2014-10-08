@@ -9,9 +9,11 @@
 
 	<% unless all_doses.empty? %>
 		<dl>
-			<% all_doses.keys.sort.each do |dose| %>
-				<dt><%= dose.strftime("%l:%M %p") %></dt>
-				<dd><%= link_to all_doses[dose].title, all_doses[dose] %></dt>
+			<% all_doses.keys.sort.each do |time| %>
+				<dt><%= time %></dt>
+				<% all_doses[time].each do |dose| %>
+					<dd><%= link_to dose.title, dose %></dt>
+				<% end %>
 			<% end %>
 		</dl>
 	<% end %>

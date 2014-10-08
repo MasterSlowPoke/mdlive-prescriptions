@@ -25,7 +25,9 @@ class User < ActiveRecord::Base
 
     reminders.each do |r|
       r.get_days_doses(date).each do |dose|
-        all_doses[dose] = r
+        time = dose.strftime("%l:%M %p")
+        all_doses[time] ||= [] 
+        all_doses[time] << r
       end
     end
 
