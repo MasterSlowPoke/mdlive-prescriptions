@@ -64,8 +64,11 @@
       end %>
     </ul>
   </nav>
+
   <section class='content-container'>
-    <%= yield %>
+    <article <%= "id=\"#{controller_name}-#{action_name}\"" %> class="content">
+      <%= yield %>
+    </article>
   </section>
 </section>
 </body>
