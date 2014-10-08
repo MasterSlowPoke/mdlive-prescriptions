@@ -55,6 +55,15 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <nav class="content-nav"> 
+    <ul>
+      <%= if current_user
+        render 'layouts/tabs_logged_in' 
+      else
+        render 'layouts/menu_logged_out'
+      end %>
+    </ul>
+  </nav>
   <article class='content'>
     <%= yield %>
   </article>
