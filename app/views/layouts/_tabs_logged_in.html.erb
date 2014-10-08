@@ -1,0 +1,8 @@
+<%= nav_link 'Dashboard', root_path %>
+<%= nav_link 'Calendar', calendar_path %>
+<%= nav_link 'Reminders', reminders_path %>
+<%= nav_link 'Settings', edit_user_registration_path %>
+
+<% if current_user.admin %>
+	<%= nav_link 'View All Users', users_path %>
+<% end %>
