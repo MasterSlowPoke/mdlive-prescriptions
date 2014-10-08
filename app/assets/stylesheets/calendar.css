@@ -1,0 +1,46 @@
+.calendar {
+	margin: auto;
+	width: 100%;
+	border: 2px solid black;
+}
+
+.calendar td, .calendar th {
+	border: 1px solid #666;
+	vertical-align: top;
+	width: 14.28%;
+}
+
+.calendar th {
+	font-size: 20px;
+	background: #DDF;
+}
+
+.calendar td {
+	height: 150px;
+}
+
+.calendar span.date {
+	padding: 1px 4px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 1px 1px #666;
+	position: relative;
+	left: 2px;
+	top: 2px;
+}
+
+.calendar dl {
+	list-style: none;
+	padding-left: 10px;
+}
+
+.calendar dd {
+	padding-left: 10px;
+}
+
+td.notmonth {
+	background: #aaa;
+}
+
+td.today {
+	background: #fbb;
+}

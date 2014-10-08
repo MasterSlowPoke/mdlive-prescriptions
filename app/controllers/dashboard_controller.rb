@@ -5,5 +5,6 @@ class DashboardController < ApplicationController
   end
 
   def calendar
+  	@date = Date.today
   end
 end

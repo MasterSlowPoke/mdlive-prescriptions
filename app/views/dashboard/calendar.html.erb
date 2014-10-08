@@ -1,21 +1,18 @@
 <!-- <p> 
 	<%= link_to "Back to Dashboard", :back %>
 </p> -->
+<h1><%= @date.strftime("%B %Y") %></h1>
 
 <%= calendar do |date| %>
-	<%= date.day %>
-	<% all_doses = {} %>
+	<span class="date"><%= date.day %></span>
+	<% all_doses = current_user.get_days_doses(date) %>
 
-	<% current_user.reminders.each do |r| %>
-		<% r.get_days_doses(date).each do |dose| %>
-			<% all_doses[dose] = r %>
-		<% end %>
-	<% end %>
 	<% unless all_doses.empty? %>
-		<ul>
+		<dl>
 			<% all_doses.keys.sort.each do |dose| %>
-				<li><%= "#{link_to all_doses[dose].title, all_doses[dose]} @ #{dose.strftime("%l:%M %p")}".html_safe %></li>
+				<dt><%= dose.strftime("%l:%M %p") %></dt>
+				<dd><%= link_to all_doses[dose].title, all_doses[dose] %></dt>
 			<% end %>
-		</ul>
+		</dl>
 	<% end %>
 <% end %>
