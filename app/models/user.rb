@@ -19,4 +19,16 @@ class User < ActiveRecord::Base
   		UserMailer.upcoming_reminder_email(self, start_time, end_time, reminder_list).deliver
   	end
 	end
+
+  def get_days_doses(date)
+    all_doses = {}
+
+    reminders.each do |r|
+      r.get_days_doses(date).each do |dose|
+        all_doses[dose] = r
+      end
+    end
+
+    all_doses
+  end
 end
