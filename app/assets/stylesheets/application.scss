@@ -31,8 +31,33 @@ body {
 	z-index: 1;
 }
 
+.popup {
+	font-size: 20px;
+	text-align: center;
+	margin: 25px auto;
+	border-radius: 15px;
+	padding: 10px;
+	width: 85%;
+	box-shadow: 0px 5px 15px 2px #aaa;
+	border: 1px solid #888;
+}
+
+p.popup:empty {
+	display: none;
+}
+
+.notice {
+	background: #88a;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#99a));
+}
+
+.alert {
+	background: #c99;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fdd), to(#b99));
+}
+
 .container {
-	padding-top: 50px;
+	padding-top: 75px;
 	margin-bottom: 20px;
 }
 
