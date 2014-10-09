@@ -120,9 +120,12 @@ p.popup:empty {
 }
 
 .content h1 {
-	text-align: center;
+	font-size: 30px;
 	margin-top: 0;
 	margin-bottom: 20px;
+	border-bottom: 3px solid #d44;
+	padding-bottom: 5px;
+	width: 70%;
 }
 
 .content .form {
