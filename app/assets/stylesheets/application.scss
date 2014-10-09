@@ -28,6 +28,8 @@ body {
 }
 
 .navbar {
+	position: fixed;
+	width: 100%;
 	z-index: 1;
 }
 
@@ -107,7 +109,6 @@ p.popup:empty {
 	padding: 25px;
 	border-radius: 20px;
 	border-top-left-radius: 0;
-	/*border: 2px solid #999;*/
 	box-shadow: 2px 2px 12px #888, -2px 2px 12px #aaa;
 	clear: both;
 }
@@ -173,12 +174,6 @@ input[type='submit'] {
 	border-bottom: 2px solid #444;
 	text-shadow: 1px 1px 0px #fff;
 }
-
-.navbar {
-	position: fixed;
-	width: 100%;
-}
-
 
 #new_reminder_btn {
 	text-align: left;
