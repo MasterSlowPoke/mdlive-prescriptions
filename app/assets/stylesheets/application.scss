@@ -33,6 +33,15 @@ body {
 	z-index: 1;
 }
 
+.logout, .logout a, .logout a:visited {
+	color: #c00 !important; 
+}
+
+.logout a:hover {
+	color: #f00 !important;
+	text-decoration: underline !important;
+}
+
 .popup {
 	font-size: 20px;
 	text-align: center;
