@@ -14,5 +14,5 @@
   
   <%= label_tag :accept, "#{check_box_tag :accept} I understand that nothing can save a deleted account.".html_safe %>
 
-  <%= button_to "Delete Account Permanently", users_path, { id: 'delete-account', method: :delete }%>
+  <%= button_to "Delete Account Permanently", users_path, { id: 'delete-account', method: :delete, disabled: true }%>
 </section>

@@ -189,7 +189,7 @@ p.popup:empty {
 }
 
 input[type='submit'] {
-	margin: auto;
+	margin: 10px auto 0px;
 	min-width: 150px;
 	padding: 5px 20px;
 	display: block;
@@ -201,6 +201,11 @@ input[type='submit'] {
 
 input[type="submit"]:hover {
 	background: #ddd;
+}
+
+input[type="submit"][disabled] {
+	background: #aaa;
+	color: #555;
 }
 
 .content .sidebar {
