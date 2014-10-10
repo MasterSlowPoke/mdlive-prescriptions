@@ -1,31 +1,23 @@
-<div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<table class="table table-hover table-condensed table-bordered">
-		<thead>
-		    <tr>
-		    <th>User ID #</th>
-		     <th>Name</th>
-		     <th>Email</th>
-		      
-		      <th></th>
-		    </tr>
-		  </thead>
-			<tbody>
-  			<% @users.each do |user| %>
-  				<tr>
-    				<% if user == @users.first %>
-    				<td colspan="1"> <%= user.id %> </td>
-    				<% else %>
-    				<td> <%= user.id %> </td>
-    				<% end %>
-    				<td> <%= user.name %> </td> 
-    				<td> <%= user.email %> </td>
+<table class="table table-hover table-condensed table-bordered">
+<thead>
+    <tr>
+    <th>User ID #</th>
+     <th>Name</th>
+     <th>Email</th>
+      
+      <th></th>
+    </tr>
+  </thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr <%= "class=admin" if user.admin %>>
+				<td> <%= user.id %> </td>
+				<td> <%= user.name %> </td> 
+				<td> <%= user.email %> </td>
 
-    				<td> <%= link_to 'View', user %> </td> 
-    				<br>
-  				</tr>
-  			<% end %>
-			</tbody>
-		</table>
-	</div>	
-</div>
+				<td> <%= link_to 'View', user %> </td> 
+				<br>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
