@@ -14,12 +14,6 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <!-- this is the root path for the upper left button "Reminder App" can change route to anything -->
       <%= link_to 'Prescription Reminder', root_path, class: 'navbar-brand' %>
     </div>
@@ -30,19 +24,31 @@
         <% if current_user %>
           <li><p class="navbar-text">Welcome, <%= current_user.name %></p></li>
           <li class="logout"><%= link_to '<span class="glyphicon glyphicon-log-out"></span> Log Out'.html_safe, destroy_user_session_path, method: :delete %></li> 
+        <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="glyphicon glyphicon-lock"></span>
+              Log In
+              <ul class="dropdown-menu login" role="menu">
+                <%= render 'devise/sessions/form' %>
+              </ul>
+              </a>
+          </li>
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	        <span class="sr-only">Toggle navigation</span>
-	         	MENU 
-	         <span class="glyphicon glyphicon-align-justify"></span>
-          	<ul class="dropdown-menu" role="menu">
-              <%= if current_user
-                render 'layouts/menu_logged_in' 
-              else
-                render 'layouts/menu_logged_out'
-              end %>
-          	</ul>
+  	        <span class="sr-only">Toggle navigation</span>
+  	         	MENU 
+  	         <span class="glyphicon glyphicon-align-justify"></span>
+            	<ul class="dropdown-menu" role="menu">
+                <%= if current_user
+                  render 'layouts/menu_logged_in' 
+                else
+                  render 'layouts/menu_logged_out'
+                end %>
+            	</ul>
+          </a>  
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -33,6 +33,18 @@ body {
 	z-index: 1;
 }
 
+.login {
+	width: 250px;
+}
+
+.login .form-group {
+	margin: 0px 15px;
+}
+
+.login .dropdown-toggle:hover {
+	text-decoration: none !important;
+}
+
 .logout, .logout a, .logout a:visited {
 	color: #c00 !important; 
 }
