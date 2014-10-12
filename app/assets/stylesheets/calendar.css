@@ -37,6 +37,7 @@
 
 .calendar dd {
 	padding-left: 10px;
+	margin-left: 0 !important;
 }
 
 td.notmonth {
