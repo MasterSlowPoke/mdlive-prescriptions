@@ -240,9 +240,22 @@ input[type="submit"]:hover {
 	background: #ddd;
 }
 
+input[type="submit"]:active {
+	background: #ccc;
+}
+
 input[type="submit"][disabled] {
 	background: #aaa;
 	color: #555;
+}
+
+.field_with_errors input {
+	box-shadow: 0px 0px 10px 2px #f00 inset;
+}
+
+#error_explanation h2 {
+	font-size: 20px;
+	margin-top: -10px;
 }
 
 .content .sidebar {
