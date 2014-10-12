@@ -192,6 +192,13 @@ p.popup:empty {
 	box-shadow: 0px 2px 5px 2px #888;
 }
 
+.content .col-2 {
+	display: inline-block;
+	width: 45%;
+	margin: 0px 10px;
+	vertical-align: top;
+}
+
 .content h1 {
 	font-size: 30px;
 	margin-top: 0;
@@ -199,6 +206,27 @@ p.popup:empty {
 	border-bottom: 3px solid #d44;
 	padding-bottom: 5px;
 	width: 70%;
+}
+
+.content h2 {
+	font-size: 22px;
+	margin: 0 auto 5px;
+	padding-bottom: 2px;
+	border-bottom: 2px solid #d44;
+	width: 90%;
+	text-align: center;
+}
+
+.content .header-links {
+	font-size: 16px;
+}
+
+.content dd {
+	margin-left: 15px;
+}
+
+.content .reminder-notifications {
+	margin-bottom: 20px;
 }
 
 .content .form {

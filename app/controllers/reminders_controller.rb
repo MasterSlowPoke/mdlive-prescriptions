@@ -14,6 +14,7 @@ class RemindersController < ApplicationController
   # GET /reminders/1
   # GET /reminders/1.json
   def show
+    @reminder_rule = ReminderRule.new
   end
 
   # GET /reminders/new

@@ -1,72 +1,46 @@
-<h1>Medication</h1>
-<p>
-  <strong>Name:</strong>
-  <%= @reminder.title %>
-</p>
+<h1><%= @reminder.title %><span class="header-links"><%= link_to '(Edit)', edit_reminder_path(@reminder) %></span></h1>
 
-<p>
-  <strong>Number of Doses:</strong>
-  <%= @reminder.doses %>
-</p>
+<section class="col-2">
+  <h2>About</h2>
+  <dl>
+    <dt>Number of Doses</dt>
+      <dd><%= @reminder.doses %></dd>
 
-<p>
-  <strong>Time period:</strong>
-  <%= @reminder.time_period %>
-</p>
+    <dt>Start Time</dt>
+      <dd><%= formatted_time(@reminder.start) %></dd>
 
-<p>
-  <strong>Start:</strong>
-  <%= @reminder.start %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @reminder.notes %>
-</p>
-
-<hr>
-
-<h2>Dosage Times</h2>
-<% if @reminder.reminder_rules.empty? %>
-  <p>No Reminder Rules found!</p>
-<% else %>
-  <% dosage_times = @reminder.enumerate_doses %>
-  <ol>
-    <% dosage_times.each do |dose| %>
-      <li><%= formatted_time(dose) %></li>
+    <% if @reminder.notes.length > 0 %>
+      <dt>Notes</dt>
+        <dd><%= @reminder.notes %></dd>
     <% end %>
-  </ol>
-  <% curr_time = Time.zone.now.beginning_of_day %>
-  <% end_time = (curr_time + 6.days).end_of_day %>
-  <h3>And specifically for the week <%= "#{curr_time.strftime('%A')} the #{curr_time.day.ordinalize} to #{end_time.strftime('%A')} the #{end_time.day.ordinalize}" %></h3>
-    <% next_week_times = @reminder.enumerate_doses(curr_time, end_time) %>
+  </dl>
+
+  <h2>Dosage Times</h2>
+  <% if @reminder.reminder_rules.empty? %>
+    <p>No Reminder Rules found!</p>
+  <% else %>
+    <% dosage_times = @reminder.enumerate_doses %>
     <ol>
-    <% next_week_times.each do |dose| %>
-      <li><%= formatted_time(dose) %></li>
-    <% end %>
-  </ol>
-<% end %>
+      <% dosage_times.each do |dose| %>
+        <li><%= formatted_time(dose) %></li>
+      <% end %>
+    </ol>
+  <% end %>
+</section>
 
-<hr>
+<section class="col-2">
+  <h2>Reminder Notifications</h2>
 
-<h2>Reminder Notification</h2>
+  <% if @reminder.reminder_rules.empty? %>
+    <p class="reminder-notifications">
+      No Reminder Rules found!
+    </p>
+  <% else %>
+    <ul class="reminder-notifications">
+      <%= render @reminder.reminder_rules %>
+    </ul>
+  <% end %>
 
-<% if @reminder.reminder_rules.empty? %>
-  <p>No Reminder Rules found!</p>
-<% else %>
-  <ul>
-    <%= render @reminder.reminder_rules %>
-  </ul>
-<% end %>
-<br>
-<hr>
-<h3>Add A New Reminder Notification</h3>
-<% @reminder_rule = ReminderRule.new %>
-<%= render 'reminder_rules/form' %>
-<br>
-<%= link_to 'Edit', edit_reminder_path(@reminder) %> |
-<%= link_to 'Back', reminders_path %>
-
- <%= link_to 'test reminder email', test_mailer_reminder_reminder_path, method: :post %> 
-
- <%= link_to 'test reminder text', test_text_reminder_reminder_path, method: :post %> 
+  <h2>Add A New Reminder Notification</h2>
+  <%= render 'reminder_rules/form' %>
+</section>
