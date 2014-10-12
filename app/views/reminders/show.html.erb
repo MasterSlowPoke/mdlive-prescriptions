@@ -1,4 +1,4 @@
-<h1><%= @reminder.title %><span class="header-links"><%= link_to '(Edit)', edit_reminder_path(@reminder) %></span></h1>
+<h1><%= @reminder.title %> <span class="header-links"><%= link_to '(Edit)', edit_reminder_path(@reminder) %></span></h1>
 
 <section class="col-2">
   <h2>About</h2>
@@ -29,7 +29,7 @@
 </section>
 
 <section class="col-2">
-  <h2>Reminder Notifications</h2>
+  <h2>Notification Times</h2>
 
   <% if @reminder.reminder_rules.empty? %>
     <p class="reminder-notifications">
@@ -41,6 +41,6 @@
     </ul>
   <% end %>
 
-  <h2>Add A New Reminder Notification</h2>
+  <h2>Add A New Notification Time</h2>
   <%= render 'reminder_rules/form' %>
 </section>
