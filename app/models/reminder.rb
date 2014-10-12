@@ -3,7 +3,16 @@ class Reminder < ActiveRecord::Base
 
 	belongs_to :user
 
+	validates :title, presence: true
+	validates :doses, numericality: { greater_than: 0 }
+	# validate :validate_start
+
 	after_create :send_new_reminder_email
+
+	def validate_start 
+		set_start
+		errors.add(:start, start.nil?)
+	end
 
 	def initialize(reminder_params, current_user)
 		super(reminder_params)
@@ -17,10 +26,6 @@ class Reminder < ActiveRecord::Base
 
 	def get_days_doses(date)
 		enumerate_doses(date.beginning_of_day, date.end_of_day)
-	end
-
-	def set_start(date, time)
-		self.start = Time.zone.parse("#{date} #{time}")
 	end
 
 	def first_dose
@@ -50,7 +55,7 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def assign_counts
-		return if reminder_rules.empty?
+		return true if reminder_rules.empty?
 
 		num_reminders = reminder_rules.count
 		counts_hash = {}

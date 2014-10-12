@@ -30,12 +30,12 @@ class RemindersController < ApplicationController
   def create
     if current_user
       @reminder = Reminder.new(reminder_params, current_user)
-      @reminder.set_start(params[:date], params[:time])
       respond_to do |format|
         if @reminder.save
           format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
           format.json { render :show, status: :created, location: @reminder }
         else
+          flash.now[:alert] = 'Reminder was not saved.'
           format.html { render :new }
           format.json { render json: @reminder.errors, status: :unprocessable_entity }
         end
@@ -43,7 +43,7 @@ class RemindersController < ApplicationController
     else
       error_msg = "You must be logged in to create a reminder."
       respond_to do |format|
-        format.html { redirect_to root_path, notice: error_msg }
+        format.html { redirect_to root_path, alert: error_msg }
         format.json { render json: {not_authorized: error_msg}, status: :unprocessable_entity }
       end
     end
@@ -62,13 +62,12 @@ def test_text_reminder
   # PATCH/PUT /reminders/1
   # PATCH/PUT /reminders/1.json
   def update
-    @reminder.set_start(params[:date], params[:time])
-
     respond_to do |format|
       if @reminder.update(reminder_params)
         format.html { redirect_to @reminder, notice: 'Reminder was successfully updated.' }
         format.json { render :show, status: :ok, location: @reminder }
       else
+        flash.now[:alert] = 'Reminder was not saved.'
         format.html { render :edit }
         format.json { render json: @reminder.errors, status: :unprocessable_entity }
       end
