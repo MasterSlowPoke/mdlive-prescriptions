@@ -12,7 +12,9 @@
 
 .calendar th {
 	font-size: 20px;
-	background: #DDF;
+	background: #99A;
+	text-align: center;
+	text-shadow: 1px 1px 1px #eee;
 }
 
 .calendar td {
