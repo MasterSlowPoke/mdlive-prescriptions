@@ -33,6 +33,37 @@ body {
 	z-index: 1;
 }
 
+.header {
+	color: #c00 !important;
+	text-shadow: 1px 1px 0px #300;
+	margin: 5px inherit;
+}
+
+.header-left {
+	background: #ddd;
+	padding: 9px;
+	padding-bottom: 11px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border: 1px solid #999;
+	border-right: none;
+	box-shadow: 3px -3px 5px 1px #666 inset, 3px 3px 5px 1px #fff inset;
+	padding-right: 1px;
+}
+
+.header-right {
+	background: #888;
+	padding: 7px;
+	padding-bottom: 9px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border: 1px solid #444;
+	border-left: none;
+	padding-left: 4px;
+	padding-right: 15px;
+	box-shadow: -2px -5px 5px 1px #666 inset, -2px 3px 5px 1px #ccc inset;
+}
+
 .login {
 	width: 280px;
 	padding: 10px;
@@ -100,7 +131,7 @@ p.popup:empty {
 }
 
 .container {
-	padding-top: 75px;
+	padding-top: 90px;
 	margin-bottom: 20px;
 }
 
