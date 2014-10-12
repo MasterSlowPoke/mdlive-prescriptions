@@ -1,65 +1,45 @@
-<div class="row">
-<div class="col-lg-12 col-lg-offset-4">
+<section class="form">  
+  <%= form_for(@reminder) do |f| %>
+    <% if @reminder.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@reminder.errors.count, "error") %> prohibited this reminder from being saved:</h2>
+
+        <ul>
+        <% @reminder.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title, "Reminder Name" %>
+      <%= f.text_field :title, class:'form-control', placeholder:"Reminder Name"%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :doses, "Number of Doses" %>
+      <%= f.text_field :doses, class:'form-control', placeholder:"Doses" %>
+    </div>
     
-    <div class="Registration_form">
+    <div class="form-group">
+      <%= f.label nil, "Start Time" %><br>
+      <%#= f.select :month, ApplicationHelper::MONTH_LIST %>
+      <%= f.label :start_3i, "Date", class: 'sublabel' %>
+      <%= f.date_select :start, order: [:month, :day, :year] %>
+      <br>
+      <%= f.label :start_4i, "Time", class: 'sublabel' %>
+      <%= f.time_select :start, ampm: true, ignore_date: true %>
+    </div>
 
-<%= form_for(@reminder, :html=>{:class=>"form-horizontal"}) do |f| %>
-  <% if @reminder.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reminder.errors.count, "error") %> prohibited this reminder from being saved:</h2>
-
-      <ul>
-      <% @reminder.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="form-group">
+      <%= f.label :notes, "Notes" %>
+      <%= f.text_area :notes, class:'form-control', placeholder:"Notes" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="form-group">
-          <div class="col-sm-4">
-            <br>
-            <%= f.text_field :title, class:'form-control', placeholder:"Medication"%>
-          </div>
-  </div>
-
-  <div class="form-group">
-          <div class="col-sm-4">
-   <br>
-    <%= f.number_field :doses, class:'form-control', placeholder:"Doses" %>
-  </div>
-</div>
- 
-  <div class="form-group">
-          <div class="col-sm-4">
-    <%= f.label :time_period %><br>
-    <%= f.select(:time_period, ["Day", "Week"]) %>
-  </div>
-</div>
-  
-  <div class="form-group">
-          <div class="col-sm-4">
-    <%= f.label :date, "First Dose" %><br>
-    <%= date_field nil, :date, value: Date.today %>
-    <%= time_field nil, :time, value: Time.zone.now.strftime("%R") %>
-  </div>
-</div>
-
-  <div class="form-group">
-          <div class="col-sm-4">
-            <br>
-    <%= f.text_area :notes, class:'form-control', placeholder:"Notes" %>
-  </div>
-</div>
-  
-  <div class="form-group">
-          <div class="col-sm-4">
-    <%= f.submit %>
-  </div>
-</div>
-<% end %>
-
-</div>
-</div>
-</div>
+</section>  
 
