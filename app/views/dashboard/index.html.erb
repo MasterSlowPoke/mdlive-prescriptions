@@ -1,16 +1,18 @@
 <% if current_user %>
+	<h1>Welcome, <%= current_user.name %></h1>
+
+	<section class='sidebar'>
+		<h2>Today's Reminders</h2>
+		<%= render partial: 'days_doses', locals: { doses: @todays_doses } %>
+	</section>
+
 	<p>
 		You currently have <%= current_user.reminders.count %> reminders.
 	</p>
-
-<div id="new_reminder_btn">
 	<p>
 		<%= link_to "(+) Add New Reminder", new_reminder_path %> 
 	</p>
-</div>
-	<!-- <p> 
-		<%= link_to "View Calendar", "/calendar" %>
-	</p> -->
+
 <% else %> 
 
 <button type="button" class="btn btn-default">

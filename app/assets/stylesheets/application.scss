@@ -190,6 +190,7 @@ p.popup:empty {
 	border-radius: 15px;
 	padding: 15px;
 	box-shadow: 0px 2px 5px 2px #888;
+	overflow: auto;
 }
 
 .content .col-2 {
@@ -287,12 +288,12 @@ input[type="submit"][disabled] {
 	margin-top: -10px;
 }
 
-.content .sidebar {
+.sidebar {
 	float: right;
 	margin-right: 10px;
 	width: 30%;
 	padding: 20px;
-	background: #99A;
+	background: #aac;
 	border-radius: 10px;
 	box-shadow: 0px 2px 5px 1px #444;
 }
@@ -309,6 +310,10 @@ input[type="submit"][disabled] {
 	border-bottom: 2px solid #444;
 	text-shadow: 1px 1px 0px #fff;
 	width: initial;
+}
+
+.sidebar a, .sidebar a:visited {
+	text-decoration: underline;
 }
 
 tr.admin {

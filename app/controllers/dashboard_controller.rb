@@ -2,7 +2,11 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!, only: :calendar
 
   def index
-  	@user = User.new unless current_user
+  	if current_user
+  		@todays_doses = current_user.get_days_doses(Date.today)
+  	else
+  		@user = User.new
+  	end
   end
 
   def calendar
