@@ -5,16 +5,9 @@
 
 <%= calendar do |date| %>
 	<span class="date"><%= date.day %></span>
-	<% all_doses = current_user.get_days_doses(date) %>
+	<% doses = current_user.get_days_doses(date) %>
 
-	<% unless all_doses.empty? %>
-		<dl>
-			<% all_doses.keys.sort.each do |time| %>
-				<dt><%= time %></dt>
-				<% all_doses[time].each do |dose| %>
-					<dd><%= link_to dose.title, dose %></dt>
-				<% end %>
-			<% end %>
-		</dl>
+	<% unless doses.empty? %>
+		<%= render partial: 'days_doses', locals: { doses: doses } %>
 	<% end %>
 <% end %>

@@ -1,0 +1,8 @@
+<dl>
+  <% doses.keys.sort.each do |time| %>
+    <dt><%= time %></dt>
+    <% doses[time].each do |dose| %>
+      <dd><%= link_to dose.title, dose %></dt>
+    <% end %>
+  <% end %>
+</dl>
