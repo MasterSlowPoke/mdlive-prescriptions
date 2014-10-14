@@ -94,6 +94,8 @@ class Reminder < ActiveRecord::Base
 		all_doses = []
 
 		reminder_rules.each do |ri|
+			next unless ri.schedule.terminating? 
+			
 			ri.schedule.all_occurrences.each do |o|
 				all_doses.push o if (o > start_date) && (end_date ? (o < end_date) : true)
 			end
