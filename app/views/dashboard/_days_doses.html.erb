@@ -1,8 +1,12 @@
-<dl>
-  <% doses.keys.sort.each do |time| %>
-    <dt><%= time %></dt>
-    <% doses[time].each do |dose| %>
-      <dd><%= link_to dose.title, dose %></dt>
-    <% end %>
-  <% end %>
-</dl>
+<% if doses.empty? %>
+	<p>No reminders for today!</p>
+<% else %>
+	<dl>
+		<% doses.keys.sort.each do |time| %>
+		  <dt><%= time %></dt>
+		  <% doses[time].each do |dose| %>
+		    <dd><%= link_to dose.title, dose %></dt>
+		  <% end %>
+		<% end %>
+	</dl>
+<% end %>
