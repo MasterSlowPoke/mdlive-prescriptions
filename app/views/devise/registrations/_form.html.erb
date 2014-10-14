@@ -1,5 +1,5 @@
-<section class="form">  
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { method: :put }) do |f| %>
+<section class="form"> 
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :name, "Your Name" %>
       <%= f.text_field :name, autofocus: true, class:'form-control', placeholder: "Name" %>
@@ -11,17 +11,25 @@
     </div> 
 
     <div class="form-group">
-      <%= f.label :password, "New Password" %>
-      <span class="note">(leave blank if you don't want to change it)</span>
+      <% if action_name == 'new' || action_name == 'create' %>
+        <%= f.label :password, "Password" %>
+      <% else %>
+        <%= f.label :password, "New Password" %>
+        <span class="note">(leave blank if you don't want to change it)</span>
+      <% end %>
       <%= f.password_field :password, autocomplete: "off", class:'form-control', placeholder: "Password" %>
       <%= f.password_field :password_confirmation, autocomplete: "off", class:'form-control', placeholder: "Password Confirmation" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :current_password, "Current Password" %>
       <div class="current-password">
-        <%= f.password_field :current_password, autocomplete: "off", class:'form-control', placeholder: "Current Password"%>
-        <%= f.submit "Update" %>
+        <% if action_name == 'new' || action_name == 'create' %>
+          <%= f.submit "Create Account" %>
+        <% else %>
+          <%= f.label :current_password, "Current Password" %>
+          <%= f.password_field :current_password, autocomplete: "off", class:'form-control', placeholder: "Current Password"%>
+          <%= f.submit "Edit Account" %>
+        <% end %>
       </div>
     </div>
   <% end %>
