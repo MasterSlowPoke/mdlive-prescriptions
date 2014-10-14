@@ -1,9 +1,10 @@
-<!-- <p> 
-	<%= link_to "Back to Dashboard", :back %>
-</p> -->
-<h1><%= @date.strftime("%B %Y") %></h1>
+<h1>
+	<%= link_to "<span class='glyphicon glyphicon-arrow-left'></span>".html_safe, :month => (@date.beginning_of_month-1).strftime("%Y-%m") %> 
+	<%= @date.strftime("%B %Y") %> 
+	<%= link_to "<span class='glyphicon glyphicon-arrow-right'></span>".html_safe, :month => (@date.end_of_month+1).strftime("%Y-%m") %> 
+</h1>
 
-<%= calendar do |date| %>
+<%= calendar(@date) do |date| %>
 	<span class="date"><%= date.day %></span>
 	<% doses = current_user.get_days_doses(date) %>
 

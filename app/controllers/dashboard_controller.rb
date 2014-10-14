@@ -10,6 +10,6 @@ class DashboardController < ApplicationController
   end
 
   def calendar
-  	@date = Date.today
+  	@date = params[:month] ? Date.parse(params[:month] + "-1") : Date.today
   end
 end
