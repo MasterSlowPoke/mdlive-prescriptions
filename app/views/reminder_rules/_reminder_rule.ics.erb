@@ -1,0 +1,7 @@
+BEGIN:VEVENT
+CREATED:<%= reminder_rule.created_at.strftime("%Y%m%dT%H%M%S") + "Z" %>
+UID:<%= Digest::SHA1.hexdigest("**#{reminder_rule.reminder.title}*#{Time.current.usec}**") %>
+RRULE:FREQ=DAILY;INTERVAL=1;UNTIL=<%= reminder_rule.schedule.last.strftime("%Y%m%dT%H%M%S") %>
+SUMMARY:<%= reminder_rule.reminder.title %>
+DTSTART;TZID=EDT:<%= reminder_rule.schedule.first.strftime("%Y%m%dT%H%M%S") %>
+END:VEVENT
