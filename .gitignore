@@ -20,3 +20,6 @@
 
 # Ignore enviroment variables
 /config/setup_enviroment.rb
+
+# Ignore the secrets! sneaky sneaky!
+/config/secrets.yml
