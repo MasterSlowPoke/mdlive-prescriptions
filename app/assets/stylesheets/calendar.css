@@ -56,5 +56,6 @@ td.notmonth {
 }
 
 td.today {
-	background: #fbb;
+	background: #eef;
+	border: 3px solid;
 }
