@@ -15,6 +15,16 @@ class RemindersController < ApplicationController
   # GET /reminders/1.json
   def show
     @reminder_rule = ReminderRule.new
+
+    respond_to do |format|
+      format.html 
+      format.ics do 
+        stream = render_to_string :show  
+
+        send_data stream, filename: "#{@reminder.title}.ics" 
+      end
+      format.js 
+    end
   end
 
   # GET /reminders/new
