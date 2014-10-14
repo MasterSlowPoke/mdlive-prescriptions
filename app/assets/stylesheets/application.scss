@@ -293,6 +293,12 @@ p.popup:empty {
 	box-shadow: -2px -2px 5px #888 inset, 1px 1px 5px #444 inset, 2px 2px 10px #888;
 }
 
+.button-link, input[type="submit"][disabled] {
+	background: #aaa;
+	color: #555;
+	box-shadow: 1px 1px 5px #888 inset, -2px -2px 5px #444 inset;
+}
+
 .field_with_errors input {
 	box-shadow: 0px 0px 10px 2px #f00 inset;
 }
