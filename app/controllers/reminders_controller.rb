@@ -17,13 +17,13 @@ class RemindersController < ApplicationController
     @reminder_rule = ReminderRule.new
 
     respond_to do |format|
-      format.html 
-      format.ics do 
+      format.html
+      format.json
+      format.ics { 
         stream = render_to_string :show  
 
         send_data stream, filename: "#{@reminder.title}.ics" 
-      end
-      format.js 
+      }
     end
   end
 
