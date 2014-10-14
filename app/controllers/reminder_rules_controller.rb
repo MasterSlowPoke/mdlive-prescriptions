@@ -25,12 +25,14 @@ class ReminderRulesController < ApplicationController
   # POST /reminder_rules
   # POST /reminder_rules.json
   def create
+    @reminder_rule = ReminderRule.new(reminder_rule_params)
+
     respond_to do |format|
-      if @reminder_rule = ReminderRule.new(reminder_rule_params)
+      if @reminder_rule.save
         format.html { redirect_to @reminder_rule.reminder, notice: 'Reminder rule was successfully created.' }
         format.json { render :show, status: :created, location: @reminder_rule }
       else
-        format.html { render :new }
+        format.html { redirect_to @reminder_rule.reminder, alert: 'Reminder Time is invalid.' }
         format.json { render json: @reminder_rule.errors, status: :unprocessable_entity }
       end
     end
