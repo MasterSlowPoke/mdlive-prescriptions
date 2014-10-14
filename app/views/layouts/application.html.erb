@@ -30,10 +30,10 @@
               <span class="sr-only">Toggle navigation</span>
               <span class="glyphicon glyphicon-lock"></span>
               Log In
-              <ul class="dropdown-menu login" role="menu">
-                <%= render 'devise/sessions/form' %>
-              </ul>
-              </a>
+            </a>            
+            <ul class="dropdown-menu login" role="menu">
+              <%= render 'devise/sessions/form' %>
+            </ul>
           </li>
         <% end %>
         <li class="dropdown">
@@ -41,14 +41,14 @@
   	        <span class="sr-only">Toggle navigation</span>
   	         	MENU 
   	         <span class="glyphicon glyphicon-align-justify"></span>
-            	<ul class="dropdown-menu" role="menu">
-                <%= if current_user
-                  render 'layouts/menu_logged_in' 
-                else
-                  render 'layouts/menu_logged_out'
-                end %>
-            	</ul>
           </a>  
+          <ul class="dropdown-menu" role="menu">
+            <%= if current_user
+              render 'layouts/menu_logged_in' 
+            else
+              render 'layouts/menu_logged_out'
+            end %>
+          </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
