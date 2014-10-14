@@ -3,8 +3,23 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  validates :phone, numericality: { greater_than: 999999999, message: "Number must be a 7 digit number with area code." }
 
   has_many :reminders
+
+  def phone=(n)
+    n.gsub!(/\D/, '') if n.is_a?(String)
+    super(n)
+  end
+
+  def formatted_phone
+    if phone.to_s.length > 9
+      ActionController::Base.helpers.number_to_phone phone, area_code: true
+    else
+      phone
+    end
+  end
 
   def send_reminders(start_time, end_time)
   	reminder_list = {}
