@@ -25,15 +25,35 @@ class User < ActiveRecord::Base
   	reminder_list = {}
 
   	reminders.each do |r|
-  		r.enumerate_doses(start_time, end_time).each do |dose|
-  			reminder_list[dose] = r
+  		r.enumerate_doses(start_time, end_time).each do |time|
+  			reminder_list[time] = r
   		end
   	end
 
   	unless reminder_list.empty?
+      reminder_list = reminder_list.sort
   		UserMailer.upcoming_reminder_email(self, start_time, end_time, reminder_list).deliver
+      send_texts(reminder_list)
   	end
 	end
+
+  def send_texts(reminder_list)
+    return unless phone
+
+    message = "Prescription Reminder:"
+
+    reminder_list.each do |time, reminder|
+      message += "\n#{reminder.title} @ #{time.strftime("%l:%M %p")}"
+    end
+
+    return if message == "Prescription Reminder:" # don't send empty messages
+
+    TwilioClient.account.messages.create({
+      :from => '+17272286083', 
+      :to => phone, 
+      :body => message,
+    })
+  end 
 
   def get_days_doses(date)
     all_doses = {}
