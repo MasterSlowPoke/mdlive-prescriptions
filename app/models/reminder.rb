@@ -9,6 +9,8 @@ class Reminder < ActiveRecord::Base
 
 	after_create :send_new_reminder_email
 
+  before_destroy :destroy_rules
+
 	def validate_start 
 		set_start
 		errors.add(:start, start.nil?)
@@ -108,6 +110,12 @@ class Reminder < ActiveRecord::Base
 	protected
 		def send_new_reminder_email
 			UserMailer.reminder_email(user, self).deliver
+		end
+
+		def destroy_rules
+			reminder_rules.each do |rr|
+				rr.destroy
+			end
 		end
 
 	private
