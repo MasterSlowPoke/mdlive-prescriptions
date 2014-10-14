@@ -27,8 +27,6 @@ class ReminderRulesController < ApplicationController
   def create
     respond_to do |format|
       if @reminder_rule = ReminderRule.new(reminder_rule_params)
-        # This should be able to be ran from anywhere in the application
-        UserMailer.reminder_email(current_user, @reminder_rule.reminder).deliver
         format.html { redirect_to @reminder_rule.reminder, notice: 'Reminder rule was successfully created.' }
         format.json { render :show, status: :created, location: @reminder_rule }
       else
