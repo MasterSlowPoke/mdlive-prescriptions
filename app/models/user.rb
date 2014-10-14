@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   validates :phone, numericality: { greater_than: 999999999, message: "Number must be a 7 digit number with area code." }
 
-  has_many :reminders
+  has_many :reminders, dependent: :destroy
 
   def phone=(n)
     n.gsub!(/\D/, '') if n.is_a?(String)
