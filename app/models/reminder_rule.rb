@@ -3,6 +3,8 @@ class ReminderRule < ActiveRecord::Base
 
 	serialize :schedule, Schedule
 
+  validates :time_of_day, format: { with: /[0-2][0-9](:)[0-5][0-9]/, message: "is not a valid time." }
+
   belongs_to :reminder
 
   def initialize(reminder_rule_params = {})
