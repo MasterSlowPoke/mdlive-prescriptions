@@ -308,12 +308,12 @@ p.popup:empty {
 	border-radius: 20px;
 	box-shadow: 1px 1px 5px #888 inset, -2px -2px 5px #444 inset, 2px 2px 10px #888;
 	border: none;
+	text-align: center;
 }
 
-.col-1 > .button-link, .col-2 > .button-link {
+.content > .button-link, .col-1 > .button-link, .col-2 > .button-link {
 	width: 250px;
 	margin: auto;
-	text-align: center;
 	margin-bottom: 15px;
 }
 
@@ -368,6 +368,11 @@ p.popup:empty {
 
 .sidebar a, .sidebar a:visited {
 	text-decoration: underline;
+}
+
+.new-reminder {
+	width: 200px;
+	margin-bottom: 10px;
 }
 
 tr.admin {
