@@ -278,8 +278,9 @@ p.popup:empty {
 	margin-bottom: 20px;
 }
 
-.content .export {
-	margin: 10px 0px 20px;
+.content .export .button-link{
+	margin: 10px auto 20px;
+	width: 250px;
 }
 
 .content .form {
@@ -321,7 +322,6 @@ p.popup:empty {
 }
 
 .content > .button-link, .col-1 > .button-link, .col-2 > .button-link {
-	width: 250px;
 	margin: auto;
 	margin-bottom: 15px;
 }
