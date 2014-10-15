@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     message = "Prescription Reminder:"
 
     reminder_list.each do |time, reminder_rule|
-      message += "\n#{reminder_rule.reminder.title} @ #{reminder_rule.time.strftime("%l:%M %p")}" if reminder_rule.textable
+      message += "\n#{reminder_rule.reminder.title} @ #{time.strftime("%l:%M %p")}" if reminder_rule.textable
     end
 
     return if message == "Prescription Reminder:" # don't send empty messages
