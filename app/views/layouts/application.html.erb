@@ -13,8 +13,18 @@
 <%= render 'layouts/navbar/navbar' %>
 
 <section class='container'>
-  <p class="popup notice"><%= notice %></p>
-  <p class="popup alert"><%= alert %></p>
+  <% if notice %>
+    <div class="popup notice">
+      <%= notice %>
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div class="popup alert">
+      <%= alert %>
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    </div>
+  <% end %>
 
   <nav class="content-nav"> 
     <ul>
