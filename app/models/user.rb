@@ -66,6 +66,14 @@ class User < ActiveRecord::Base
       end
     end
 
-    all_doses
+    all_doses.sort do |a, b|
+      if a[0][-2] == "A" && b[0][-2] == "P" 
+        -1
+      elsif a[0][-2] == "P" && b[0][-2] == "A"
+        1
+      else
+        a[0] <=> b[0]
+      end
+    end
   end
 end

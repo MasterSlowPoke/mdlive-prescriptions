@@ -2,10 +2,10 @@
 	<p>No reminders for today!</p>
 <% else %>
 	<dl>
-		<% doses.keys.sort.each do |time| %>
-		  <dt><%= time %></dt>
-		  <% doses[time].each do |dose| %>
-		    <dd><%= link_to dose.title, dose %></dt>
+		<% doses.each do |dose| %>
+		  <dt><%= dose[0] %></dt>
+		  <% dose[1].each do |reminder| %>
+		    <dd><%= link_to reminder.title, reminder %></dt>
 		  <% end %>
 		<% end %>
 	</dl>
