@@ -305,6 +305,7 @@ p.popup:empty {
 	background: #aaa;
 	color: #555;
 	box-shadow: 1px 1px 5px #888 inset, -2px -2px 5px #444 inset;
+	pointer-events: none;
 }
 
 .field_with_errors input {
