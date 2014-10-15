@@ -10,50 +10,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <!-- this is the root path for the upper left button "Reminder App" can change route to anything -->
-      <%= link_to '<span class="header-left">Prescription</span><span class="header-right">Reminder</span>'.html_safe, root_path, class: 'navbar-brand header' %>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
-          <li><p class="navbar-text">Welcome, <%= current_user.name %></p></li>
-          <li class="logout"><%= link_to '<span class="glyphicon glyphicon-log-out"></span> Log Out'.html_safe, destroy_user_session_path, method: :delete %></li> 
-        <% else %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="glyphicon glyphicon-lock"></span>
-              Log In
-            </a>            
-            <ul class="dropdown-menu login" role="menu">
-              <%= render 'devise/sessions/form' %>
-            </ul>
-          </li>
-        <% end %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-  	        <span class="sr-only">Toggle navigation</span>
-  	         	MENU 
-  	         <span class="glyphicon glyphicon-align-justify"></span>
-          </a>  
-          <ul class="dropdown-menu" role="menu">
-            <%= if current_user
-              render 'layouts/menu_logged_in' 
-            else
-              render 'layouts/menu_logged_out'
-            end %>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<%= render 'layouts/navbar/navbar' %>
 
 <section class='container'>
   <p class="popup notice"><%= notice %></p>
@@ -64,7 +21,7 @@
       <%= if current_user
         render 'layouts/tabs_logged_in' 
       else
-        render 'layouts/menu_logged_out'
+        render 'layouts/navbar/menu_logged_out'
       end %>
     </ul>
   </nav>
