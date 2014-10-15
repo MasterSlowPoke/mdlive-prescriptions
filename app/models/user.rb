@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
   	reminder_list = {}
 
   	reminders.each do |r|
-  		r.enumerate_doses(start_time, end_time).each do |time|
-  			reminder_list[time] = r
+  		r.enumerate_doses(start_time, end_time).each do |nt|
+  			reminder_list[nt.time] = nt.reminder_rule
   		end
   	end
 
@@ -42,8 +42,8 @@ class User < ActiveRecord::Base
 
     message = "Prescription Reminder:"
 
-    reminder_list.each do |time, reminder|
-      message += "\n#{reminder.title} @ #{time.strftime("%l:%M %p")}"
+    reminder_list.each do |time, reminder_rule|
+      message += "\n#{reminder_rule.reminder.title} @ #{reminder_rule.time.strftime("%l:%M %p")}" if reminder_rule.textable
     end
 
     return if message == "Prescription Reminder:" # don't send empty messages
@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
     all_doses = {}
 
     reminders.each do |r|
-      r.get_current_doses.each do |dose|
-        time = dose.strftime("%l:%M %p")
+      r.get_current_doses.each do |nt|
+        time = nt.time.strftime("%l:%M %p")
         all_doses[time] ||= [] 
         all_doses[time] << r
       end
@@ -81,8 +81,8 @@ class User < ActiveRecord::Base
     all_doses = {}
 
     reminders.each do |r|
-      r.get_days_doses(date).each do |dose|
-        time = dose.strftime("%l:%M %p")
+      r.get_days_doses(date).each do |nt|
+        time = nt.time.strftime("%l:%M %p")
         all_doses[time] ||= [] 
         all_doses[time] << r
       end

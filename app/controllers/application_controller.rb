@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     if current_user
       @current_doses = current_user.get_current_doses
       @current_count = 0
-      @current_doses.each do |time|
-        @current_count += time[1].count
+      @current_doses.each do |nt|
+        @current_count += nt[1].count
       end
     end
   end

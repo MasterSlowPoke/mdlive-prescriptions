@@ -24,7 +24,7 @@
     <% dosage_times = @reminder.enumerate_doses %>
     <ol>
       <% dosage_times.each do |dose| %>
-        <li><%= formatted_time(dose) %></li>
+        <li><%= formatted_time(dose.time) %></li>
       <% end %>
     </ol>
   <% end %>

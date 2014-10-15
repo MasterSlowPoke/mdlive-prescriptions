@@ -104,11 +104,13 @@ class Reminder < ActiveRecord::Base
 			next unless ri.schedule.terminating? 
 			
 			ri.schedule.all_occurrences.each do |o|
-				all_doses.push o if (o > start_date) && (end_date ? (o < end_date) : true)
+				all_doses.push NotificationTime.new(o, ri) if (o > start_date) && (end_date ? (o < end_date) : true)
 			end
 		end
 
-		all_doses.sort
+		all_doses.sort do |a, b|
+			a.time <=> b.time
+		end
 	end
 
 	def days_of_week
