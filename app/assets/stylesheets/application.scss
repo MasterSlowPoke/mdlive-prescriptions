@@ -306,7 +306,7 @@ p.popup:empty {
 	margin-left: 15px;
 }
 
-.button-link, input[type='submit'] {
+.button-link, .button-link:hover, .button-link:active, input[type='submit'] {
 	margin: 10px auto 0px;
 	min-width: 150px;
 	padding: 5px 20px;
@@ -316,6 +316,8 @@ p.popup:empty {
 	box-shadow: 1px 1px 5px #888 inset, -2px -2px 5px #444 inset, 2px 2px 10px #888;
 	border: none;
 	text-align: center;
+	color: black;
+	text-decoration: none;
 }
 
 .content > .button-link, .col-1 > .button-link, .col-2 > .button-link {
