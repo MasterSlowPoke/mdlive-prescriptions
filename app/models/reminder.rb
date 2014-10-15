@@ -11,6 +11,10 @@ class Reminder < ActiveRecord::Base
 
   before_destroy :destroy_rules
 
+  def exportable? 
+  	!reminder_rules.empty?
+  end
+
 	def validate_start 
 		set_start
 		errors.add(:start, start.nil?)

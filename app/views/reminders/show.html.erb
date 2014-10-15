@@ -16,7 +16,11 @@
   </dl>
 
   <div class="export">
-    <%= link_to 'Export to iCalendar', reminder_path(@reminder, format: :ics), class: "button-link" %>
+    <% if @reminder.exportable? %>
+      <%= link_to 'Export to iCalendar', reminder_path(@reminder, format: :ics), class: "button-link" %>
+    <% else %>
+      <div class="button-link" disabled>Export to iCalendar</div>
+    <% end %>
   </div>
 
   <h2>Dosage Times</h2>
