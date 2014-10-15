@@ -74,10 +74,14 @@ class Reminder < ActiveRecord::Base
 		
 		reminder_rules.each do |ri|
 			counts_hash[ri.id] = 0
-			occurrences_hash[ri.id] = ri.schedule.next_occurrence
+			occurrences_hash[ri.id] = ri.schedule.first
 			ri_hash[ri.id] = ri
 			ri.set_schedule
 		end
+
+		puts "%%%% rules = #{num_reminders} %%%%%%"
+		puts occurrences_hash
+		puts "%%%%%%%%%%%%%%%%%%%%%"
 
 		doses.times do
 			next_occurrence = [occurrences_hash.keys.first, occurrences_hash[occurrences_hash.keys.first]]
