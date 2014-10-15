@@ -225,11 +225,18 @@ p.popup:empty {
 	min-height: 500px;
 }
 
-.content .col-2 {
+.content .col-1, .content .col-2 {
 	display: inline-block;
-	width: 45%;
 	margin: 0px 10px;
 	vertical-align: top;
+}
+
+.content .col-1 {
+	width: 65%;
+}
+
+.content .col-2 {
+	width: 45%;
 }
 
 .content h1 {
@@ -303,8 +310,8 @@ p.popup:empty {
 	border: none;
 }
 
-.col-2 .button-link {
-	width: 200px;
+.col-1 > .button-link, .col-2 > .button-link {
+	width: 250px;
 	margin: auto;
 	text-align: center;
 }
