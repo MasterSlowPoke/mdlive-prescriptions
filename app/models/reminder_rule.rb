@@ -33,6 +33,15 @@ class ReminderRule < ActiveRecord::Base
     time_of_day.split(':')[1].to_i
   end
 
+  def ical_freq
+    case day_of_week
+    when 7
+      "DAILY"
+    else
+      "WEEKLY"
+    end
+  end
+
   def set_schedule(count = nil)
   	self.schedule = Schedule.new(reminder.start)
   	new_rule = Rule.daily.hour_of_day(hour).minute_of_hour(min).second_of_minute(0)
