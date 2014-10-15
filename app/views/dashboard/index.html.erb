@@ -1,26 +1,30 @@
 <% if current_user %>
 	<h1>Welcome, <%= current_user.name %></h1>
+	<section class="col-2">
+		<p>
+			You currently have <%= current_user.reminders.count %> reminders.
+		</p>
+		<p>
+			<%= link_to "(+) Add New Reminder", new_reminder_path %> 
+		</p>
 
+	  <% if true %>
+	    <%= link_to 'Export all Reminders to iCalendar', user_path(current_user, format: :ics), class: "button-link" %>
+	  <% else %>
+	    <div class="button-link" disabled>Export to iCalendar</div>
+  	<% end %>
+	</section>
 	<section class='sidebar'>
 		<h2>Today's Reminders</h2>
 		<%= render partial: 'days_doses', locals: { doses: @todays_doses } %>
 	</section>
-
-	<p>
-		You currently have <%= current_user.reminders.count %> reminders.
-	</p>
-	<p>
-		<%= link_to "(+) Add New Reminder", new_reminder_path %> 
-	</p>
-
 <% else %> 
-
-<button type="button" class="btn btn-default">
-<div> <%= render 'devise/menu/registration_items' %></div>
-</button>
-<br>
-<br>
-<button type="button" class="btn btn-default">
-<div> <%= render 'devise/menu/login_items' %></div>
-</button> 
+	<button type="button" class="btn btn-default">
+	<div> <%= render 'devise/menu/registration_items' %></div>
+	</button>
+	<br>
+	<br>
+	<button type="button" class="btn btn-default">
+	<div> <%= render 'devise/menu/login_items' %></div>
+	</button> 
 <% end %>

@@ -1,0 +1,6 @@
+BEGIN:VCALENDAR
+METHOD:PUBLISH
+VERSION:2.0
+X-WR-CALNAME:Prescription Reminders for <%= current_user.name %>
+<%= render current_user.reminders %>
+END:VCALENDAR

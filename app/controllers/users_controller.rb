@@ -1,13 +1,20 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_admin
+  before_action :require_admin, only: [:index]
 
   def index 
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id]) 
+    respond_to do |format|
+      format.html
+      format.ics {
+        stream = render_to_string :show  
+
+        send_data stream, filename: "Reminders For #{current_user.name}.ics" 
+      }
+    end
   end
 
   # POST /users
