@@ -79,15 +79,10 @@ class Reminder < ActiveRecord::Base
 			ri.set_schedule
 		end
 
-		puts "%%%% rules = #{num_reminders} %%%%%%"
-		puts occurrences_hash
-		puts "%%%%%%%%%%%%%%%%%%%%%"
-
 		doses.times do
 			next_occurrence = [occurrences_hash.keys.first, occurrences_hash[occurrences_hash.keys.first]]
 			
 			occurrences_hash.each do |id, time|
-				puts "#{next_occurrence[1]} < #{time}?"
 				next_occurrence = [id, time] if time && time < next_occurrence[1]
 			end
 			puts occurrences_hash;
