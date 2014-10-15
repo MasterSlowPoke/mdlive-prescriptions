@@ -1,0 +1,14 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= @current_count %>
+    <span class="glyphicon glyphicon-envelope"></span>
+  </a>
+  <ul class="dropdown-menu current-reminders" role="menu">
+    <% if @current_count > 0 %>
+      <h5>You currently have <%= @current_count %> Reminder active:</h5>
+      <%= render partial: 'doses', locals: { doses: @current_doses } %>
+    <% else %>
+    	You have no Reminders active right now.
+    <% end %>
+  </ul>
+</li>

@@ -9,6 +9,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><p class="navbar-text">Welcome, <%= current_user.name %></p></li>
+          <%= render 'layouts/navbar/current_reminders' %>
           <li class="logout"><%= link_to '<span class="glyphicon glyphicon-log-out"></span> Log Out'.html_safe, destroy_user_session_path, method: :delete %></li> 
         <% else %>
         	<%= render 'layouts/navbar/login' %>

@@ -8,6 +8,7 @@
 			<%= link_to "(+) Add New Reminder", new_reminder_path %> 
 		</p>
 
+		<h2>Active Reminders</h2>
 		<% if @current_doses.empty? %>
 			<p>No reminders active right now!</p>
 		<% else %>

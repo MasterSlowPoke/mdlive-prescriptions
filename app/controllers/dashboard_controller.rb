@@ -4,7 +4,6 @@ class DashboardController < ApplicationController
   def index
   	if current_user
   		@todays_doses = current_user.get_days_doses(Date.today)
-      @current_doses = current_user.get_current_doses
   	else
   		@user = User.new
   	end
