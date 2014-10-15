@@ -1,8 +1,8 @@
 <li>
-  <%= '<span class="glyphicon glyphicon-envelope"></span>'.html_safe if reminder_rule.emailable %>
-  <%= '<span class="glyphicon glyphicon-phone"></span>'.html_safe if reminder_rule.textable %>
-  <%= int_to_day_of_week(reminder_rule.day_of_week) %>, at <%= Time.zone.parse(reminder_rule.time_of_day).strftime("%l:%M %p") %> |
+  <%= int_to_day_of_week(reminder_rule.day_of_week) %>, at <%= Time.zone.parse(reminder_rule.time_of_day).strftime("%l:%M %p") %>
 	<ul class="horizontal small">
+  <li><%= '<span class="glyphicon glyphicon-envelope" title="Reminders by Email"></span>'.html_safe if reminder_rule.emailable %></li>
+  <li><%= '<span class="glyphicon glyphicon-phone" title="Reminders by Text Message"></span>'.html_safe if reminder_rule.textable %></li>
 		<li><%= link_to 'Edit', edit_reminder_rule_path(reminder_rule) %></li>
  		<li><%= link_to 'Delete', reminder_rule, method: :delete %></li>
  	</ul>

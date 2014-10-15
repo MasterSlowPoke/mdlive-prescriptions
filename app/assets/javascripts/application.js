@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
@@ -26,4 +27,6 @@ $( function() {
   	console.dir(this);
   	$('#delete-account')[0].disabled = !this.checked;
   })
+
+  $('.glyphicon[title]').tooltip()
 });
