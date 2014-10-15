@@ -99,6 +99,15 @@ body {
 	min-height: 200px;
 }
 
+.active {
+	padding: 7px;
+	display: block;
+	margin: -7px 0px;
+	background: #a00;
+	color: white;
+	border-radius: 10px;
+}
+
 .login {
 	width: 280px;
 	padding: 10px;
