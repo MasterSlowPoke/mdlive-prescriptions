@@ -8,18 +8,18 @@
 			<%= link_to "(+) Add New Reminder", new_reminder_path %> 
 		</p>
 
+	  <% if true %>
+	    <%= link_to 'Export all Reminders to iCalendar', user_path(current_user, format: :ics), class: "button-link" %>
+	  <% else %>
+	    <div class="button-link" disabled>Export to iCalendar</div>
+  	<% end %>
+
 		<h2>Active Reminders</h2>
 		<% if @current_doses.empty? %>
 			<p>No reminders active right now!</p>
 		<% else %>
 			<%= render partial: 'doses', locals: { doses: @current_doses } %>
 		<% end %>
-
-	  <% if true %>
-	    <%= link_to 'Export all Reminders to iCalendar', user_path(current_user, format: :ics), class: "button-link" %>
-	  <% else %>
-	    <div class="button-link" disabled>Export to iCalendar</div>
-  	<% end %>
 	</section>
 	<section class='sidebar'>
 		<h2>Today's Reminders</h2>
