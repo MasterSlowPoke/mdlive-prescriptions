@@ -22,6 +22,11 @@ body {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/*a, a:visited, a:hover {
+	color: #d23;
+	font-weight: bold;
+}*/
+
 #menu-glyph {
  	margin-left: 0.5%;
  	margin-top: 0.5%;
@@ -49,6 +54,10 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+/*a.navbar-brand {
+	font-weight: normal;
+}*/
 
 .navbar-nav > li > a {
 	padding-top: 20px;
@@ -143,8 +152,7 @@ body {
 	border-radius: 15px;
 	padding: 10px;
 	width: 85%;
-	box-shadow: 0px 5px 15px 2px #aaa;
-	border: 1px solid #888;
+	box-shadow: 0px 5px 15px #444;
 }
 
 p.popup:empty {
@@ -152,13 +160,11 @@ p.popup:empty {
 }
 
 .notice {
-	background: #88a;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#99a));
+	background: #bbd;
 }
 
 .alert {
-	background: #c99;
-	background: -webkit-gradient(linear, left top, left bottom, from(#fdd), to(#b99));
+	background: #dbb;
 }
 
 .container {
@@ -191,6 +197,7 @@ p.popup:empty {
 	box-shadow: 0px -1px 12px 1px #AA9 inset, 0px 0px 5px #aaa;
 	min-width: 115px;
 	text-align: center;
+	/*font-weight: normal;*/
 }
 
 .content-nav a:hover {
@@ -366,10 +373,6 @@ p.popup:empty {
 	width: initial;
 }
 
-.sidebar a, .sidebar a:visited {
-	text-decoration: underline;
-}
-
 .new-reminder {
 	width: 200px;
 	margin-bottom: 10px;
@@ -378,4 +381,8 @@ p.popup:empty {
 tr.admin {
 	font-weight: bold;
 	color: #a00;
+}
+
+dd > a::before {
+	content: "➤";
 }
