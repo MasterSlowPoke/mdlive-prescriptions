@@ -9,6 +9,6 @@
 	<% doses = current_user.get_days_doses(date) %>
 
 	<% unless doses.empty? %>
-		<%= render partial: 'days_doses', locals: { doses: doses } %>
+		<%= render partial: 'doses', locals: { doses: doses } %>
 	<% end %>
 <% end %>
