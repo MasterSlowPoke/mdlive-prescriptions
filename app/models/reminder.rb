@@ -134,6 +134,7 @@ class Reminder < ActiveRecord::Base
 			doses = []
 			
 			reminder_rules.each do |rr|
+				next unless rr.schedule.terminating?
 				dose = rr.schedule.send(function) 
 				doses << dose unless dose.nil?
 			end
