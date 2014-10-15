@@ -126,23 +126,26 @@ body {
 	text-decoration: none !important;
 }
 
-.login-links {
+ul.horizontal {
 	list-style: none;
-	text-align: center;
 	padding: 0;
-	margin: 10px 0px;
 }
 
-.login-links li {
+ul.horizontal li {
 	display: inline;
 }
 
-.login-links li::after {
+ul.horizontal li::after {
 	content: " | ";
 }
 
-.login-links li:last-child::after {
+ul.horizontal li:last-child::after {
 	content: "";
+}
+
+.login-links {
+	text-align: center;
+	margin: 10px 0px;
 }
 
 .logout, .logout a, .logout a:visited {
