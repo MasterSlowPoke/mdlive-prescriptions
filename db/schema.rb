@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014161603) do
+ActiveRecord::Schema.define(version: 20141015162817) do
 
   create_table "reminder_rules", force: true do |t|
     t.integer  "reminder_id"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20141014161603) do
     t.integer  "day_of_week", limit: 255,                   null: false
     t.string   "time_of_day",             default: "13:37", null: false
     t.text     "schedule"
+    t.boolean  "textable",                default: true,    null: false
+    t.boolean  "emailable",               default: true,    null: false
   end
 
   add_index "reminder_rules", ["reminder_id"], name: "index_reminder_rules_on_reminder_id"
