@@ -55,6 +55,28 @@ class User < ActiveRecord::Base
     })
   end 
 
+  def get_current_doses 
+    all_doses = {}
+
+    reminders.each do |r|
+      r.get_current_doses.each do |dose|
+        time = dose.strftime("%l:%M %p")
+        all_doses[time] ||= [] 
+        all_doses[time] << r
+      end
+    end
+
+    all_doses.sort do |a, b|
+      if a[0][-2] == "A" && b[0][-2] == "P" 
+        -1
+      elsif a[0][-2] == "P" && b[0][-2] == "A"
+        1
+      else
+        a[0] <=> b[0]
+      end
+    end
+  end
+
   def get_days_doses(date)
     all_doses = {}
 

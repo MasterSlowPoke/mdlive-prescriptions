@@ -30,6 +30,10 @@ class Reminder < ActiveRecord::Base
 		assign_counts()
 	end
 
+	def get_current_doses
+		enumerate_doses(Time.zone.now - 30.minutes, Time.zone.now + 30.minutes)
+	end
+
 	def get_days_doses(date)
 		enumerate_doses(date.beginning_of_day, date.end_of_day)
 	end

@@ -1,12 +1,8 @@
-<% if doses.empty? %>
-	<p>No reminders for today!</p>
-<% else %>
-	<dl>
-		<% doses.each do |dose| %>
-		  <dt><%= dose[0] %></dt>
-		  <% dose[1].each do |reminder| %>
-		    <dd><%= link_to reminder.title, reminder %></dt>
-		  <% end %>
-		<% end %>
-	</dl>
-<% end %>
+<dl>
+	<% doses.each do |dose| %>
+	  <dt><%= dose[0] %></dt>
+	  <% dose[1].each do |reminder| %>
+	    <dd><%= link_to reminder.title, reminder %></dt>
+	  <% end %>
+	<% end %>
+</dl>
