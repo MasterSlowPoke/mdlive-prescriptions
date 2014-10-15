@@ -27,7 +27,7 @@ class ReminderRulesController < ApplicationController
   def create
     respond_to do |format|
       if @reminder_rule = ReminderRule.new(reminder_rule_params)
-        format.html { redirect_to @reminder_rule.reminder, notice: 'Reminder rule was successfully created.' }
+        format.html { redirect_to @reminder_rule.reminder, notice: "Notification was set successfully." }
         format.json { render :show, status: :created, location: @reminder_rule }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class ReminderRulesController < ApplicationController
   def update
     respond_to do |format|
       if @reminder_rule.update(reminder_rule_params)
-        format.html { redirect_to @reminder_rule.reminder, notice: 'Reminder rule was successfully updated.' }
+        format.html { redirect_to @reminder_rule.reminder, notice: 'Notification was updated successfully.' }
         format.json { render :show, status: :ok, location: @reminder_rule }
       else
         format.html { render :edit }
