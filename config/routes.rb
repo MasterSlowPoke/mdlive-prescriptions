@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   get '/calendar', to: "dashboard#calendar"
 
+  get '/pitchday', to: "dashboard#pitch"
+
   devise_for :users, controllers: { registrations: "users/registrations" }
   
   resources :users

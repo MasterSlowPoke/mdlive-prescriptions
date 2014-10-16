@@ -9,6 +9,11 @@ class DashboardController < ApplicationController
   	end
   end
 
+  def pitch 
+    current_user.send_reminders(Date.today.beginning_of_day, Date.today.end_of_day) if current_user
+    redirect_to :index
+  end
+
   def calendar
   	@date = params[:month] ? Date.parse(params[:month] + "-1") : Date.today
   end
