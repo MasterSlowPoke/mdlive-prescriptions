@@ -1,19 +1,6 @@
 <% if current_user %>
 	<h1>Welcome, <%= current_user.name %></h1>
-	<section class="col-1">
-		<p>
-			You currently have <%= current_user.reminders.count %> reminders.
-		</p>
-		<p>
-			<%= link_to "(+) Add New Reminder", new_reminder_path %> 
-		</p>
-
-	  <% if true %>
-	    <%= link_to 'Export all Reminders to iCalendar', user_path(current_user, format: :ics), class: "button-link" %>
-	  <% else %>
-	    <div class="button-link" disabled>Export to iCalendar</div>
-  	<% end %>
-
+	<section class="col-md-4">
 		<h2>Active Reminders</h2>
 		<% if @current_doses.empty? %>
 			<p>No reminders active right now!</p>
@@ -21,14 +8,34 @@
 			<%= render partial: 'doses', locals: { doses: @current_doses } %>
 		<% end %>
 	</section>
-	<section class='sidebar'>
-		<h2>Today's Reminders</h2>
-		<% if @todays_doses.empty? %>
-			<p>No reminders for today!</p>
-		<% else %>
-			<%= render partial: 'doses', locals: { doses: @todays_doses } %>
-		<% end %>
+	<section class="col-md-4">
+		<p>
+			You currently have <%= current_user.reminders.count %> reminders.
+		</p>
+		<p>
+			<%= link_to "(+) Add New Reminder", new_reminder_path %> 
+		</p>
+
+		<div class="export">
+			<% if true %>
+		    <%= link_to 'Export all Reminders to iCalendar', user_path(current_user, format: :ics), class: "button-link" %>
+		  <% else %>
+		    <div class="button-link" disabled>Export to iCalendar</div>
+	  	<% end %>
+  	</div>
 	</section>
+
+	<section class='col-md-4'>
+		<aside class='sidebar'>
+			<h2>Today's Reminders</h2>
+			<% if @todays_doses.empty? %>
+				<p>No reminders for today!</p>
+			<% else %>
+				<%= render partial: 'doses', locals: { doses: @todays_doses } %>
+			<% end %>
+		</aside>
+	</section>
+
 <% else %> 
 	<button type="button" class="btn btn-default">
 	<div> <%= render 'devise/menu/registration_items' %></div>

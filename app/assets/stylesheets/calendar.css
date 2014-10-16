@@ -23,9 +23,10 @@
 
 .calendar th {
 	font-size: 20px;
-	background: #99A;
+	background: #c00;
 	text-align: center;
-	text-shadow: 1px 1px 1px #eee;
+	color: white;
+	border-color: #400;
 }
 
 .calendar td {
