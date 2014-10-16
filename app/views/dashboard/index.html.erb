@@ -1,6 +1,6 @@
 <% if current_user %>
 	<h1>Welcome, <%= current_user.name %></h1>
-	<section class="col-md-4">
+	<section class="col-md-3">
 		<h2>Active Reminders</h2>
 		<% if @current_doses.empty? %>
 			<p>No reminders active right now!</p>
@@ -8,7 +8,7 @@
 			<%= render partial: 'doses', locals: { doses: @current_doses } %>
 		<% end %>
 	</section>
-	<section class="col-md-4">
+	<section class="col-md-5">
 		<p>
 			You currently have <%= current_user.reminders.count %> reminders.
 		</p>
