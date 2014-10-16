@@ -54,7 +54,7 @@ class Reminder < ActiveRecord::Base
 		days = { 0 => nil, 1 => nil, 2 => nil, 3 => nil, 4 => nil, 5 => nil, 6 => nil}
 
 		reminder_rules.all.each do |rr|
-			return "Everyday" if rr.day_of_week == "7"
+			return "Everyday" if rr.day_of_week == 7
 
 			days[rr.day_of_week.to_i] = Date::ABBR_DAYNAMES[rr.day_of_week.to_i]
 		end
