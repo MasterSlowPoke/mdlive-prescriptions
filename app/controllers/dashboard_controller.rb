@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
 
   def pitch 
     current_user.send_reminders(Date.today.beginning_of_day, Date.today.end_of_day) if current_user
-    redirect_to :index
+    redirect_to root_path
   end
 
   def calendar
