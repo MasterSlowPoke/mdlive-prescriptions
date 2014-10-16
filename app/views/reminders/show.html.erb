@@ -15,7 +15,9 @@
     <% end %>
   </dl>
 
-  <%= link_to "Delete #{@reminder.title}", @reminder, method: :delete, class: "button-link warning" %>
+  <div class="centered-button">
+    <%= link_to "Delete #{@reminder.title}", @reminder, method: :delete, class: "button-link" %>
+  </div>
 
   <h2>Dosage Times</h2>
   <% if @reminder.reminder_rules.empty? %>
@@ -43,7 +45,7 @@
     </ul>
   <% end %>
 
-  <div class="export">
+  <div class="centered-button">
     <% if @reminder.exportable? %>
       <%= link_to 'Export to iCalendar', reminder_path(@reminder, format: :ics), class: "button-link" %>
     <% else %>

@@ -16,7 +16,7 @@
 			<%= link_to "(+) Add New Reminder", new_reminder_path %> 
 		</p>
 
-		<div class="export">
+	  <div class="centered-button">
 			<% if true %>
 		    <%= link_to 'Export all Reminders to iCalendar', user_path(current_user, format: :ics), class: "button-link" %>
 		  <% else %>

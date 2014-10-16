@@ -12,7 +12,8 @@
 	  <p>Canceling your account is an irreversible process. Your data will be completely removed.</p>
 	  
 	  <%= label_tag :accept, "#{check_box_tag :accept} I understand that nothing can save a deleted account.".html_safe %>
-
-	  <%= button_to "Delete Account Permanently", users_path, { id: 'delete-account', method: :delete, disabled: true }%>
+	  <div class="centered-button">
+	  	<%= button_to "Delete Account Permanently", users_path, { id: 'delete-account', method: :delete, disabled: true }%>
+		</div>
 	</aside>
 </section>
