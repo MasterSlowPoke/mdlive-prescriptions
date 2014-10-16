@@ -219,14 +219,6 @@ ul.horizontal li:last-child::after {
 	vertical-align: top;
 }
 
-.content .col-1 {
-	width: 67%;
-}
-
-.content .col-2 {
-	width: 47%;
-}
-
 .content h1 {
 	font-size: 30px;
 	margin-top: 0;
@@ -239,7 +231,10 @@ ul.horizontal li:last-child::after {
 .content h2 {
 	font-size: 26px;
 	margin: 0;
-	padding-bottom: 2px;
+	padding-left: 10px;
+	margin-bottom: 7px;
+	padding-bottom: 3px;
+	border-bottom: 2px solid #d44;
 }
 
 .content .header-links {
@@ -291,7 +286,7 @@ ul.horizontal li:last-child::after {
 	margin: 10px auto 0px;
 	min-width: 150px;
 	padding: 5px 20px;
-	display: block;
+	display: inline-block;
 	background: #eee;
 	border-radius: 20px;
 	box-shadow: 1px 1px 5px #888 inset, -2px -2px 5px #444 inset, 2px 2px 10px #888;

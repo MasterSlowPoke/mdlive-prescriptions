@@ -1,6 +1,6 @@
 <h1><%= @reminder.title %></h1>
 
-<section class="col-2">
+<section class="col-md-6">
   <h2>About <span class="header-links"><%= link_to '(Edit)', edit_reminder_path(@reminder) %></span></h2>
   <dl>
     <dt>Number of Doses</dt>
@@ -30,7 +30,7 @@
   <% end %>
 </section>
 
-<section class="col-2">
+<section class="col-md-6">
   <h2>Notification Times</h2>
 
   <% if @reminder.reminder_rules.empty? %>
