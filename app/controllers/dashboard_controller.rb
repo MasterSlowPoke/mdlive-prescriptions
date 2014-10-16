@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
   	if current_user
   		@todays_doses = current_user.get_days_doses(Date.today)
   	else
-  		@user = User.new
+  		redirect_to new_user_session_path
   	end
   end
 
