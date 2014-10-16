@@ -43,7 +43,7 @@ class Reminder < ActiveRecord::Base
 	end
 
 	def next_dose
-		get_dose(:next_occurrence)
+		get_dose(:next_occurrence) || "All done!"
 	end
 
 	def last_dose
