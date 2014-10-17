@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ReminderItemTest < ActiveSupport::TestCase
+class ReminderRuleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
