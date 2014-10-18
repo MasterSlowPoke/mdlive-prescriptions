@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class RemindersControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
+    @user = users(:one)
+    sign_in :user, @user 
     @reminder = reminders(:one)
   end
 
@@ -18,13 +22,17 @@ class RemindersControllerTest < ActionController::TestCase
 
   test "should create reminder" do
     assert_difference('Reminder.count') do
-      post :create, reminder: { doses: @reminder.doses, notes: @reminder.notes, num_per: @reminder.num_per, start: @reminder.start, time_period: @reminder.time_period, title: @reminder.title }
+      post :create, reminder: { doses: @reminder.doses, notes: @reminder.notes, start: @reminder.start, title: @reminder.title }
     end
 
     assert_redirected_to reminder_path(assigns(:reminder))
   end
 
   test "should show reminder" do
+    @reminder.reminder_rules.each do |rr|
+      rr.set_schedule
+      rr.save
+    end
     get :show, id: @reminder
     assert_response :success
   end
@@ -35,7 +43,11 @@ class RemindersControllerTest < ActionController::TestCase
   end
 
   test "should update reminder" do
-    patch :update, id: @reminder, reminder: { doses: @reminder.doses, notes: @reminder.notes, num_per: @reminder.num_per, start: @reminder.start, time_period: @reminder.time_period, title: @reminder.title }
+    @reminder.reminder_rules.each do |rr|
+      rr.set_schedule
+      rr.save
+    end
+    patch :update, id: @reminder, reminder: { doses: @reminder.doses, notes: @reminder.notes, start: @reminder.start, title: @reminder.title }
     assert_redirected_to reminder_path(assigns(:reminder))
   end
 
