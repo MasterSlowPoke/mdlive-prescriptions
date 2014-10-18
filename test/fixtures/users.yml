@@ -8,8 +8,10 @@ one:
   name: UserOne
   email: one@email.com
   phone: 5555555555
+  encrypted_password: password
 
 two:
   name: UserTwo
   email: two@email.com
   phone: 5555555556
+  encrypted_password: password

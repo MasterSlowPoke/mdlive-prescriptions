@@ -3,7 +3,6 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   setup do 
     @user = users(:one)
-    @user.password = "password"
     assert @user.save, "user object not savable"
   end
 
@@ -29,5 +28,11 @@ class UserTest < ActiveSupport::TestCase
       @user.phone = input
       assert @user.phone = 5555555555, "phone number #{input} was allowed"
     end
+  end
+
+  test "password and password_confirmation must match" do
+    @user.password = "new_password"
+    @user.password_confirmation = "not_the_same_thing"
+    refute @user.save, "passwords didn't match yet the user was allowed to save"
   end
 end
