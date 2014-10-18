@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  validates :name, presence: true
   validates :phone, numericality: { greater_than: 999999999, message: "Number must be a 7 digit number with area code." }
 
   has_many :reminders, dependent: :destroy

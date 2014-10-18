@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015162817) do
+ActiveRecord::Schema.define(version: 20141018033145) do
 
   create_table "reminder_rules", force: true do |t|
     t.integer  "reminder_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20141015162817) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.string   "name",                                             null: false
     t.boolean  "admin",                            default: false
     t.integer  "phone",                  limit: 8
   end
