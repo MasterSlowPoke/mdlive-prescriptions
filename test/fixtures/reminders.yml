@@ -2,16 +2,16 @@
 
 one:
   title: MyString
-  num_per: 1
-  time_period: MyString
+  time_period: 1
   notes: MyText
-  start: 
-  doses: 1
+  start: <%= Time.now %>
+  doses: 10
+  id: 1
 
 two:
   title: MyString
-  num_per: 1
-  time_period: MyString
+  time_period: 1
   notes: MyText
-  start: 
-  doses: 1
+  start: <%= Time.now %>
+  doses: 10
+  id: 2
