@@ -60,16 +60,6 @@ class RemindersController < ApplicationController
     end
   end
 
-  def test_mailer_reminder
-      @reminder.send_test_email
-       redirect_to @reminder, notice: 'test email send'
-  end 
-
-def test_text_reminder
-      @reminder.send_text
-       redirect_to @reminder, notice: 'test text send'
-  end 
-
   # PATCH/PUT /reminders/1
   # PATCH/PUT /reminders/1.json
   def update
