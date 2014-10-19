@@ -1,17 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   title: MyString
-  time_period: 1
   notes: MyText
   start: <%= Time.now %>
   doses: 10
-  id: 1
 
 two:
   title: MyString
-  time_period: 1
   notes: MyText
   start: <%= Time.now %>
   doses: 10
-  id: 2
+
+reminder_without_rules:
+  title: NoRules
+  notes: CantExport
+  start: <%= Time.now %>
+  doses: 10
