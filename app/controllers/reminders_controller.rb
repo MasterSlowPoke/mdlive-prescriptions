@@ -30,6 +30,9 @@ class RemindersController < ApplicationController
   # GET /reminders/new
   def new
     @reminder = Reminder.new({}, current_user)
+    2.times do 
+      @reminder.reminder_rules.build
+    end
   end
 
   # GET /reminders/1/edit
@@ -93,6 +96,10 @@ class RemindersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-      params.require(:reminder).permit(:title, :num_per, :time_period, :notes, :start, :doses)
+      params.require(:reminder).permit(:title, :num_per, :time_period, :notes, :start, :doses, reminder_rules_attributes: reminder_rule_params)
     end
+
+    def reminder_rule_params
+      [:id, :time_of_day, :day_of_week, :emailable, :textable]
+    end 
 end

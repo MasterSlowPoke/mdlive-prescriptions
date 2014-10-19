@@ -1,5 +1,6 @@
 class Reminder < ActiveRecord::Base
   has_many :reminder_rules, dependent: :destroy
+  accepts_nested_attributes_for :reminder_rules, allow_destroy: true
 
 	belongs_to :user
 
@@ -8,6 +9,8 @@ class Reminder < ActiveRecord::Base
 
 	after_create :send_new_reminder_email
 
+	after_save :assign_counts
+
   def exportable? 
   	!reminder_rules.empty?
   end
@@ -15,11 +18,6 @@ class Reminder < ActiveRecord::Base
 	def initialize(reminder_params, current_user)
 		super(reminder_params)
 		self.user = current_user
-	end
-
-	def update(reminder_params)
-		super(reminder_params)
-		assign_counts()
 	end
 
 	def get_current_doses
@@ -56,43 +54,51 @@ class Reminder < ActiveRecord::Base
 		days.length == 7 ? "Everyday" : days.values.join(", ")
 	end
 
-	def assign_counts
-		return true if reminder_rules.empty?
+  def assign_counts(start_time = start)
+    return true if reminder_rules.empty?
 
-		num_reminders = reminder_rules.count
-		counts_hash = {}
-		occurrences_hash = {}
-		ri_hash = {}
+    rule_data = {}
 
-		reminder_rules.each do |ri|
-			counts_hash[ri.id] = 0
-			occurrences_hash[ri.id] = ri.schedule.first
-			ri_hash[ri.id] = ri
-			ri.set_schedule
-		end
+    reminder_rules.each do |rr|
+      rr.set_schedule(nil, start)
 
-		doses.times do
-			next_occurrence = [occurrences_hash.keys.first, occurrences_hash[occurrences_hash.keys.first]]
-			
-			occurrences_hash.each do |id, time|
-				next_occurrence = [id, time] if time && time < next_occurrence[1]
-			end
+      if (rr.schedule.first)
+	      rule_data[rr.id] = OpenStruct.new
+	      rule_data[rr.id].rule = rr
+	      rule_data[rr.id].occurences = 0
+	      rule_data[rr.id].next = rr.schedule.first
+	    end
+    end
 
-			counts_hash[next_occurrence[0]] += 1
-			occurrences_hash[next_occurrence[0]] = ri_hash[next_occurrence[0]].schedule.next_occurrence(next_occurrence[1])
-		end
+    doses.times do
+    	# find the time and id of the first rule in rule data
+      next_id = rule_data.keys.first
+      next_time = rule_data[next_id].next
 
-		reminder_rules.each do |ri|
-			ri.set_schedule(counts_hash[ri.id])
-			ri.save
-		end
-	end
+      # test each rule to see which is the earliest
+      rule_data.each do |id, data|
+      	if data.next < next_time
+      		next_id = id
+      		next_time = data.next
+      	end
+      end
+
+      # increase the count of the next rule, then find the next time that rule occurs
+      rule_data[next_id].occurences += 1
+      rule_data[next_id].next = rule_data[next_id].rule.schedule.next_occurrence(next_time)
+    end
+
+    reminder_rules.each do |rr|
+      rr.set_schedule(rule_data[rr.id].occurences)
+      rr.save
+    end
+  end
 
 	def enumerate_doses(start_date = start, end_date = nil)
 		all_doses = []
 
 		reminder_rules.each do |ri|
-			next unless ri.schedule.terminating? 
+			next unless ri.schedule && ri.schedule.terminating? 
 			
 			ri.schedule.all_occurrences.each do |o|
 				all_doses.push NotificationTime.new(o, ri) if (o > start_date) && (end_date ? (o < end_date) : true)
