@@ -46,7 +46,7 @@ class ReminderRulesControllerTest < ActionController::TestCase
   end
 
   test "should destroy reminder_rule and redirect to former parent" do
-    reminder_id = @reminder_rule.id 
+    reminder_id = @reminder_rule.reminder.id 
     assert_difference('ReminderRule.count', -1) do
       delete :destroy, id: @reminder_rule
     end
