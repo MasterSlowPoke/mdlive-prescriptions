@@ -5,7 +5,6 @@ class Reminder < ActiveRecord::Base
 
 	validates :title, presence: true
 	validates :doses, numericality: { greater_than: 0 }
-	# validate :validate_start
 
 	after_create :send_new_reminder_email
 
@@ -14,11 +13,6 @@ class Reminder < ActiveRecord::Base
   def exportable? 
   	!reminder_rules.empty?
   end
-
-	def validate_start 
-		set_start
-		errors.add(:start, start.nil?)
-	end
 
 	def initialize(reminder_params, current_user)
 		super(reminder_params)
@@ -112,11 +106,6 @@ class Reminder < ActiveRecord::Base
 		end
 	end
 
-	def days_of_week
-		# self.enumerate_doses.map(&:wday).uniq
-		# Date::DAYNAMES
-	end
-
 	protected
 		def send_new_reminder_email
 			UserMailer.reminder_email(user, self).deliver
@@ -128,7 +117,6 @@ class Reminder < ActiveRecord::Base
 			end
 		end
 
-	private
 		def get_dose(function)
 			return "No Rules are set yet!" if reminder_rules.empty?
 
@@ -141,25 +129,4 @@ class Reminder < ActiveRecord::Base
 			end
 			doses.sort[0]
 		end
-
-	# def create_reminder_rules
-	# 	doses.times do |n|
-	# 		ri = ReminderRule.new
-			
-	# 		case time_period.downcase
-	# 		when "day"
-	# 			ri.scheduled_time = (n.to_f/num_per).days.from_now
-	# 		when "week"
-	# 			ri.scheduled_time = (n.to_f/num_per).weeks.from_now
-	# 		when "year"
-	# 			ri.scheduled_time = (n.to_f/num_per*365).days.from_now
-	# 		else
-	# 			return false
-	# 		end
-
-	# 		ri.reminder = self
-	# 		ri.save
-	# 	end
-	# end
-
 end 
