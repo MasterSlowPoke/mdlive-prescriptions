@@ -3,7 +3,9 @@ class ReminderRule < ActiveRecord::Base
 
 	serialize :schedule, Schedule
 
-  validates :time_of_day, format: { with: /[0-2][0-9](:)[0-5][0-9]/, message: "is not a valid time." }
+  validates :emailable, :textable, presence: true
+  validates :time_of_day, format: { with: /\A[0-2][0-9](:)[0-5][0-9]\z/, message: "is not a valid time." }
+  validates :day_of_week, numericality: { only_integer: true, greater_than: -1, less_than: 8 }
 
   belongs_to :reminder
 
@@ -34,12 +36,7 @@ class ReminderRule < ActiveRecord::Base
   end
 
   def ical_freq
-    case day_of_week
-    when 7
-      "DAILY"
-    else
-      "WEEKLY"
-    end
+    day_of_week == 7 ? "DAILY" : "WEEKLY"
   end
 
   def set_schedule(count = nil)
