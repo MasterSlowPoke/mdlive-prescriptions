@@ -1,5 +1,5 @@
 class Reminder < ActiveRecord::Base
-	has_many :reminder_rules
+  has_many :reminder_rules, dependent: :destroy
 
 	belongs_to :user
 
@@ -7,8 +7,6 @@ class Reminder < ActiveRecord::Base
 	validates :doses, numericality: { greater_than: 0 }
 
 	after_create :send_new_reminder_email
-
-  before_destroy :destroy_rules
 
   def exportable? 
   	!reminder_rules.empty?
@@ -109,12 +107,6 @@ class Reminder < ActiveRecord::Base
 	protected
 		def send_new_reminder_email
 			UserMailer.reminder_email(user, self).deliver
-		end
-
-		def destroy_rules
-			reminder_rules.each do |rr|
-				rr.destroy
-			end
 		end
 
 		def get_dose(function)
