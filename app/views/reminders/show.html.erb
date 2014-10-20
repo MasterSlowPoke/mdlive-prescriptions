@@ -18,21 +18,6 @@
   <div class="centered-button">
     <%= link_to "Delete #{@reminder.title}", @reminder, method: :delete, class: "button-link" %>
   </div>
-
-  <h2>Dosage Times</h2>
-  <% if @reminder.reminder_rules.empty? %>
-    <p>No Reminder Rules found!</p>
-  <% else %>
-    <% dosage_times = @reminder.enumerate_doses %>
-    <ol>
-      <% dosage_times.each do |dose| %>
-        <li><%= formatted_time(dose.time) %></li>
-      <% end %>
-    </ol>
-  <% end %>
-</section>
-
-<section class="col-md-6">
   <h2>Notification Times</h2>
 
   <% if @reminder.reminder_rules.empty? %>
@@ -52,7 +37,18 @@
       <div class="button-link" disabled>Export to iCalendar</div>
     <% end %>
   </div>
+</section>
 
-  <h2>Add A New Notification Time</h2>
-  <%= render 'reminder_rules/form' %>
+<section class="col-md-6">
+  <h2>Dosage Times</h2>
+  <% if @reminder.reminder_rules.empty? %>
+    <p>No Reminder Rules found!</p>
+  <% else %>
+    <% dosage_times = @reminder.enumerate_doses %>
+    <ol>
+      <% dosage_times.each do |dose| %>
+        <li><%= formatted_time(dose.time) %></li>
+      <% end %>
+    </ol>
+  <% end %>
 </section>
