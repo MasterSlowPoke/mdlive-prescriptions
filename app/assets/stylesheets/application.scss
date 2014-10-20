@@ -276,6 +276,13 @@ ul.horizontal li:last-child::after {
 	margin: 0px 10px;
 }
 
+fieldset {
+	padding: 10px;
+	border: 1px solid #ccc;
+	background: #f4f4f4;
+	border-radius: 20px;
+}
+
 .sublabel {
 	font-weight: normal;
 	font-size: 13px;
