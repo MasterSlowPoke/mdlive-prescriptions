@@ -19,5 +19,10 @@
         <%= f.check_box :textable %>
       </div>
     </div>
+    
+    <div class="form-group">
+      <%= f.hidden_field :_destroy, value: 0 %>
+      <%= link_to "Remove this Notification Time", '#', class: 'remove_fields' %>
+    </div>
   </fieldset>
 </div>
