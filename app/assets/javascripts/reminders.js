@@ -4,11 +4,8 @@ $( function() {
 
     old_id = new RegExp($(this).data('id'), 'g');
     time = new Date().getTime();
+    new_fields = $(this).data('fields').replace(old_id, time)
 
-    $('.row').append(
-        $(this).data('fields').replace(old_id, time)
-      );
-
-    console.log(old_id);
+    $('.row').append(new_fields);
   })
 })
