@@ -100,6 +100,6 @@ class RemindersController < ApplicationController
     end
 
     def reminder_rule_params
-      [:id, :time_of_day, :day_of_week, :emailable, :textable]
+      [:id, :time_of_day, :day_of_week, :emailable, :textable, :_destroy]
     end 
 end
