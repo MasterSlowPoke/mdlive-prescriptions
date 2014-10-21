@@ -17,5 +17,5 @@ var remove_fields_func = function(e) {
   e.preventDefault();
 
   $(this).prev('input').val(1);
-  $(this).parents('.col-md-4').hide();
+  $(this).parents('.col-md-4').fadeOut();
 }
