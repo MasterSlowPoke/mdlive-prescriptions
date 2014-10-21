@@ -1,52 +1,55 @@
-<section class="form">  
-  <%= form_for(@reminder) do |f| %>
-    <% if @reminder.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@reminder.errors.count, "error") %> prohibited this reminder from being saved:</h2>
+<%= form_for(@reminder) do |f| %>
+  <% if @reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reminder.errors.count, "error") %> prohibited this reminder from being saved:</h2>
 
-        <ul>
-        <% @reminder.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label :title, "Reminder Name" %>
-      <%= f.text_field :title, class:'form-control', placeholder:"Reminder Name"%>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :doses, "Number of Doses" %>
-      <%= f.text_field :doses, class:'form-control', placeholder:"Doses" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label nil, "Start Time" %><br>
-      <%#= f.select :month, ApplicationHelper::MONTH_LIST %>
-      <%= f.label :start_3i, "Date", class: 'sublabel' %>
-      <%= f.date_select :start, order: [:month, :day, :year] %>
-      <br>
-      <%= f.label :start_4i, "Time", class: 'sublabel' %>
-      <%= f.time_select :start, ampm: true, ignore_date: true %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :notes, "Notes" %>
-      <%= f.text_area :notes, class:'form-control', placeholder:"Notes" %>
-    </div>
-    
-    <h2>Notification Times</h2>
-    <div class="row">
-      <%= f.fields_for :reminder_rules do |rules_form| %>
-        <%= render 'reminder_rule_fields', f: rules_form %>
+      <ul>
+      <% @reminder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.submit %>
+      </ul>
     </div>
   <% end %>
-</section>  
+
+  <div class="form-group">
+    <%= f.label :title, "Reminder Name" %>
+    <%= f.text_field :title, class:'form-control', placeholder:"Reminder Name"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :doses, "Number of Doses" %>
+    <%= f.text_field :doses, class:'form-control', placeholder:"Doses" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label nil, "Start Time" %><br>
+    <%#= f.select :month, ApplicationHelper::MONTH_LIST %>
+    <%= f.label :start_3i, "Date", class: 'sublabel' %>
+    <%= f.date_select :start, order: [:month, :day, :year] %>
+    <br>
+    <%= f.label :start_4i, "Time", class: 'sublabel' %>
+    <%= f.time_select :start, ampm: true, ignore_date: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :notes, "Notes" %>
+    <%= f.text_area :notes, class:'form-control', placeholder:"Notes" %>
+  </div>
+  
+  <h2>Notification Times</h2>
+  
+  <div class="new-time">
+    <%= link_to_add_rules("Add New Notification Time", f) %>
+  </div>
+
+  <div class="row">
+    <%= f.fields_for :reminder_rules do |rules_form| %>
+      <%= render 'reminder_rule_fields', f: rules_form %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+<% end %>
 
