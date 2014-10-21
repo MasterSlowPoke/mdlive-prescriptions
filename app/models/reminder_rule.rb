@@ -3,7 +3,7 @@ class ReminderRule < ActiveRecord::Base
 
 	serialize :schedule, Schedule
 
-  validates :emailable, :textable, presence: true
+  validates :emailable, :textable, inclusion: [true, false]
   validates :time_of_day, format: { with: /\A[0-2][0-9](:)[0-5][0-9]\z/, message: "is not a valid time." }
   validates :day_of_week, numericality: { only_integer: true, greater_than: -1, less_than: 8 }
 
