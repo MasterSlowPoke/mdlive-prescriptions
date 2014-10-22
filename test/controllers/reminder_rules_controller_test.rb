@@ -21,18 +21,20 @@ class ReminderRulesControllerTest < ActionController::TestCase
   #   assert_not_nil assigns(:reminder_rules)
   # end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  # no new action for reminder_rules
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
+  # end
 
-  test "should create reminder_rule and redirect to parent reminder" do
-    assert_difference('ReminderRule.count') do
-      post :create, reminder_rule: { day_of_week: 7, time_of_day: "12:00", textable: "1", emailable: "1", reminder_id: 2 }
-    end
+  # no create action for reminder_rules
+  # test "should create reminder_rule and redirect to parent reminder" do
+  #   assert_difference('ReminderRule.count') do
+  #     post :create, reminder_rule: { day_of_week: 7, time_of_day: "12:00", textable: true, emailable: true, reminder_id: 2 }
+  #   end
 
-    assert_redirected_to reminder_path(assigns(:reminder_rule).reminder)
-  end
+  #   assert_redirected_to reminder_path(assigns(:reminder_rule).reminder)
+  # end
 
   # no show action for reminder_rules
   # test "should show reminder_rule" do

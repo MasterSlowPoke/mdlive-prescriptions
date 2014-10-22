@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :reminders
 
-  resources :reminder_rules, except: [:index, :show]
+  resources :reminder_rules, only: [:edit, :update, :destroy]
 
 
 

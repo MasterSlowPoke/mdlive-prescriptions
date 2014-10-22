@@ -1,39 +1,9 @@
 class ReminderRulesController < ApplicationController
-  before_action :set_reminder_rule, only: [:show, :edit, :update, :destroy]
+  before_action :set_reminder_rule
   before_action :authenticate_user!
-
-  # GET /reminder_rules
-  # GET /reminder_rules.json
-  def index
-    @reminder_rules = ReminderRule.all
-  end
-
-  # GET /reminder_rules/1
-  # GET /reminder_rules/1.json
-  def show
-  end
-
-  # GET /reminder_rules/new
-  def new
-    @reminder_rule = ReminderRule.new
-  end
 
   # GET /reminder_rules/1/edit
   def edit
-  end
-
-  # POST /reminder_rules
-  # POST /reminder_rules.json
-  def create
-    respond_to do |format|
-      if @reminder_rule = ReminderRule.new(reminder_rule_params)
-        format.html { redirect_to @reminder_rule.reminder, notice: "Notification was set successfully." }
-        format.json { render :show, status: :created, location: @reminder_rule }
-      else
-        format.html { render :new }
-        format.json { render json: @reminder_rule.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /reminder_rules/1
