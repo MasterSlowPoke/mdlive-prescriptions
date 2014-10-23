@@ -9,12 +9,6 @@ class ReminderRule < ActiveRecord::Base
 
   belongs_to :reminder
 
-  def update(reminder_rule_params)
-  	super(reminder_rule_params)
-  	set_schedule
-  	self.save
-
-    reminder.assign_counts
   end
 
   def hour
@@ -29,17 +23,17 @@ class ReminderRule < ActiveRecord::Base
     day_of_week == 7 ? "DAILY" : "WEEKLY"
   end
 
-  def set_schedule(count = nil, start_time = nil)
+  def make_schedule(count = nil, start_time = nil)
     start_time = reminder.start if reminder && start_time == nil
-    self.schedule = Schedule.new(start_time)
   	new_rule = Rule.daily.hour_of_day(hour).minute_of_hour(min).second_of_minute(0)
   	new_rule = new_rule.count(count) if count
 
   	if (0..6).include? day_of_week
   		new_rule.day(day_of_week)
   	end
-
-  	self.schedule.add_recurrence_rule(new_rule)
+    schedule = Schedule.new(start_time)
+  	schedule.add_recurrence_rule(new_rule)
+    schedule
   end
 
   def occurs_between?(start_date, end_date)

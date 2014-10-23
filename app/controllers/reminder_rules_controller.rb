@@ -11,6 +11,7 @@ class ReminderRulesController < ApplicationController
   def update
     respond_to do |format|
       if @reminder_rule.update(reminder_rule_params)
+        CountAllocator.new(@reminder_rule.reminder).allocate!
         format.html { redirect_to @reminder_rule.reminder, notice: 'Notification was updated successfully.' }
         format.json { render :show, status: :ok, location: @reminder_rule }
       else
@@ -25,7 +26,8 @@ class ReminderRulesController < ApplicationController
   def destroy
     reminder = @reminder_rule.reminder
     @reminder_rule.destroy
-    reminder.assign_counts
+    CountAllocator.new(reminder).allocate!
+
     respond_to do |format|
       format.html { redirect_to reminder, notice: 'Reminder rule was successfully destroyed.' }
       format.json { head :no_content }

@@ -46,6 +46,7 @@ class RemindersController < ApplicationController
       @reminder = Reminder.new(reminder_params, current_user)
       respond_to do |format|
         if @reminder.save
+          CountAllocator.new(@reminder).allocate!
           format.html { redirect_to @reminder, notice: 'Reminder was successfully created.' }
           format.json { render :show, status: :created, location: @reminder }
         else
@@ -68,6 +69,7 @@ class RemindersController < ApplicationController
   def update
     respond_to do |format|
       if @reminder.update(reminder_params)
+        CountAllocator.new(@reminder).allocate!
         format.html { redirect_to @reminder, notice: 'Reminder was successfully updated.' }
         format.json { render :show, status: :ok, location: @reminder }
       else
