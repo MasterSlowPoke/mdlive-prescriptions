@@ -9,8 +9,6 @@ class ReminderRule < ActiveRecord::Base
 
   belongs_to :reminder
 
-  end
-
   def hour
     time_of_day.split(':')[0].to_i
   end
