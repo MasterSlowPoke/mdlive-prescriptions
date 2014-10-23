@@ -33,3 +33,10 @@ five:
   time_of_day: "16:00"
   textable: true
   emailable: true
+
+new_rule:
+  reminder: nil
+  day_of_week: 7
+  time_of_day: "16:05"
+  textable: true
+  emailable: true
