@@ -7,11 +7,6 @@ class ReminderRulesControllerTest < ActionController::TestCase
     @user = users(:one)
     sign_in :user, @user 
     @reminder_rule = reminder_rules(:one)
-    @reminder_rule.reminder.reminder_rules.each do |rr|
-      rr.set_schedule
-      rr.save
-    end
-    @reminder_rule.reminder.assign_counts
     CountAllocator.new(@reminder_rule.reminder).allocate!
   end
 

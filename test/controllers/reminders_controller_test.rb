@@ -29,10 +29,6 @@ class RemindersControllerTest < ActionController::TestCase
   end
 
   test "should show reminder" do
-    @reminder.reminder_rules.each do |rr|
-      rr.set_schedule
-      rr.save
-    end
     get :show, id: @reminder
     assert_response :success
   end
@@ -43,10 +39,6 @@ class RemindersControllerTest < ActionController::TestCase
   end
 
   test "should update reminder" do
-    @reminder.reminder_rules.each do |rr|
-      rr.set_schedule
-      rr.save
-    end
     patch :update, id: @reminder, reminder: { doses: @reminder.doses, notes: @reminder.notes, start: @reminder.start, title: @reminder.title }
     assert_redirected_to reminder_path(assigns(:reminder))
   end
