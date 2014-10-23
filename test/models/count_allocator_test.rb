@@ -54,9 +54,6 @@ class CountAllocatorTest < ActiveSupport::TestCase
     @allocator.allocate!
 
     all_doses = @reminder.enumerate_doses
-    all_doses.each do |d|
-      puts "-> #{d.time}"
-    end
     all_doses.count.times do |i|
       assert_equal all_doses[i].time, @next_dose, "Iteration #{i}: #{all_doses[i].time} is not equal to #{@next_dose}"
       if (i-1)%4 == 0
