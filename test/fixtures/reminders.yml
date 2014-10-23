@@ -12,6 +12,12 @@ two:
   doses: 10
   id: 2
 
+three_rules:
+  title: Three Rules
+  notes: I have 3 rules!
+  start: <%= Time.zone.parse('2014-10-1 07:00') %>
+  doses: 15
+
 reminder_without_rules:
   title: NoRules
   notes: CantExport
