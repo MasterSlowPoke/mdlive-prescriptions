@@ -29,7 +29,7 @@ class CountAllocatorTest < ActiveSupport::TestCase
       assert_equal all_doses[i].time, @next_dose, "Iteration #{i}: #{all_doses[i].time} is not equal to #{@next_dose}"
       @next_dose += 8.hours
       @next_dose += 5.minutes if i%3 == 0
-      @next_dose -= 5.minutes if (i-1)%3 == 0
+      @next_dose -= 5.minutes if all_doses[i].time.min == 5
     end
   end
 
