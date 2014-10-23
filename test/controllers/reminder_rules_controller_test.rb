@@ -12,6 +12,7 @@ class ReminderRulesControllerTest < ActionController::TestCase
       rr.save
     end
     @reminder_rule.reminder.assign_counts
+    CountAllocator.new(@reminder_rule.reminder).allocate!
   end
 
   # no index action for reminder_rules
