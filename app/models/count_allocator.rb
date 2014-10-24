@@ -3,12 +3,14 @@ class CountAllocator
     @reminder = reminder
   end
 
+  delegate :reminder_rules, :doses, :start, to: :@reminder
+
   def allocate!
-    return true if @reminder.reminder_rules.empty?
+    return true if reminder_rules.empty?
 
     rule_data = {}
-    @reminder.reminder_rules.each do |rr|
-      rr.schedule = rr.make_schedule(nil, @reminder.start)
+    reminder_rules.each do |rr|
+      rr.schedule = rr.make_schedule(nil, start)
 
       if (rr.schedule.first)
         rule_data[rr.id] = OpenStruct.new
@@ -18,7 +20,7 @@ class CountAllocator
       end
     end
 
-    @reminder.doses.times do
+    doses.times do
       # find the time and id of the first rule in rule data
       next_id = rule_data.keys.first
       next_time = rule_data[next_id].next
@@ -36,7 +38,7 @@ class CountAllocator
       rule_data[next_id].next = rule_data[next_id].rule.schedule.next_occurrence(next_time)
     end
 
-    @reminder.reminder_rules.each do |rr|
+    reminder_rules.each do |rr|
       rr.update_column(:schedule, rr.make_schedule(rule_data[rr.id].occurences).to_yaml)
     end
   end
