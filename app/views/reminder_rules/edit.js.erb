@@ -1,3 +1,7 @@
-$('#rule-<%= @reminder_rule.id %>').slideUp(function() {
-  $(this).html("<%= escape_javascript(render 'form') %>").slideDown();
-})
+<% if @reminder_rule.errors.any? %>
+  $('#rule-<%= @reminder_rule.id %>').html("<%= escape_javascript(render 'form') %>");
+<% else %>
+  $('#rule-<%= @reminder_rule.id %>').slideUp(function() {
+    $(this).html("<%= escape_javascript(render 'form') %>").slideDown();
+  })
+<% end %>
