@@ -18,9 +18,11 @@ class ReminderRulesController < ApplicationController
       if @reminder_rule.update(reminder_rule_params)
         CountAllocator.new(@reminder_rule.reminder).allocate!
         format.html { redirect_to @reminder_rule.reminder, notice: 'Notification was updated successfully.' }
+        format.js { render :show }
         format.json { render :show, status: :ok, location: @reminder_rule }
       else
         format.html { render :edit }
+        format.js { render :edit }
         format.json { render json: @reminder_rule.errors, status: :unprocessable_entity }
       end
     end
