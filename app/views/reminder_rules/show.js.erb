@@ -2,3 +2,5 @@ $('#rule-<%= @reminder_rule.id %>').slideUp(function() {
   $("<%= escape_javascript(render @reminder_rule) %>").hide().insertBefore($(this)).slideDown();
   $(this).remove();
 });
+
+$('#dosage-times').html("<%= escape_javascript(render 'reminders/dosage_times', dosage_times: @reminder_rule.reminder.enumerate_doses) %>");
