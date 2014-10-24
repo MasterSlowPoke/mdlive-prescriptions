@@ -59,8 +59,6 @@ GEM
     jquery-turbolinks (2.0.2)
       railties (>= 3.1.0)
       turbolinks
-    jquery-ui-rails (5.0.1)
-      railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
     mail (2.5.4)
@@ -160,7 +158,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-  jquery-ui-rails
   mail
   pg
   postmark-rails
