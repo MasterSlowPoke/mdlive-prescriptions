@@ -44,11 +44,9 @@
   <% if @reminder.reminder_rules.empty? %>
     <p>No Reminder Rules found!</p>
   <% else %>
-    <% dosage_times = @reminder.enumerate_doses %>
-    <ol>
-      <% dosage_times.each do |dose| %>
-        <li><%= formatted_time(dose.time) %></li>
-      <% end %>
+    <%  %>
+    <ol id="dosage-times">
+      <%= render 'dosage_times', dosage_times: @reminder.enumerate_doses %>
     </ol>
   <% end %>
 </section>
