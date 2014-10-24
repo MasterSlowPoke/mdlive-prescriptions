@@ -1,9 +1,11 @@
 <li>
-  <%= int_to_day_of_week(reminder_rule.day_of_week) %>, at <%= Time.zone.parse(reminder_rule.time_of_day).strftime("%l:%M %p") %>
-	<ul class="horizontal small">
-  <%= '<li><span class="glyphicon glyphicon-envelope" title="Reminders by Email"></span></li>'.html_safe if reminder_rule.emailable %>
-  <%= '<li><span class="glyphicon glyphicon-phone" title="Reminders by Text Message"></span></li>'.html_safe if reminder_rule.textable %>
-		<li><%= link_to 'Edit', edit_reminder_rule_path(reminder_rule) %></li>
- 		<li><%= link_to 'Delete', reminder_rule, method: :delete %></li>
- 	</ul>
+  <div id="rule-<%= reminder_rule.id %>">
+    <%= int_to_day_of_week(reminder_rule.day_of_week) %>, at <%= Time.zone.parse(reminder_rule.time_of_day).strftime("%l:%M %p") %>
+    <ul class="horizontal small">
+    <%= '<li><span class="glyphicon glyphicon-envelope" title="Reminders by Email"></span></li>'.html_safe if reminder_rule.emailable %>
+    <%= '<li><span class="glyphicon glyphicon-phone" title="Reminders by Text Message"></span></li>'.html_safe if reminder_rule.textable %>
+      <li><%= link_to 'Edit', edit_reminder_rule_path(reminder_rule), remote: true, class: 'edit-rule' %></li>
+      <li><%= link_to 'Delete', reminder_rule, method: :delete %></li>
+    </ul>
+ </div>
 </li>
