@@ -8,7 +8,7 @@ $( function() {
 
     $('.row').append(new_fields);
     $('.remove_fields:last').click(remove_fields_func)
-  })
+  });
 
   $('.remove_fields').click(remove_fields_func);
 })
