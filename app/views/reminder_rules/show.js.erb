@@ -1,3 +1,4 @@
-$('#rule-<%= @reminder_rule.id %>').hide(function() {
-  $(this).html("<%= escape_javascript(render @reminder_rule) %>").slideDown();
+$('#rule-<%= @reminder_rule.id %>').slideUp(function() {
+  $("<%= escape_javascript(render @reminder_rule) %>").hide().insertBefore($(this)).slideDown();
+  $(this).remove();
 });
