@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :reminders
 
-  resources :reminder_rules, only: [:edit, :update, :destroy]
+  resources :reminder_rules, only: [:show, :edit, :update, :destroy]
 
 
 

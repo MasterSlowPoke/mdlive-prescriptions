@@ -2,6 +2,11 @@ class ReminderRulesController < ApplicationController
   before_action :set_reminder_rule
   before_action :authenticate_user!
 
+  # GET /reminder_rules/1
+  # GET /reminder_rules/1.js
+  def show
+  end
+
   # GET /reminder_rules/1/edit
   def edit
   end
