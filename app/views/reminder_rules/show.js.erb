@@ -1,5 +1,6 @@
 $('#rule-<%= @reminder_rule.id %>').slideUp(function() {
   $("<%= escape_javascript(render @reminder_rule) %>").hide().insertBefore($(this)).slideDown();
+  $('.glyphicon[title]').tooltip();
   $(this).remove();
 });
 
