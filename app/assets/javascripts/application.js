@@ -23,7 +23,6 @@ $( function() {
   });
 
   $('#accept').change(function() {
-  	console.dir(this);
   	$('#delete-account')[0].disabled = !this.checked;
   })
 
