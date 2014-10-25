@@ -44,7 +44,6 @@
   <% if @reminder.reminder_rules.empty? %>
     <p>No Reminder Rules found!</p>
   <% else %>
-    <%  %>
     <ol id="dosage-times">
       <%= render 'dosage_times', dosage_times: @reminder.enumerate_doses %>
     </ol>
