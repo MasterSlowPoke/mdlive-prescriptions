@@ -26,5 +26,5 @@ $( function() {
   	$('#delete-account')[0].disabled = !this.checked;
   })
 
-  $('.glyphicon[title]').tooltip()
+  $('.glyphicon[title]').tooltip();
 });
