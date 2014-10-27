@@ -9,12 +9,21 @@ class ReminderRule < ActiveRecord::Base
 
   belongs_to :reminder
 
-  def hour
+  def hour_24
     time_of_day.split(':')[0].to_i
+  end
+
+  def hour
+    hour_24 % 12
   end
 
   def min
     time_of_day.split(':')[1].to_i
+  end
+
+  # returns 0 if hour is between 00 and 11, 1 if 12 to 23
+  def meridiem
+    hour_24 / 12
   end
 
   def ical_freq
@@ -23,7 +32,7 @@ class ReminderRule < ActiveRecord::Base
 
   def make_schedule(count = nil, start_time = nil)
     start_time = reminder.start if reminder && start_time == nil
-  	new_rule = Rule.daily.hour_of_day(hour).minute_of_hour(min).second_of_minute(0)
+  	new_rule = Rule.daily.hour_of_day(hour_24).minute_of_hour(min).second_of_minute(0)
   	new_rule = new_rule.count(count) if count
 
   	if (0..6).include? day_of_week
