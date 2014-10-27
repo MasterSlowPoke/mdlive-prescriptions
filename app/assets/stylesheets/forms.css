@@ -1,0 +1,74 @@
+.content .form {
+  width: 95%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sign-in {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+
+.form-control {
+  border-radius: 25px;
+  padding: 18px 20px;
+  margin-bottom: 5px;
+}
+
+.form-sub-group {
+  margin: 0px 10px;
+}
+
+fieldset {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  background: #f4f4f4;
+  border-radius: 20px;
+}
+
+.button-link, .button-link:hover, .button-link:active, input[type='submit'] {
+  margin: 10px auto 0px;
+  min-width: 150px;
+  padding: 5px 20px;
+  display: inline-block;
+  background: #eee;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px #888 inset, -2px -2px 5px #444 inset, 2px 2px 10px #888;
+  border: none;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+}
+
+.content > .button-link, .col-1 > .button-link, .col-2 > .button-link {
+  margin: auto;
+  margin-bottom: 15px;
+  width: 250px;
+}
+
+.button-link:hover, input[type="submit"]:hover {
+  background: #ddd;
+}
+
+.button-link:active, input[type="submit"]:active {
+  background: #ccc;
+  box-shadow: -2px -2px 5px #888 inset, 1px 1px 5px #444 inset, 2px 2px 10px #888;
+}
+
+.button-link[disabled], input[type="submit"][disabled] {
+  background: #aaa;
+  color: #555;
+  box-shadow: 1px 1px 5px #888 inset, -2px -2px 5px #444 inset;
+  pointer-events: none;
+}
+
+.field_with_errors input {
+  box-shadow: 0px 0px 10px 2px #f00 inset;
+}
+
+#error_explanation h2 {
+  font-size: 20px;
+  margin-top: -10px;
+}
