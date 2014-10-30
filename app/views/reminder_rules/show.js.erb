@@ -4,4 +4,6 @@ $('#rule-<%= @reminder_rule.id %>').slideUp(function() {
   $(this).remove();
 });
 
-$('#dosage-times').html("<%= escape_javascript(render 'reminders/dosage_times', dosage_times: @reminder_rule.reminder.enumerate_doses) %>");
+$('#dosage-times').fadeOut(function() {
+  $(this).html("<%= escape_javascript(render 'reminders/dosage_times', dosage_times: @reminder_rule.reminder.enumerate_doses) %>").fadeIn();
+});
