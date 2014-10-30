@@ -1,0 +1,9 @@
+$('#toggle-email a').attr('disabled', true);
+$('#toggle-email a').after('<img src="/assets/spinner.gif">');
+$('#toggle-email span.setting').fadeOut(function() {
+  $(this).html('<%= current_user.squelch_email ? 'OFF' : 'ON' %>').fadeIn(function() {
+    $('#toggle-email a').html("<%= current_user.squelch_email ? 'Enable' : 'Disable' %> Email Alerts");
+    $('#toggle-email a').attr('disabled', false);
+    $('#toggle-email img').remove();    
+  });
+});

@@ -1,0 +1,9 @@
+$('#toggle-text a').attr('disabled', true);
+$('#toggle-text a').after('<img src="/assets/spinner.gif">');
+$('#toggle-text span.setting').fadeOut(function() {
+  $(this).html('<%= current_user.squelch_text ? 'OFF' : 'ON' %>').fadeIn(function() {
+    $('#toggle-text a').html("<%= current_user.squelch_text ? 'Enable' : 'Disable' %> Text Alerts");
+    $('#toggle-text a').attr('disabled', false);
+    $('#toggle-text img').remove();    
+  });
+});
