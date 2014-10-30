@@ -4,11 +4,13 @@
   <h2>Email Alerts are <span class='setting'><%= current_user.squelch_email ? 'OFF' : 'ON' %></span></h2>
   <p>
     Disabling email alerts will prevent you from recieving any emails from Prescription Reminder.
+    <%= link_to "#{current_user.squelch_email ? "Enable" : "Disable"} Email Alerts", toggle_email_user_path, class: 'button-link' %>
   </p>
   
   <h2>Text Alerts are <span class='setting'><%= current_user.squelch_text ? 'OFF' : 'ON' %></span></h2>
   <p>
     Disabling text alerts will prevent you from recieving any text messages from Prescription Reminder.
+    <%= link_to "#{current_user.squelch_text ? "Enable" : "Disable"} Text Alerts", toggle_email_user_path, class: 'button-link' %>
   </p>
 
 </section>

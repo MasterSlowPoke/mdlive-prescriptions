@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resource :user do 
     get '', to: "users#index"
     get 'preferences'
+    get 'toggle_email'
+    get 'toggle_text'
   end 
 
   resources :reminders

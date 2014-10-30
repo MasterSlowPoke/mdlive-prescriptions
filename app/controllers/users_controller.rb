@@ -9,6 +9,24 @@ class UsersController < ApplicationController
   def preferences
   end
 
+  def toggle_email
+    current_user.squelch_email = !current_user.squelch_email
+    current_user.save
+
+    respond_to do |format|
+      format.html { redirect_to preferences_user_path, notice: "Email alerts have #{current_user.squelch_email ? 'stopped' : 'restarted'}."}
+    end
+  end
+
+  def toggle_text
+    current_user.squelch_text = !current_user.squelch_text
+    current_user.save
+
+    respond_to do |format|
+      format.html { redirect_to preferences_user_path, notice: "Text alerts have #{current_user.squelch_text ? 'stopped' : 'restarted'}."}
+    end
+  end
+
   def show
     @user = current_user
 
