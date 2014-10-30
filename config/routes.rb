@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
   
-  resources :users
+  resource :user do 
+    get '', to: "users#index"
+  end 
+
   resources :reminders
 
   resources :reminder_rules, only: [:show, :edit, :update, :destroy]

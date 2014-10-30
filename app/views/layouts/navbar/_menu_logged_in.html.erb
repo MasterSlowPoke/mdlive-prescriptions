@@ -9,7 +9,7 @@
 <li class="divider"></li>
 
 <% if current_user.admin %>
-	<li><%= link_to 'View All Users', users_path, method: :get %></li>
+	<li><%= link_to 'View All Users', user_path, method: :get %></li>
 	<li class="divider"></li>
 <% end %>
 <li><%= link_to 'Pitch Day (Hello Miami!)', pitchday_path %></li> 
