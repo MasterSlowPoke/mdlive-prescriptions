@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   resource :user do 
     get '', to: "users#index"
+    get 'preferences'
   end 
 
   resources :reminders
