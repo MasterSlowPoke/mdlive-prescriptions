@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   end
 
   def send_reminders(start_time, end_time)
+    return if squelch_email && squelch_text
+    
   	reminder_list = {}
 
   	reminders.each do |r|
@@ -33,8 +35,8 @@ class User < ActiveRecord::Base
 
   	unless reminder_list.empty?
       reminder_list = reminder_list.sort
-  		UserMailer.upcoming_reminder_email(self, start_time, end_time, reminder_list).deliver
-      send_texts(reminder_list)
+  		UserMailer.upcoming_reminder_email(self, start_time, end_time, reminder_list).deliver unless squelch_email
+      send_texts(reminder_list) unless squelch_text
   	end
 	end
 
