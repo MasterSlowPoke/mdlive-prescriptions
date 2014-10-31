@@ -14,6 +14,6 @@ class TwilioController < ApplicationController
       r.Message "Hello, #{name}. You just texted me!"
     end
 
-    render plain: twiml.text
+    render xml: twiml.text
   end
 end
