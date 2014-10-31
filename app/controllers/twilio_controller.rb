@@ -7,7 +7,7 @@ class TwilioController < ApplicationController
     message = TwilioClient.account.messages.create({
       :from => '+17272286083', 
       :to => '+18132404479', 
-      :body => message,
+      :body => "Hello from the internet.",
     })
 
     render plain: message.status
