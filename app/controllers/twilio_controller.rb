@@ -11,7 +11,7 @@ class TwilioController < ApplicationController
     name = friends[sender] || "Internet Person"
 
     twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hello, #{name}. Thanks for the message."
+      r.Message "Hello, #{name}. You just texted me!"
     end
 
     render plain: twiml.text
