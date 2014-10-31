@@ -4,12 +4,16 @@ class TwilioController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def text
-    message = TwilioClient.account.messages.create({
-      :from => '+17272286083', 
-      :to => '+18132404479', 
-      :body => "Hello from the internet.",
-    })
+    sender = params[:From]
+    friends = {
+      "+18132404479" => "Craig Sniffen"
+    }
+    name = friends[sender] || "Internet Person"
 
-    render plain: message.status
+    twiml = Twilio::TwiML::Response.new do |r|
+      r.Message "Hello, #{name}. Thanks for the message."
+    end
+
+    render plain: twiml.text
   end
 end
