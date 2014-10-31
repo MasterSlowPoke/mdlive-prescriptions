@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :reminder_rules, only: [:show, :edit, :update, :destroy]
 
-
+  get 'twilio/text', to: "twilio#text"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
