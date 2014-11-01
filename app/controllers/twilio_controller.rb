@@ -14,7 +14,7 @@ class TwilioController < ApplicationController
     name = friends[sender] || "Internet Person"
 
     twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hello, #{name}. You just texted me #{sms_count + 1} times!"
+      r.Message "Hello, #{name}. You just texted me #{sms_count + 1} times! Your message was '#{params[:Body]}'"
     end
 
     session["counter"] += 1
