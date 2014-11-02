@@ -10,12 +10,7 @@ class TwilioController < ApplicationController
     message = params[:Body]
     @user = User.find_by(phone: phone)
 
-    respond_to do |format|
-      format.any do
-        render "text.xml"
-      end
-    end
-
+    render "text.xml", content_type: 'application/xml'
   end
 
   def send_text
