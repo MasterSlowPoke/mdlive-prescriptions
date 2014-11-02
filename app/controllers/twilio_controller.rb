@@ -8,9 +8,11 @@ class TwilioController < ApplicationController
   def text
     phone = params[:From]
     phone = phone[-10..-1] if phone # only interested in the 7 digit number and area code
-    message = params[:Body]
+    message = params[:Body] || ""
+    
     @user = User.find_by_phone phone
 
+    render_twiml :new_user and return if @user.nil?
     render_twiml :text
   end
 
