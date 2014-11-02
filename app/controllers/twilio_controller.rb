@@ -11,7 +11,7 @@ class TwilioController < ApplicationController
     message = params[:Body]
     @user = User.find_by_phone phone
 
-    render "text.xml", content_type: 'application/xml'
+    render_twiml :text
   end
 
   def send_text
@@ -31,4 +31,8 @@ class TwilioController < ApplicationController
     STOP_MESSAGES = ['STOP', 'STOPALL', 'UNSUBSCRIBE', 'CANCEL', 'END', 'QUIT']
 
     START_MESSAGES = ['START', 'YES']
+
+    def render_twiml(template)
+      render "#{template}.xml", content_type: 'application/xml'
+    end
 end
