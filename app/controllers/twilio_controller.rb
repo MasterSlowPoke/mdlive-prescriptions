@@ -1,6 +1,8 @@
 require 'twilio-ruby'
 
 class TwilioController < ApplicationController
+  http_basic_authenticate_with name: "twilio-site", password: Rails.application.secrets.twilio_controller_pass  
+
   skip_before_action :verify_authenticity_token
 
   def text
