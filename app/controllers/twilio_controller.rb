@@ -36,4 +36,9 @@ class TwilioController < ApplicationController
 
     render plain: "Text message sent."
   end
+
+  private
+    STOP_MESSAGES = ['STOP', 'STOPALL', 'UNSUBSCRIBE', 'CANCEL', 'END', 'QUIT']
+
+    START_MESSAGES = ['START', 'YES']
 end
