@@ -14,6 +14,17 @@ class TwilioController < ApplicationController
     @user = User.find_by_phone phone
 
     render_twiml :new_user and return if @user.nil?
+
+    if STOP_MESSAGES.include?(message.upcase)
+      @user.squelch_text = true
+      @user.save
+      head :accepted and return
+    elsif START_MESSAGES.include?(message.upcase)
+      @user.squelch_text = false
+      @user.save
+      head :accepted and return
+    end
+    
     render_twiml :text
   end
 
