@@ -6,22 +6,16 @@ class TwilioController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def text
-    session["counter"] ||= 0
-    sms_count = session["counter"]
+    phone = params[:From][-10..-1] # only interested in the 7 digit number and area code
+    message = params[:Body]
+    @user = User.find_by(phone: phone)
 
-    sender = params[:From]
-    friends = {
-      "+18132404479" => "Craig Sniffen"
-    }
-    name = friends[sender] || "Internet Person"
-
-    twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hello, #{name}. You just texted me #{sms_count + 1} times! Your message was '#{params[:Body]}'"
+    respond_to do |format|
+      format.any do
+        render "text.xml"
+      end
     end
 
-    session["counter"] += 1
-
-    render xml: twiml.text
   end
 
   def send_text

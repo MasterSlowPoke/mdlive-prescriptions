@@ -1,0 +1,7 @@
+<% 
+  twiml = Twilio::TwiML::Response.new do |r|
+    r.Message "Hello, #{@user.name}. You have #{pluralize(@user.reminders.count, 'reminder')}!"
+  end
+
+  twiml.text
+%>
