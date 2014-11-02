@@ -6,9 +6,10 @@ class TwilioController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def text
-    phone = params[:From][-10..-1] # only interested in the 7 digit number and area code
+    phone = params[:From]
+    phone = phone[-10..-1] if phone # only interested in the 7 digit number and area code
     message = params[:Body]
-    @user = User.find_by(phone: phone)
+    @user = User.find_by_phone phone
 
     render "text.xml", content_type: 'application/xml'
   end
