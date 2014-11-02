@@ -23,4 +23,17 @@ class TwilioController < ApplicationController
 
     render xml: twiml.text
   end
+
+  def send_text
+    phone = "+18132404479"
+    message = "Text messaging!"
+
+    TwilioClient.account.messages.create({
+      :from => '+17272286083', 
+      :to => phone, 
+      :body => message,
+    })
+
+    render plain: "Text message sent."
+  end
 end
