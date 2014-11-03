@@ -314,6 +314,16 @@ aside dl {
 	margin-bottom: 40px;
 }
 
+.bg-danger {
+	border-radius: 10px;
+	padding: 10px;
+	margin: 0px 15px;
+}
+
+.bg-danger .glyphicon {
+	font-size: 17px;
+}
+
 @media (min-width: 768px) {
 	.navbar-nav > li > a {
 		padding-top: 20px;
