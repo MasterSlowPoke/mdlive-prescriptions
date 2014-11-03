@@ -13,7 +13,13 @@
     <h2>Text Alerts are <span class='setting'><%= current_user.squelch_text ? 'OFF' : 'ON' %></span></h2>
     <p>
       Disabling text alerts will prevent you from recieving any text messages from Prescription Reminder.
-      <%= link_to "#{current_user.squelch_text ? "Enable" : "Disable"} Text Alerts", toggle_text_user_path, class: 'button-link', remote: true %>
+      <%= link_to "#{current_user.squelch_text ? "Enable" : "Disable"} Text Alerts", toggle_text_user_path, class: 'button-link', remote: true, disabled: current_user.unsubbed_via_twilio %>
+      <% if current_user.unsubbed_via_twilio %>
+        <p class="bg-danger">
+          <span class="glyphicon glyphicon-exclamation-sign large"></span>
+          Text alerts have been disabled by sending an UNSUBSCRIBE request. Please text START to (727)&nbsp;228&#8209;6083 to resubscribe.
+        </p>
+      <% end %>
     </p>
   </div>
 </section>
