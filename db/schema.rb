@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022020206) do
+ActiveRecord::Schema.define(version: 20141103003446) do
 
   create_table "reminder_rules", force: true do |t|
     t.integer  "reminder_id"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20141022020206) do
     t.integer  "phone",                  limit: 8
     t.boolean  "squelch_email",                    default: false, null: false
     t.boolean  "squelch_text",                     default: false, null: false
+    t.boolean  "unsubbed_via_twilio",              default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
