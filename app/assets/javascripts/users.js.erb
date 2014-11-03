@@ -3,6 +3,6 @@ $(function() {
     console.log('clicked');
 
     $(this).attr('disabled', true);
-    $(this).after('<img src="/assets/spinner.gif">');
+    $(this).after('<img src="<%= asset_path 'spinner.gif' %>">');
   });
 });
