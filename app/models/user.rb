@@ -51,11 +51,19 @@ class User < ActiveRecord::Base
 
     return if message == "Prescription Reminder:" # don't send empty messages
 
-    TwilioClient.account.messages.create({
-      :from => '+17272286083', 
-      :to => phone, 
-      :body => message,
-    })
+    begin
+      TwilioClient.account.messages.create({
+        :from => '+17272286083', 
+        :to => phone, 
+        :body => message,
+      })
+    rescue Exception => e
+      if e.code == 21610 # blacklisted - https://www.twilio.com/docs/errors/21610
+        self.squelch_text = true
+        self.unsubbed_via_twilio = true
+        self.save
+      end
+    end
   end 
 
   def get_current_doses 

@@ -36,11 +36,19 @@ class TwilioController < ApplicationController
     phone = "+18132404479"
     message = "Text messaging!"
 
-    TwilioClient.account.messages.create({
-      :from => '+17272286083', 
-      :to => phone, 
-      :body => message,
-    })
+    begin
+      TwilioClient.account.messages.create({
+        :from => '+17272286083', 
+        :to => phone, 
+        :body => message,
+      })
+      rescue Exception => e
+        if e.code == 21610 # blacklisted - https://www.twilio.com/docs/errors/21610
+          render plain: "yep"
+          return
+        end
+        render plain: "nope"
+      end
 
     render plain: "Text message sent."
   end
