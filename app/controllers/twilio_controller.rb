@@ -19,6 +19,8 @@ class TwilioController < ApplicationController
       @user.squelch_text = true
       @user.save
       head :accepted and return
+    elsif STOP_MESSAGES.include?(message.split(' ')[0].upcase)
+      render_twiml :attempted_stop and return
     elsif START_MESSAGES.include?(message.upcase)
       @user.squelch_text = false
       @user.save
